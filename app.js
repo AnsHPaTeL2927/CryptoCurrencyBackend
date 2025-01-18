@@ -11,7 +11,7 @@ import authRoutes from './routes/auth.routes.js';
 const app = express();
 
 // Middleware
-// app.use(helmet());
+app.use(helmet());
 app.use(
     cors({
         origin: 'http://localhost:5173', // Replace with the URL of your frontend
