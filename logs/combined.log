@@ -285,3 +285,5 @@
 {"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-19 12:55:40"}
 {"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-19 15:10:26"}
 {"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-19 15:10:26"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-19 16:08:27"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-19 16:08:27"}
