@@ -1,7 +1,8 @@
 import { catchAsync } from '../utils/catchAsync.js';
 import { authService } from '../services/auth.service.js';
 import { environment } from '../config/environment.js';
-import { ApiError } from '../middleware/error.middleware.js';
+import { ApiError } from '../utils/ApiError.js';
+
 
 export const register = catchAsync(async (req, res) => {
     const user = await authService.register(req.body);

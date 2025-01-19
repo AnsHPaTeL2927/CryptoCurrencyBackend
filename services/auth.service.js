@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import { OAuth2Client } from 'google-auth-library';
 import User from '../models/user.model.js';
-import { ApiError } from '../middleware/error.middleware.js';
+import { ApiError } from '../utils/ApiError.js';
 import { generateToken } from '../utils/jwt.utils.js';
 import { environment } from '../config/environment.js';
 import axios from 'axios';
