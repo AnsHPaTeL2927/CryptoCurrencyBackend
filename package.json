@@ -22,12 +22,15 @@
     "express-rate-limit": "^7.5.0",
     "google-auth-library": "^9.15.0",
     "helmet": "^8.0.0",
+    "http": "^0.0.1-security",
+    "ioredis": "^5.4.2",
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.5",
     "morgan": "^1.10.0",
     "node-cache": "^5.1.2",
     "nodemon": "^3.1.9",
+    "socket.io": "^4.8.1",
     "winston": "^3.17.0",
     "ws": "^8.18.0"
   }
