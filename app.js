@@ -7,6 +7,9 @@ import { errorHandler } from './middleware/error.middleware.js';
 import { rateLimiter } from './middleware/rateLimiter.middleware.js';
 import authRoutes from './routes/auth.routes.js';
 // import userRoutes from './routes/user.routes.js';
+import portfolioRoutes from './routes/portfolio.routes.js';
+// import tradeRoutes from './routes/trade.routes.js';
+import technicalRoutes from './routes/technical.routes.js'
 
 const app = express();
 
@@ -35,9 +38,18 @@ app.use(rateLimiter);
 // Routes
 app.use('/api/auth', authRoutes);
 // app.use('/api/users', userRoutes);
+app.use('/api/portfolio', portfolioRoutes);
+// app.use('/api/trade', tradeRoutes);
+app.use('/api/technical', technicalRoutes);
 
 // Error handling
 app.use(errorHandler);
 
+app.use('*', (req, res) => {
+    res.status(404).json({
+        status: 'error',
+        message: 'Route not found'
+    });
+});
 
 export default app;

@@ -1,11 +1,11 @@
-import { CacheService } from '../redis/cache.service.js';
+import redisService from '../redis/redis.service.js';
 import logger from '../../utils/logger.js';
 
 export class ConnectionService {
   async handleConnection(socket) {
     try {
       // Store socket connection in Redis
-      await CacheService.setHash(
+      await redisService.hset(
         'socket:connections',
         socket.user._id.toString(),
         {
@@ -27,7 +27,7 @@ export class ConnectionService {
   async handleDisconnect(socket) {
     try {
       // Remove socket connection from Redis
-      await CacheService.delete(`socket:connections:${socket.user._id}`);
+      await redisService.delete(`socket:connections:${socket.user._id}`);
       logger.info(`User disconnected: ${socket.user._id}`);
     } catch (error) {
       logger.error('Disconnect handler error:', error);

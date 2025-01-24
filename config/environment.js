@@ -43,4 +43,59 @@ export const environment = {
     pingTimeout: parseInt(process.env.SOCKET_PING_TIMEOUT) || 60000,
     pingInterval: parseInt(process.env.SOCKET_PING_INTERVAL) || 25000
   },
+
+  encryptionKey: {
+    key: process.env.ENCRYPTION_KEY,
+    algorithm: process.env.ALGORITHM
+  },
+
+  apis: {
+    cryptocompare: {
+      baseUrl: process.env.CRYPTOCOMPARE_API_URL,
+      wsUrl: process.env.CRYPTOCOMPARE_WS_URL,
+      apiKey: process.env.CRYPTOCOMPARE_API_KEY,
+      rateLimit: 100000
+    },
+
+    coincap: {
+      baseUrl: process.env.COINCAP_API_URL,
+      wsUrl: process.env.COINCAP_WS_URL,
+      rateLimit: 200
+    },
+
+    coinmarketcap: {
+      baseUrl: process.env.CMC_API_URL,
+      apiKey: process.env.CMC_API_KEY,
+      rateLimit: 333
+    },
+
+    etherscan: {
+      baseUrl: process.env.ETHERSCAN_API_URL,
+      apiKey: process.env.ETHERSCAN_API_KEY,
+      rateLimit: 100000
+    },
+
+    bscscan: {
+      baseUrl: process.env.BSCSCAN_API_URL,
+      apiKey: process.env.BSCSCAN_API_KEY,
+      rateLimit: 100000
+    }
+  },
+
+  websocket: {
+    reconnectInterval: 5000,
+    maxReconnectAttempts: 5
+  },
+
+  rateLimit: {
+    windowMs: parseInt(process.env.RATE_LIMIT_WINDOW) * 60 * 1000,
+    max: parseInt(process.env.API_RATE_LIMIT)
+  },
+
+  cache: {
+    prices: 60,
+    assets: 300,
+    news: 900,
+    blockchain: 60
+  }
 };
