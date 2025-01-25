@@ -1,4 +1,3 @@
-// controllers/technical.controller.js
 import { CryptoCompareService } from '../services/third-party/cryptocompare.service.js';
 import { CoinCapService } from '../services/third-party/coincap.service.js';
 import { RedisService } from '../services/redis/redis.service.js';
