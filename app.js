@@ -9,7 +9,7 @@ import authRoutes from './routes/auth.routes.js';
 // import userRoutes from './routes/user.routes.js';
 import portfolioRoutes from './routes/portfolio.routes.js';
 // import tradeRoutes from './routes/trade.routes.js';
-import technicalRoutes from './routes/technical.routes.js'
+// import technicalRoutes from './routes/technical.routes.js'
 
 const app = express();
 
@@ -40,7 +40,7 @@ app.use('/api/auth', authRoutes);
 // app.use('/api/users', userRoutes);
 app.use('/api/portfolio', portfolioRoutes);
 // app.use('/api/trade', tradeRoutes);
-app.use('/api/technical', technicalRoutes);
+// app.use('/api/technical', technicalRoutes);
 
 // Error handling
 app.use(errorHandler);
