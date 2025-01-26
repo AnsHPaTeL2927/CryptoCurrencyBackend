@@ -6,6 +6,7 @@ import { catchAsync } from '../utils/catchAsync.js';
 import { ApiError } from '../utils/ApiError.js';
 import { validatePortfolioData, validateTimeframe } from '../validations/portfolio.validation.js';
 import { sanitizeData, sanitizeTimeframe } from '../utils/sanitizer.js';
+import rateLimit from 'express-rate-limit';
 
 const CACHE_DURATIONS = {
     PORTFOLIO_OVERVIEW: 300,
@@ -23,9 +24,13 @@ const CACHE_DURATIONS = {
     TAX_DATA: 3600
 };
 
-const sensitiveOpsLimiter = new RateLimiter({
-    windowMs: 15 * 60 * 1000,
-    max: 100
+const sensitiveOpsLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100,
+    message: {
+        status: 'error',
+        message: 'Too many requests, please try again later.'
+    }
 });
 
 export class PortfolioController {

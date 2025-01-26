@@ -1,7 +1,7 @@
 import { CryptoCompareService } from '../services/third-party/cryptocompare.service.js';
 import { CoinCapService } from '../services/third-party/coincap.service.js';
 import { CoinMarketCapService } from '../services/third-party/coinmarketcap.service.js';
-import { RedisService } from '../services/redis/redis.service.js';
+import RedisService from '../services/redis/redis.service.js';
 import { catchAsync } from '../utils/catchAsync.js';
 import { ApiError } from '../utils/ApiError.js';
 

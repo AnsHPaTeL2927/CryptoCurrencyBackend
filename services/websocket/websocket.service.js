@@ -5,7 +5,7 @@ import WebSocketHelpers from '../../utils/helpers/websocket.helper.js';
 
 class WebSocketService {
     constructor() {
-        this.io = SocketServer.getIO();
+        // this.io = SocketServer.getIO();
         this.subscriptions = new Map();
     }
 
@@ -152,8 +152,9 @@ class WebSocketService {
         const subKey = `crypto:${userId}:${symbols.join(',')}`;
         this.subscriptions.set(subKey, { userId, symbols, type: 'crypto', subscription });
 
+        const io = SocketServer.getIO(); // Get IO instance when needed
         symbols.forEach(symbol => {
-            this.io.to(socketId).join(`crypto:${symbol}`);
+            io.to(socketId).join(`crypto:${symbol}`);
         });
 
         WebSocketHelpers.startDataStream(

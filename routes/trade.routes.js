@@ -1,4 +1,3 @@
-// routes/trade.routes.js
 import express from 'express';
 import { authenticate } from '../middleware/auth.middleware.js';
 import { TradeController } from '../controllers/trade.controller.js';

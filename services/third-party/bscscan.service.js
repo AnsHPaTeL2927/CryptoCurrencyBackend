@@ -5,8 +5,8 @@ import logger from '../../utils/logger.js';
 
 export class BscscanService {
     constructor() {
-        this.apiKey = environment.bscscan.apiKey;
-        this.baseUrl = environment.bscscan.baseUrl;
+        this.apiKey = environment.apis.bscscan.apiKey;
+        this.baseUrl = environment.apis.bscscan.baseUrl;
     }
 
     // Account Methods 
