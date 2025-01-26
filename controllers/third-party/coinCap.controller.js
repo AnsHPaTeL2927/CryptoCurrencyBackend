@@ -1,5 +1,5 @@
 import CoinCapService from '../../services/third-party/coincap.service.js';
-import { WebSocketService } from '../../services/websocket/websocket.service.js';
+import WebSocketService from '../../services/websocket/websocket.service.js';
 import RedisService from '../../services/redis/redis.service.js';
 import { catchAsync } from '../../utils/catchAsync.js';
 import { ApiError } from '../../utils/ApiError.js';

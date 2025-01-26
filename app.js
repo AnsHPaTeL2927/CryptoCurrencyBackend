@@ -4,7 +4,7 @@ import helmet from 'helmet';
 import compression from 'compression';
 import morgan from 'morgan';
 import { errorHandler } from './middleware/error.middleware.js';
-import { rateLimiter } from './middleware/rateLimiter.middleware.js';
+import { RateLimiter } from './middleware/rateLimiter.middleware.js';
 import authRoutes from './routes/auth.routes.js';
 // import userRoutes from './routes/user.routes.js';
 import portfolioRoutes from './routes/portfolio.routes.js';
@@ -33,7 +33,7 @@ app.use(compression());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(rateLimiter);
+app.use(RateLimiter);
 
 // Routes
 app.use('/api/auth', authRoutes);

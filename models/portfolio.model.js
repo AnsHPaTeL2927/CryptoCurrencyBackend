@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { encryptData, decryptData } from '../utils/encryption.js';
+import EncryptionService from '../utils/encryption.js';
 import { calculateRiskScore } from '../utils/risk-calculator.js';
 
 const assetSchema = new mongoose.Schema({
@@ -22,8 +22,8 @@ const assetSchema = new mongoose.Schema({
     type: Number,
     required: true,
     min: 0,
-    set: encryptData,
-    get: decryptData
+    set: EncryptionService.encryptData,
+    get: EncryptionService.decryptData
   },
   currentPrice: {
     type: Number,
@@ -68,8 +68,8 @@ const portfolioSchema = new mongoose.Schema({
     type: Number,
     required: true,
     default: 0,
-    set: encryptData,
-    get: decryptData
+    set: EncryptionService.encryptData,
+    get: EncryptionService.decryptData
   },
   assets: [assetSchema],
   riskScore: {
@@ -132,9 +132,9 @@ const portfolioSchema = new mongoose.Schema({
   }
 }, {
   timestamps: true,
-  toJSON: { 
+  toJSON: {
     getters: true,
-    transform: function(doc, ret) {
+    transform: function (doc, ret) {
       delete ret.__v;
       delete ret._id;
       return ret;
@@ -148,17 +148,17 @@ portfolioSchema.index({ lastUpdated: -1 });
 portfolioSchema.index({ riskScore: 1 });
 
 // Pre-save middleware
-portfolioSchema.pre('save', async function(next) {
+portfolioSchema.pre('save', async function (next) {
   if (this.isModified('assets')) {
     // Recalculate portfolio risk score
     this.riskScore = await calculateRiskScore(this.assets);
-    
+
     // Update risk level
     this.riskLevel = this.getRiskLevel();
-    
+
     // Update total value
     this.totalValue = this.assets.reduce((sum, asset) => sum + asset.value, 0);
-    
+
     // Update asset allocations
     this.assets.forEach(asset => {
       asset.allocation = (asset.value / this.totalValue) * 100;
@@ -184,7 +184,7 @@ portfolioSchema.methods = {
   },
 
   async checkExposure() {
-    const exposedAssets = this.assets.filter(asset => 
+    const exposedAssets = this.assets.filter(asset =>
       asset.allocation > this.settings.alertThresholds.exposure
     );
     return exposedAssets;
@@ -218,11 +218,11 @@ portfolioSchema.statics = {
 };
 
 // Virtual fields
-portfolioSchema.virtual('totalProfitLoss').get(function() {
+portfolioSchema.virtual('totalProfitLoss').get(function () {
   return this.assets.reduce((sum, asset) => sum + asset.profitLoss, 0);
 });
 
-portfolioSchema.virtual('totalProfitLossPercentage').get(function() {
+portfolioSchema.virtual('totalProfitLossPercentage').get(function () {
   const totalCost = this.assets.reduce((sum, asset) => sum + (asset.amount * asset.costBasis), 0);
   return (this.totalProfitLoss / totalCost) * 100;
 });

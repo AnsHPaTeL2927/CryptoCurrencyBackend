@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { encryptData, decryptData } from '../utils/encryption.js';
+import EncryptionService from '../utils/encryption.js';
 
 const historyAssetSchema = new mongoose.Schema({
   symbol: {
@@ -10,20 +10,20 @@ const historyAssetSchema = new mongoose.Schema({
   price: {
     type: Number,
     required: true,
-    set: encryptData,
-    get: decryptData
+    set: EncryptionService.encryptData,
+    get: EncryptionService.decryptData
   },
   amount: {
     type: Number,
     required: true,
-    set: encryptData,
-    get: decryptData
+    set: EncryptionService.encryptData,
+    get: EncryptionService.decryptData
   },
   value: {
     type: Number,
     required: true,
-    set: encryptData,
-    get: decryptData
+    set: EncryptionService.encryptData,
+    get: EncryptionService.decryptData
   },
   timestamp: {
     type: Date,
@@ -46,13 +46,13 @@ const portfolioHistorySchema = new mongoose.Schema({
   totalValue: {
     type: Number,
     required: true,
-    set: encryptData,
-    get: decryptData
+    set: EncryptionService.encryptData,
+    get: EncryptionService.decryptData
   },
   dailyPnL: {
     type: Number,
-    set: encryptData,
-    get: decryptData
+    set: EncryptionService.encryptData,
+    get: EncryptionService.decryptData
   },
   riskScore: {
     type: Number,

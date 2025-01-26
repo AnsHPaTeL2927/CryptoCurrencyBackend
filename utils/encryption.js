@@ -1,7 +1,6 @@
-// utils/encryption.js
 import crypto from 'crypto';
 import { promisify } from 'util';
-import { environment } from '../config/environment';
+import { environment } from '../config/environment.js';
 
 const scrypt = promisify(crypto.scrypt);
 const randomBytes = promisify(crypto.randomBytes);

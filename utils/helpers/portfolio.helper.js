@@ -48,7 +48,7 @@ const calculationHelpers = {
                 const currentPrice = currentPrices[asset.symbol];
                 const currentValue = asset.amount * currentPrice;
                 const pnl = currentValue - (asset.amount * asset.costBasis);
-                
+
                 totalValue += currentValue;
                 totalPnL += pnl;
 
@@ -90,7 +90,7 @@ const calculationHelpers = {
                 if (drawdown > maxDrawdown) {
                     maxDrawdown = drawdown;
                     drawdownEnd = entry.timestamp;
-                    
+
                     // Find drawdown start
                     for (let i = index; i >= 0; i--) {
                         if (history[i].totalValue === peak) {
@@ -109,6 +109,39 @@ const calculationHelpers = {
             };
         } catch (error) {
             logger.error('Error in calculateDrawdown:', error);
+            throw error;
+        }
+    },
+
+    calculateWeightedValue(values, weights) {
+        try {
+            let totalWeightedValue = 0;
+            let totalWeight = 0;
+
+            Object.entries(values).forEach(([source, value]) => {
+                if (weights[source] && value) {
+                    totalWeightedValue += value * weights[source];
+                    totalWeight += weights[source];
+                }
+            });
+
+            return totalWeight > 0 ? totalWeightedValue / totalWeight : 0;
+        } catch (error) {
+            logger.error('Error in calculateWeightedValue:', error);
+            throw error;
+        }
+    },
+
+    normalizeMetrics(metrics) {
+        try {
+            return Object.entries(metrics).reduce((normalized, [key, value]) => {
+                normalized[key] = typeof value === 'number' ?
+                    Number(value.toFixed(8)) :
+                    value;
+                return normalized;
+            }, {});
+        } catch (error) {
+            logger.error('Error in normalizeMetrics:', error);
             throw error;
         }
     }
@@ -164,8 +197,111 @@ const riskHelpers = {
             logger.error('Error in calculateRiskDistribution:', error);
             throw error;
         }
+    },
+
+    calculateBlockchainExposure(walletData) {
+        try {
+            const exposure = {
+                ethereum: 0,
+                binance: 0,
+                total: 0
+            };
+
+            walletData.forEach(wallet => {
+                exposure[wallet.chain] += wallet.balance;
+                exposure.total += wallet.balance;
+            });
+
+            return {
+                ...exposure,
+                distribution: {
+                    ethereum: (exposure.ethereum / exposure.total) * 100,
+                    binance: (exposure.binance / exposure.total) * 100
+                }
+            };
+        } catch (error) {
+            logger.error('Error in calculateBlockchainExposure:', error);
+            throw error;
+        }
+    },
+
+    calculateCrossChainRisk(exposure) {
+        try {
+            const MAX_CHAIN_EXPOSURE = 80; // 80% maximum on single chain
+            const riskScore = Object.values(exposure.distribution)
+                .reduce((score, percentage) => {
+                    return score + (percentage > MAX_CHAIN_EXPOSURE ?
+                        (percentage - MAX_CHAIN_EXPOSURE) * 2 : 0);
+                }, 0);
+
+            return {
+                score: riskScore,
+                level: this.getRiskLevel(riskScore),
+                recommendations: this.getChainDiversificationRecommendations(exposure)
+            };
+        } catch (error) {
+            logger.error('Error in calculateCrossChainRisk:', error);
+            throw error;
+        }
     }
 };
+
+
+const marketHelpers = {
+    aggregateMarketData(dataSources) {
+        try {
+            const aggregated = {};
+            const metrics = ['volume', 'price', 'marketCap', 'change24h'];
+
+            Object.keys(dataSources[0]).forEach(symbol => {
+                aggregated[symbol] = {};
+                metrics.forEach(metric => {
+                    const values = dataSources.map(source => source[symbol]?.[metric]);
+                    aggregated[symbol][metric] = this.calculateAverageMetric(values);
+                });
+            });
+
+            return aggregated;
+        } catch (error) {
+            logger.error('Error in aggregateMarketData:', error);
+            throw error;
+        }
+    },
+
+    calculateAverageMetric(values) {
+        const validValues = values.filter(v => v !== undefined && v !== null);
+        return validValues.length ?
+            validValues.reduce((sum, val) => sum + val, 0) / validValues.length :
+            null;
+    },
+
+    calculateMarketCorrelation(prices, period) {
+        try {
+            const correlationMatrix = {};
+            const symbols = Object.keys(prices);
+
+            symbols.forEach(symbol1 => {
+                correlationMatrix[symbol1] = {};
+                symbols.forEach(symbol2 => {
+                    if (symbol1 === symbol2) {
+                        correlationMatrix[symbol1][symbol2] = 1;
+                    } else {
+                        correlationMatrix[symbol1][symbol2] = this.calculatePearsonCorrelation(
+                            prices[symbol1].slice(-period),
+                            prices[symbol2].slice(-period)
+                        );
+                    }
+                });
+            });
+
+            return correlationMatrix;
+        } catch (error) {
+            logger.error('Error in calculateMarketCorrelation:', error);
+            throw error;
+        }
+    }
+};
+
 
 // Tax and Report Helpers
 const reportHelpers = {
@@ -177,7 +313,7 @@ const reportHelpers = {
 
             trades.forEach(trade => {
                 const profit = trade.profitLoss;
-                
+
                 // Update totals
                 if (profit > 0) {
                     totalProfits += profit;
@@ -193,7 +329,7 @@ const reportHelpers = {
                         trades: 0
                     };
                 }
-                
+
                 assetSummary[trade.symbol].trades++;
                 if (profit > 0) {
                     assetSummary[trade.symbol].profits += profit;
@@ -232,6 +368,26 @@ const reportHelpers = {
             logger.error('Error in generateTaxReport:', error);
             throw error;
         }
+    },
+
+    generateBlockchainReport(walletData, transactions) {
+        try {
+            const report = {
+                wallets: this.summarizeWallets(walletData),
+                transactions: this.summarizeTransactions(transactions),
+                exposure: riskHelpers.calculateBlockchainExposure(walletData),
+                risk: riskHelpers.calculateCrossChainRisk(walletData)
+            };
+
+            return {
+                ...report,
+                timestamp: new Date(),
+                recommendations: this.generateBlockchainRecommendations(report)
+            };
+        } catch (error) {
+            logger.error('Error in generateBlockchainReport:', error);
+            throw error;
+        }
     }
 };
 
@@ -239,6 +395,7 @@ export const portfolioHelpers = {
     ...timeHelpers,
     ...calculationHelpers,
     ...riskHelpers,
+    ...marketHelpers,
     ...reportHelpers
 };
 

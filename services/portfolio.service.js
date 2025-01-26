@@ -1,17 +1,23 @@
-// services/portfolio.service.js
 import { Portfolio } from '../models/portfolio.model.js';
 import { PortfolioHistory } from '../models/portfolio-history.model.js';
-import { ExternalAPIService } from './external.service.js';
-import { RedisService } from './redis.service.js';
+import { CryptoCompareService } from './third-party/cryptocompare.service.js';
+import { CoinCapService } from './third-party/coincap.service.js';
+import { CoinMarketCapService } from './third-party/coinmarketcap.service.js';
+import RedisService from './redis/redis.service.js';
 import { ApiError } from '../utils/ApiError.js';
 import logger from '../utils/logger.js';
 import portfolioHelpers from '../utils/helpers/portfolio.helper.js';
+
+const PRICE_DATA_WEIGHTS = {
+    cryptocompare: 0.4,
+    coincap: 0.3,
+    coinmarketcap: 0.3
+};
 
 export class PortfolioService {
     // Real-time Portfolio Value Updates
     static async getPortfolioOverview(userId) {
         try {
-            // Try to get from cache first
             const cachedData = await RedisService.get(`portfolio:${userId}:overview`);
             if (cachedData) return cachedData;
 
@@ -23,15 +29,24 @@ export class PortfolioService {
                 throw new ApiError('Portfolio not found', 404);
             }
 
-            // Get current prices for all assets
             const symbols = portfolio.assets.map(asset => asset.symbol);
-            const currentPrices = await ExternalAPIService.getCurrentPrices(symbols);
 
-            // Calculate current values
+            // Get prices from multiple sources
+            const [cryptoComparePrices, coinCapPrices, cmcPrices] = await Promise.all([
+                CryptoCompareService.getCurrentPrice(symbols),
+                CoinCapService.getAssetPrices(symbols),
+                CoinMarketCapService.getLatestQuotes(symbols)
+            ]);
+
+            // Calculate weighted average prices
+            const currentPrices = this.calculateWeightedPrices(
+                cryptoComparePrices,
+                coinCapPrices,
+                cmcPrices
+            );
+
             const overview = portfolioHelpers.calculatePortfolioOverview(portfolio, currentPrices);
-
-            // Cache the result
-            await RedisService.set(`portfolio:${userId}:overview`, overview, 60); // Cache for 1 minute
+            await RedisService.set(`portfolio:${userId}:overview`, overview, 60);
 
             return overview;
         } catch (error) {
@@ -48,7 +63,14 @@ export class PortfolioService {
             }
 
             const symbols = portfolio.assets.map(asset => asset.symbol);
-            const currentPrices = await ExternalAPIService.getCurrentPrices(symbols);
+
+            // Get real-time prices
+            const [cryptoPrices, coinCapPrices] = await Promise.all([
+                CryptoCompareService.getRealTimePrices(symbols),
+                CoinCapService.getRealTimePrices(symbols)
+            ]);
+
+            const currentPrices = this.calculateWeightedPrices(cryptoPrices, coinCapPrices);
 
             const totalValue = portfolio.assets.reduce((sum, asset) => {
                 const currentPrice = currentPrices[asset.symbol] || 0;
@@ -162,87 +184,6 @@ export class PortfolioService {
         }
     }
 
-    // Helper Methods
-    // private static getTimeframeStartDate(timeframe) {
-    //     const now = new Date();
-    //     switch (timeframe) {
-    //         case '24h':
-    //             return new Date(now - 24 * 60 * 60 * 1000);
-    //         case '7d':
-    //             return new Date(now - 7 * 24 * 60 * 60 * 1000);
-    //         case '30d':
-    //             return new Date(now - 30 * 24 * 60 * 60 * 1000);
-    //         case '90d':
-    //             return new Date(now - 90 * 24 * 60 * 60 * 1000);
-    //         case '1y':
-    //             return new Date(now - 365 * 24 * 60 * 60 * 1000);
-    //         default:
-    //             return new Date(0); // all time
-    //     }
-    // }
-
-    // private static getIntervalGrouping(interval) {
-    //     switch (interval) {
-    //         case 'hourly':
-    //             return { $hour: '$timestamp' };
-    //         case 'daily':
-    //             return { $dayOfMonth: '$timestamp' };
-    //         case 'weekly':
-    //             return { $week: '$timestamp' };
-    //         case 'monthly':
-    //             return { $month: '$timestamp' };
-    //         default:
-    //             return { $dayOfMonth: '$timestamp' };
-    //     }
-    // }
-
-    // private static calculatePortfolioOverview(portfolio, currentPrices) {
-    //     let totalValue = 0;
-    //     let totalPnL = 0;
-
-    //     const assets = portfolio.assets.map(asset => {
-    //         const currentPrice = currentPrices[asset.symbol];
-    //         const currentValue = asset.amount * currentPrice;
-    //         const pnl = currentValue - (asset.amount * asset.costBasis);
-
-    //         totalValue += currentValue;
-    //         totalPnL += pnl;
-
-    //         return {
-    //             ...asset,
-    //             currentPrice,
-    //             currentValue,
-    //             pnl,
-    //             pnlPercentage: (pnl / (asset.amount * asset.costBasis)) * 100
-    //         };
-    //     });
-
-    //     return {
-    //         totalValue,
-    //         totalPnL,
-    //         pnlPercentage: (totalPnL / totalValue) * 100,
-    //         assets,
-    //         lastUpdated: new Date()
-    //     };
-    // }
-
-    // private static async calculateRiskScore(portfolio) {
-    //     // Implement complex risk calculation logic here
-    //     // Consider factors like:
-    //     // - Asset diversity
-    //     // - Market volatility
-    //     // - Asset correlation
-    //     // - Historical performance
-    // }
-
-    // private static calculateRiskDistribution(assets) {
-    //     // Implement risk distribution calculation
-    //     // Consider factors like:
-    //     // - Asset allocation
-    //     // - Asset volatility
-    //     // - Market cap distribution
-    //     // - Sector distribution
-    // }
     static async getAssetAllocation(userId) {
         try {
             const portfolio = await Portfolio.findOne({ userId });
@@ -453,95 +394,6 @@ export class PortfolioService {
             throw error;
         }
     }
-
-    // Private Helper Methods
-    // private static calculateDrawdown(history) {
-    //     let peak = -Infinity;
-    //     let maxDrawdown = 0;
-    //     let drawdownStart = null;
-    //     let drawdownEnd = null;
-
-    //     history.forEach((entry, index) => {
-    //         if (entry.totalValue > peak) {
-    //             peak = entry.totalValue;
-    //         }
-
-    //         const drawdown = ((peak - entry.totalValue) / peak) * 100;
-    //         if (drawdown > maxDrawdown) {
-    //             maxDrawdown = drawdown;
-    //             drawdownEnd = entry.timestamp;
-
-    //             // Find drawdown start
-    //             for (let i = index; i >= 0; i--) {
-    //                 if (history[i].totalValue === peak) {
-    //                     drawdownStart = history[i].timestamp;
-    //                     break;
-    //                 }
-    //             }
-    //         }
-    //     });
-
-    //     return {
-    //         maxDrawdown,
-    //         drawdownStart,
-    //         drawdownEnd,
-    //         currentDrawdown: ((peak - history[history.length - 1].totalValue) / peak) * 100
-    //     };
-    // }
-
-    // private static generateTaxSummary(trades, year) {
-    //     let totalProfits = 0;
-    //     let totalLosses = 0;
-    //     const assetSummary = {};
-
-    //     trades.forEach(trade => {
-    //         const profit = trade.profitLoss;
-    //         if (profit > 0) {
-    //             totalProfits += profit;
-    //         } else {
-    //             totalLosses += Math.abs(profit);
-    //         }
-
-    //         // Track per-asset performance
-    //         if (!assetSummary[trade.symbol]) {
-    //             assetSummary[trade.symbol] = {
-    //                 profits: 0,
-    //                 losses: 0,
-    //                 trades: 0
-    //             };
-    //         }
-    //         assetSummary[trade.symbol].trades++;
-    //         if (profit > 0) {
-    //             assetSummary[trade.symbol].profits += profit;
-    //         } else {
-    //             assetSummary[trade.symbol].losses += Math.abs(profit);
-    //         }
-    //     });
-
-    //     return {
-    //         year,
-    //         totalProfits,
-    //         totalLosses,
-    //         netGain: totalProfits - totalLosses,
-    //         assetSummary,
-    //         taxableAmount: totalProfits,
-    //         estimatedTaxLiability: totalProfits * 0.3, // Example tax rate
-    //         trades: trades.length
-    //     };
-    // }
-
-    // private static async generateTaxReport(summary, transactions, format) {
-    //     // Implementation would depend on the required format (PDF, CSV, etc.)
-    //     // This is a placeholder that would need to be implemented based on requirements
-    //     switch (format.toLowerCase()) {
-    //         case 'pdf':
-    //             return this.generatePDFReport(summary, transactions);
-    //         case 'csv':
-    //             return this.generateCSVReport(summary, transactions);
-    //         default:
-    //             throw new ApiError('Unsupported report format', 400);
-    //     }
-    // }
 }
 
 export default PortfolioService;

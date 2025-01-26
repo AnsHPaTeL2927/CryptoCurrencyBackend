@@ -129,3 +129,19 @@ export const validatePortfolioData = {
         }
     }
 };
+
+export const validateTimeframe = (timeframe) => {
+    const validTimeframes = ['24h', '7d', '30d', '90d', '1y', 'all'];
+
+    if (!timeframe || typeof timeframe !== 'string') {
+        throw new ApiError(400, 'Timeframe must be a valid string');
+    }
+
+    const normalizedTimeframe = timeframe.toLowerCase().trim();
+
+    if (!validTimeframes.includes(normalizedTimeframe)) {
+        throw new ApiError(400, `Invalid timeframe. Valid values are: ${validTimeframes.join(', ')}`);
+    }
+
+    return normalizedTimeframe;
+};

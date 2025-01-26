@@ -1,4 +1,3 @@
-// utils/sanitizer.js
 import validator from 'validator';
 import { ApiError } from './ApiError.js';
 
@@ -34,20 +33,20 @@ export const sanitizeData = (data) => {
  */
 const sanitizeString = (str) => {
     if (typeof str !== 'string') return str;
-    
+
     // Trim whitespace
     str = str.trim();
-    
+
     // Escape HTML entities
     str = validator.escape(str);
-    
+
     // Remove common SQL injection patterns
     str = str.replace(/'/g, "''");
     str = str.replace(/;/g, "");
-    
+
     // Remove potential script tags and other harmful HTML
     str = str.replace(/<[^>]*>/g, '');
-    
+
     return str;
 };
 
@@ -82,19 +81,19 @@ const sanitizeArray = (arr) => {
  */
 const sanitizeObject = (obj) => {
     const sanitized = {};
-    
+
     for (const [key, value] of Object.entries(obj)) {
         // Sanitize key to prevent prototype pollution
         const sanitizedKey = sanitizeString(key);
-        
+
         // Skip if key is __proto__ or constructor
         if (sanitizedKey === '__proto__' || sanitizedKey === 'constructor') {
             continue;
         }
-        
+
         sanitized[sanitizedKey] = sanitizeData(value);
     }
-    
+
     return sanitized;
 };
 
@@ -105,7 +104,7 @@ export const specialSanitizers = {
     // Portfolio-specific sanitizers
     portfolioData: (data) => {
         if (!data) throw new ApiError('No portfolio data provided', 400);
-        
+
         return {
             ...sanitizeData(data),
             amount: data.amount ? Math.abs(sanitizeNumber(data.amount)) : undefined,
@@ -116,7 +115,7 @@ export const specialSanitizers = {
     // Trade-specific sanitizers
     tradeData: (data) => {
         if (!data) throw new ApiError('No trade data provided', 400);
-        
+
         return {
             ...sanitizeData(data),
             quantity: data.quantity ? Math.abs(sanitizeNumber(data.quantity)) : undefined,
@@ -129,7 +128,7 @@ export const specialSanitizers = {
     // Market data sanitizers
     marketData: (data) => {
         if (!data) throw new ApiError('No market data provided', 400);
-        
+
         return {
             ...sanitizeData(data),
             symbol: data.symbol ? data.symbol.toUpperCase() : undefined,
@@ -140,11 +139,11 @@ export const specialSanitizers = {
     // Date sanitizer
     dateString: (date) => {
         if (!date) return date;
-        
+
         if (!validator.isISO8601(date)) {
             throw new ApiError('Invalid date format', 400);
         }
-        
+
         return date;
     },
 
@@ -156,5 +155,18 @@ export const specialSanitizers = {
         };
     }
 };
+
+export const sanitizeTimeframe = (timeframe) => {
+    if (!timeframe) return '24h';
+ 
+    const validTimeframes = ['24h', '7d', '30d', '90d', '1y', 'all'];
+    const sanitized = sanitizeString(timeframe).toLowerCase();
+ 
+    if (!validTimeframes.includes(sanitized)) {
+        throw new ApiError(400, 'Invalid timeframe format');
+    }
+ 
+    return sanitized;
+ };
 
 export default sanitizeData;
