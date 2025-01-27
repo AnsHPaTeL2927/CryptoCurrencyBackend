@@ -15,7 +15,7 @@ const router = express.Router();
 
 // CryptoCompare Routes
 router.get('/market/price/current', RateLimiter, CryptoCompareController.getCurrentPrice);
-router.get('/market/price/:symbol', RateLimiter, CryptoCompareController.getSymbolPrice);
+router.get('/market/price/:symbol', RateLimiter, CryptoCompareController.getSymbolPrice); // symbol is BTC, ETH, BNB, etc.
 router.get('/market/historical/:symbol', RateLimiter, CryptoCompareController.getHistoricalData);
 router.get('/market/top-exchanges/:symbol', RateLimiter, CryptoCompareController.getTopExchanges);
 router.get('/market/ohlcv/:symbol', RateLimiter, CryptoCompareController.getOHLCV);
