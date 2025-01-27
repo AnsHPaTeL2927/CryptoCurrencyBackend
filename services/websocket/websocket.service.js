@@ -220,11 +220,17 @@ class WebSocketService {
     }
 
     async emitPriceUpdate(symbol, data) {
-        this.io.to(`prices:${symbol}`).emit('price_update', {
-            symbol,
-            data,
-            timestamp: new Date()
-        });
+        try {
+            const io = SocketServer.getIO();
+            io.to(`prices:${symbol}`).emit('price_update', {
+                symbol,
+                data,
+                timestamp: new Date()
+            });
+        } catch (error) {
+            logger.error('Price update emission error:', error);
+            throw error;
+        }
     }
 
     async emitOrderBookUpdate(symbol, orderBook) {

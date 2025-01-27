@@ -12,7 +12,9 @@ export class CryptoCompareController {
 
         const prices = await CryptoCompareService.getCurrentPrice();
         await RedisService.set(cacheKey, prices, 30);
-        await WebSocketService.emitPriceUpdate(prices);
+        Object.entries(prices).forEach(([symbol, data]) => {
+            WebSocketService.emitPriceUpdate(symbol, data);
+        });
 
         res.json({
             status: 'success',

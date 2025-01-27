@@ -2,10 +2,10 @@ import axios from 'axios';
 import { ApiError } from "../../ApiError.js";
 import { environment } from "../../../config/environment.js";
 export class CryptoCompareHelper {
-    constructor() {
-        this.baseUrl = environment.cryptocompare.baseUrl;
-        this.apiKey = environment.cryptocompare.apiKey;
-    }
+    // constructor() {
+        static baseUrl = environment.apis.cryptocompare.baseUrl;
+        static apiKey = environment.apis.cryptocompare.apiKey;
+    // }
 
     static async makeRequest(endpoint, params = {}) {
         try {
@@ -22,20 +22,25 @@ export class CryptoCompareHelper {
     }
 
     static formatPriceData(data) {
-        return Object.entries(data).reduce((acc, [symbol, value]) => {
-            acc[symbol] = {
-                USD: {
-                    price: value.USD.PRICE,
-                    high24h: value.USD.HIGH24HOUR,
-                    low24h: value.USD.LOW24HOUR,
-                    volume24h: value.USD.VOLUME24HOUR,
-                    change24h: value.USD.CHANGE24HOUR,
-                    changePercent24h: value.USD.CHANGEPCT24HOUR,
-                    lastUpdate: new Date(value.USD.LASTUPDATE * 1000)
-                }
-            };
-            return acc;
-        }, {});
+        try {
+            return Object.entries(data).reduce((acc, [symbol, currencyData]) => {
+                acc[symbol] = {
+                    USD: {
+                        price: currencyData.USD.PRICE,
+                        high24h: currencyData.USD.HIGH24HOUR,
+                        low24h: currencyData.USD.LOW24HOUR,
+                        volume24h: currencyData.USD.VOLUME24HOUR,
+                        change24h: currencyData.USD.CHANGE24HOUR,
+                        changePercent24h: currencyData.USD.CHANGEPCT24HOUR,
+                        lastUpdate: new Date(currencyData.USD.LASTUPDATE * 1000)
+                    }
+                };
+                return acc;
+            }, {});
+        } catch (error) {
+            logger.error('Price data formatting error:', error);
+            throw new ApiError(500, 'Error formatting price data');
+        }
     }
 
     static formatHistoricalData(data) {

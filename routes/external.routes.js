@@ -1,4 +1,3 @@
-// routes/external.routes.js
 import express from 'express';
 import { authenticate } from '../middleware/auth.middleware.js';
 import { CryptoCompareController } from '../controllers/third-party/cryptoCompare.controller.js';

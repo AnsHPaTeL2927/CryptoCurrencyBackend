@@ -1232,3 +1232,511 @@
 {"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 21:11:21"}
 {"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 21:11:21"}
 {"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 21:11:21"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:32:55"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:32:58"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:32:58"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:32:58"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:32:58"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:32:58"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:32:58"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:40:22"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:40:25"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:40:25"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:40:25"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:40:25"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:40:25"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:40:25"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:42:41"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:42:44"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:42:44"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:42:44"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:42:44"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:42:44"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:42:44"}
+{"isOperational":true,"level":"error","message":"CryptoCompare getCurrentPrice error: Invalid URL","service":"api","stack":"Error: Invalid URL\n    at CryptoCompareHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/cryptocompare.helper.js:20:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:7:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:43:41"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch current prices","service":"api","stack":"Error: Failed to fetch current prices\n    at CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:14:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:43:41"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:45:31"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:45:34"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:45:34"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:45:34"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:45:34"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:45:34"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:45:34"}
+{"isOperational":true,"level":"error","message":"CryptoCompare getCurrentPrice error: Invalid URL","service":"api","stack":"Error: Invalid URL\n    at CryptoCompareHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/cryptocompare.helper.js:20:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:7:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:14:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:45:39"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch current prices","service":"api","stack":"Error: Failed to fetch current prices\n    at CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:14:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:14:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:45:39"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:45:53"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:45:56"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:45:56"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:45:56"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:45:56"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:45:56"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:45:56"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:47:02"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:47:04"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:47:04"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:47:04"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:47:04"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:47:04"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:47:04"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:47:07"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:47:10"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:47:10"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:47:10"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:47:10"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:47:10"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:47:10"}
+{"isOperational":true,"level":"error","message":"CryptoCompare getCurrentPrice error: Invalid URL","service":"api","stack":"Error: Invalid URL\n    at CryptoCompareHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/cryptocompare.helper.js:20:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:8:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:47:13"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch current prices","service":"api","stack":"Error: Failed to fetch current prices\n    at CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:15:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:47:13"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:47:24"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:47:27"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:47:27"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:47:27"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:47:27"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:47:27"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:47:27"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:47:47"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:47:49"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:47:51"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:47:54"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:47:54"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:47:54"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:47:54"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:47:54"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:47:54"}
+{"isOperational":true,"level":"error","message":"CryptoCompare getCurrentPrice error: Invalid URL","service":"api","stack":"Error: Invalid URL\n    at CryptoCompareHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/cryptocompare.helper.js:20:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:8:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:47:58"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch current prices","service":"api","stack":"Error: Failed to fetch current prices\n    at CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:15:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:47:58"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:48:13"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:48:16"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:48:16"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:48:16"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:48:16"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:48:16"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:48:16"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:48:19"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:48:21"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:48:21"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:48:21"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:48:21"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:48:21"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:48:21"}
+{"isOperational":true,"level":"error","message":"CryptoCompare getCurrentPrice error: Invalid URL","service":"api","stack":"Error: Invalid URL\n    at CryptoCompareHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/cryptocompare.helper.js:20:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:7:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:48:25"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch current prices","service":"api","stack":"Error: Failed to fetch current prices\n    at CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:15:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:48:25"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:48:37"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:48:39"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:48:39"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:48:39"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:48:39"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:48:39"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:48:39"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:48:55"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:48:58"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:48:58"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:48:58"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:48:58"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:48:58"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:48:58"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:49:01"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:49:04"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:49:04"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:49:04"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:49:04"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:49:04"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:49:04"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:49:09"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:49:12"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:49:12"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:49:12"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:49:12"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:49:12"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:49:12"}
+{"isOperational":true,"level":"error","message":"CryptoCompare getCurrentPrice error: Invalid URL","service":"api","stack":"Error: Invalid URL\n    at CryptoCompareHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/cryptocompare.helper.js:21:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:7:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:49:17"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch current prices","service":"api","stack":"Error: Failed to fetch current prices\n    at CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:14:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:49:17"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:49:27"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:49:30"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:49:30"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:49:30"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:49:30"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:49:30"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:49:30"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:49:49"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:49:52"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:49:55"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:49:55"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:49:55"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:49:55"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:49:55"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:49:55"}
+{"isOperational":true,"level":"error","message":"CryptoCompare getCurrentPrice error: Invalid URL","service":"api","stack":"Error: Invalid URL\n    at CryptoCompareHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/cryptocompare.helper.js:20:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:7:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:50:04"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch current prices","service":"api","stack":"Error: Failed to fetch current prices\n    at CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:14:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:50:04"}
+{"level":"info","message":"Starting graceful shutdown","service":"api","timestamp":"2025-01-26 22:50:11"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:50:23"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:50:26"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:50:26"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:50:26"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:50:26"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:50:26"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:50:26"}
+{"isOperational":true,"level":"error","message":"CryptoCompare getCurrentPrice error: Invalid URL","service":"api","stack":"Error: Invalid URL\n    at CryptoCompareHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/cryptocompare.helper.js:20:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:7:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:50:30"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch current prices","service":"api","stack":"Error: Failed to fetch current prices\n    at CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:14:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:50:30"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:50:40"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:50:43"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:50:43"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:50:43"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:50:43"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:50:43"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:50:43"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:50:48"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:50:51"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:50:51"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:50:51"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:50:51"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:50:51"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:50:51"}
+{"isOperational":true,"level":"error","message":"CryptoCompare getCurrentPrice error: Invalid URL","service":"api","stack":"Error: Invalid URL\n    at CryptoCompareHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/cryptocompare.helper.js:21:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:7:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:51:01"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch current prices","service":"api","stack":"Error: Failed to fetch current prices\n    at CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:14:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:51:01"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:51:50"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:51:53"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:51:53"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:51:53"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:51:53"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:51:53"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:51:53"}
+{"isOperational":true,"level":"error","message":"CryptoCompare getCurrentPrice error: Invalid URL","service":"api","stack":"Error: Invalid URL\n    at CryptoCompareHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/cryptocompare.helper.js:21:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:7:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:51:58"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch current prices","service":"api","stack":"Error: Failed to fetch current prices\n    at CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:14:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:51:58"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:52:11"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:52:15"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:52:18"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:52:18"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:52:18"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:52:18"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:52:18"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:52:18"}
+{"isOperational":true,"level":"error","message":"CryptoCompare getCurrentPrice error: Invalid URL","service":"api","stack":"Error: Invalid URL\n    at CryptoCompareHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/cryptocompare.helper.js:21:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:7:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:52:23"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch current prices","service":"api","stack":"Error: Failed to fetch current prices\n    at CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:14:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:52:23"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:52:40"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:52:43"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:52:43"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:52:43"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:52:43"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:52:43"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:52:43"}
+{"isOperational":true,"level":"error","message":"CryptoCompare getCurrentPrice error: Invalid URL","service":"api","stack":"Error: Invalid URL\n    at CryptoCompareHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/cryptocompare.helper.js:21:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:7:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:52:48"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch current prices","service":"api","stack":"Error: Failed to fetch current prices\n    at CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:14:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:52:48"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:53:13"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:53:15"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:53:15"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:53:15"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:53:15"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:53:15"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:53:15"}
+{"isOperational":true,"level":"error","message":"CryptoCompare getCurrentPrice error: Invalid URL","service":"api","stack":"Error: Invalid URL\n    at CryptoCompareHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/cryptocompare.helper.js:21:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:7:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:53:25"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch current prices","service":"api","stack":"Error: Failed to fetch current prices\n    at CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:14:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:53:25"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:56:11"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:56:14"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:56:14"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:56:14"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:56:14"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:56:14"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:56:14"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:56:22"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:56:25"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:56:25"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:56:25"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:56:25"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:56:25"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:56:25"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:56:39"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:56:42"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:56:42"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:56:42"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:56:42"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:56:42"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:56:42"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:56:46"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:56:49"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:56:49"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:56:49"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:56:49"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:56:49"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:56:49"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:57:33"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:57:36"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:57:36"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:57:36"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:57:36"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:57:36"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:57:36"}
+{"isOperational":true,"level":"error","message":"CryptoCompare getCurrentPrice error: Request failed with status code 404","service":"api","stack":"Error: Request failed with status code 404\n    at CryptoCompareHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/cryptocompare.helper.js:21:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:7:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"fail","statusCode":404,"timestamp":"2025-01-26 22:57:42"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch current prices","service":"api","stack":"Error: Failed to fetch current prices\n    at CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:14:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:57:42"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:57:55"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:57:58"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:57:58"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:57:58"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:57:58"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:57:58"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:57:58"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:58:06"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:58:09"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:58:09"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:58:09"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:58:09"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:58:09"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:58:09"}
+{"isOperational":true,"level":"error","message":"CryptoCompare getCurrentPrice error: Request failed with status code 404","service":"api","stack":"Error: Request failed with status code 404\n    at CryptoCompareHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/cryptocompare.helper.js:21:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:7:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"fail","statusCode":404,"timestamp":"2025-01-26 22:58:15"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch current prices","service":"api","stack":"Error: Failed to fetch current prices\n    at CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:14:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 22:58:15"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 22:58:34"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 22:58:37"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 22:58:37"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 22:58:37"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 22:58:37"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 22:58:37"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 22:58:37"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:03:05"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:03:08"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:03:08"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:03:08"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:03:08"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:03:08"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:03:08"}
+{"isOperational":true,"level":"error","message":"CryptoCompare getCurrentPrice error: Request failed with status code 404","service":"api","stack":"Error: Request failed with status code 404\n    at CryptoCompareHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/cryptocompare.helper.js:21:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:7:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"fail","statusCode":404,"timestamp":"2025-01-26 23:03:10"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch current prices","service":"api","stack":"Error: Failed to fetch current prices\n    at CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:14:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 23:03:10"}
+{"isOperational":true,"level":"error","message":"CryptoCompare getCurrentPrice error: Request failed with status code 404","service":"api","stack":"Error: Request failed with status code 404\n    at CryptoCompareHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/cryptocompare.helper.js:21:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:7:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"fail","statusCode":404,"timestamp":"2025-01-26 23:07:09"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch current prices","service":"api","stack":"Error: Failed to fetch current prices\n    at CryptoCompareService.getCurrentPrice (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:14:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:13:24","status":"error","statusCode":500,"timestamp":"2025-01-26 23:07:09"}
+{"level":"info","message":"Starting graceful shutdown","service":"api","timestamp":"2025-01-26 23:07:24"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:07:32"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:07:35"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:07:35"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:07:35"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:07:35"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:07:35"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:07:35"}
+{"level":"error","message":"Error 💥 Cannot read properties of undefined (reading 'to')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'to')\n    at WebSocketService.emitPriceUpdate (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/websocket/websocket.service.js:223:17)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:15:32\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-26 23:07:40"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:08:20"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:08:23"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:08:23"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:08:23"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:08:23"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:08:23"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:08:23"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:08:27"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:08:29"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:08:29"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:08:29"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:08:29"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:08:29"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:08:29"}
+{"level":"error","message":"Error 💥 Cannot read properties of undefined (reading 'to')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'to')\n    at WebSocketService.emitPriceUpdate (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/websocket/websocket.service.js:223:17)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:15:32\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-26 23:08:41"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:08:53"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:08:56"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:08:56"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:08:56"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:08:56"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:08:56"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:08:56"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:09:05"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:09:08"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:09:08"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:09:08"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:09:08"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:09:08"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:09:08"}
+{"level":"error","message":"Error 💥 Cannot read properties of undefined (reading 'to')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'to')\n    at WebSocketService.emitPriceUpdate (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/websocket/websocket.service.js:223:17)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:15:32\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-26 23:09:12"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:09:44"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:09:47"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:09:47"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:09:47"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:09:47"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:09:47"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:09:47"}
+{"level":"error","message":"Error 💥 Cannot read properties of undefined (reading 'to')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'to')\n    at WebSocketService.emitPriceUpdate (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/websocket/websocket.service.js:223:17)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:15:32\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-26 23:09:52"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:10:28"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:10:31"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:10:31"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:10:31"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:10:31"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:10:31"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:10:31"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:10:46"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:10:49"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:10:49"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:10:49"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:10:49"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:10:49"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:10:49"}
+{"level":"error","message":"Error 💥 Cannot read properties of undefined (reading 'to')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'to')\n    at WebSocketService.emitPriceUpdate (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/websocket/websocket.service.js:223:17)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:15:32\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-26 23:10:52"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:11:04"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:11:06"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:11:06"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:11:06"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:11:06"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:11:06"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:11:06"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:11:15"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:11:18"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:11:21"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:11:21"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:11:21"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:11:21"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:11:21"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:11:21"}
+{"level":"error","message":"Error 💥 Cannot read properties of undefined (reading 'to')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'to')\n    at WebSocketService.emitPriceUpdate (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/websocket/websocket.service.js:223:17)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:15:32\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-26 23:11:27"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:11:50"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:11:53"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:11:53"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:11:53"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:11:53"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:11:53"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:11:53"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:12:00"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:12:03"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:12:06"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:12:06"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:12:06"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:12:06"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:12:06"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:12:06"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:23:44"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:23:48"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:23:51"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:23:51"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:23:51"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:23:51"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:23:51"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:23:51"}
+{"level":"error","message":"Error 💥 Cannot read properties of undefined (reading 'to')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'to')\n    at WebSocketService.emitPriceUpdate (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/websocket/websocket.service.js:223:17)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:15:32\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-26 23:23:57"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:24:17"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:24:20"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:24:20"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:24:20"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:24:20"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:24:20"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:24:20"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:24:37"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:24:40"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:24:40"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:24:40"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:24:40"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:24:40"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:24:40"}
+{"level":"error","message":"Error 💥 Cannot read properties of undefined (reading 'to')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'to')\n    at WebSocketService.emitPriceUpdate (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/websocket/websocket.service.js:223:17)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:15:32\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-26 23:24:44"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:24:55"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:24:57"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:24:57"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:24:57"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:24:57"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:24:57"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:24:57"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:24:59"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:25:02"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:25:04"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:25:06"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:25:09"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:25:09"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:25:09"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:25:09"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:25:09"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:25:09"}
+{"level":"error","message":"Error 💥 Cannot read properties of undefined (reading 'to')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'to')\n    at WebSocketService.emitPriceUpdate (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/websocket/websocket.service.js:223:17)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:15:32\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-26 23:25:32"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:25:54"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:25:57"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:25:57"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:25:57"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:25:57"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:25:57"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:25:57"}
+{"level":"error","message":"Error 💥 Cannot read properties of undefined (reading 'to')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'to')\n    at WebSocketService.emitPriceUpdate (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/websocket/websocket.service.js:223:17)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:15:32\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-26 23:26:13"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:26:41"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:26:43"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:26:43"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:26:43"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:26:43"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:26:43"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:26:43"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:26:48"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:26:50"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:26:52"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:26:54"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:26:54"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:26:54"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:26:54"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:26:54"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:26:54"}
+{"level":"error","message":"Error 💥 Cannot read properties of undefined (reading 'to')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'to')\n    at WebSocketService.emitPriceUpdate (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/websocket/websocket.service.js:223:17)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:16:32\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-26 23:27:01"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:27:41"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:27:43"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:27:43"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:27:43"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:27:43"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:27:43"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:27:43"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:27:46"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:27:49"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:27:49"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:27:49"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:27:49"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:27:49"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:27:49"}
+{"level":"error","message":"Error 💥 Cannot read properties of undefined (reading 'to')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'to')\n    at WebSocketService.emitPriceUpdate (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/websocket/websocket.service.js:223:17)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:15:32\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-26 23:31:37"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:33:41"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:33:44"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:33:44"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:33:44"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:33:44"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:33:44"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:33:44"}
+{"level":"error","message":"Error 💥 Cannot read properties of undefined (reading 'to')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'to')\n    at WebSocketService.emitPriceUpdate (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/websocket/websocket.service.js:223:17)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:15:32\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-26 23:33:48"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:34:54"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:34:57"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:35:00"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:35:00"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:35:00"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:35:00"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:35:00"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:35:00"}
+{"level":"error","message":"Error 💥 Cannot read properties of undefined (reading 'to')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'to')\n    at WebSocketService.emitPriceUpdate (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/websocket/websocket.service.js:223:17)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:15:32\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-26 23:35:07"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:35:32"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:35:34"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:35:34"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:35:34"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:35:34"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:35:34"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:35:34"}
+{"level":"error","message":"Error 💥 Cannot read properties of undefined (reading 'to')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'to')\n    at WebSocketService.emitPriceUpdate (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/websocket/websocket.service.js:223:17)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:15:32\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-26 23:35:39"}
+{"level":"error","message":"Error 💥 Cannot read properties of undefined (reading 'to')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'to')\n    at WebSocketService.emitPriceUpdate (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/websocket/websocket.service.js:223:17)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:15:32\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-26 23:36:10"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:38:03"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:38:06"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:38:06"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:38:06"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:38:06"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:38:06"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:38:06"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:38:20"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:38:22"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:38:22"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:38:22"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:38:22"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:38:22"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:38:22"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:39:38"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:39:41"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:39:44"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:39:44"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:39:44"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:39:44"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:39:44"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:39:44"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:39:52"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-26 23:39:54"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-26 23:39:54"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-26 23:39:54"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-26 23:39:54"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-26 23:39:54"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-26 23:39:54"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-26 23:44:06"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-27 20:31:40"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-27 20:31:43"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-27 20:31:43"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-27 20:31:43"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-27 20:31:43"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-27 20:31:43"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-27 20:31:43"}
