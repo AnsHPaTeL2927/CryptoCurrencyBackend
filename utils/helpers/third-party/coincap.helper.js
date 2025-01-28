@@ -2,10 +2,10 @@ import axios from "axios";
 import { ApiError } from "../../ApiError.js";
 import { environment } from "../../../config/environment.js";
 export class CoinCapHelper {
-    constructor() {
-        this.baseUrl = environment.coincap.baseUrl;
-        this.apiKey = environment.coincap.apiKey;
-    }
+    // constructor() {
+        static baseUrl = environment.apis.coincap.baseUrl;
+        static apiKey = environment.apis.coincap.apiKey;
+    // }
 
     static async makeRequest(endpoint, params = {}) {
         try {

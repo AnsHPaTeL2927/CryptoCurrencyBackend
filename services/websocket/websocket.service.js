@@ -349,11 +349,18 @@ class WebSocketService {
 
     // CoinCap WebSocket Methods
     async emitAssetUpdate(id, asset) {
-        this.io.to(`asset:${id}`).emit('asset_update', {
-            id,
-            data: asset,
-            timestamp: Date.now()
-        });
+        const io = SocketServer.getIO();
+        try {
+            io.to(`asset:${id}`).emit('asset_update', {
+                id,
+                data: asset,
+                timestamp: Date.now()
+            });
+        }
+        catch (error) {
+            logger.error('Asset update emission error:', error);
+            throw error;
+        }
     }
 
     async emitListingsUpdate(listings) {
