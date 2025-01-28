@@ -100,12 +100,16 @@ export class CryptoCompareHelper {
     }
 
     static formatSocialData(data) {
+        console.log(data.CodeRepository)
         return {
             reddit: {
-                posts: data.Reddit?.posts || 0,
-                comments: data.Reddit?.comments || 0,
-                followers: data.Reddit?.followers || 0,
-                activeUsers: data.Reddit?.active_users || 0
+                points: data.Reddit?.Points || 0,
+                subscribers: data.Reddit?.subscribers || 0,
+                activeUsers: data.Reddit?.active_users || 0,
+                postsPerHour: data.Reddit?.posts_per_hour || 0,
+                postsPerDay: data.Reddit?.posts_per_day || 0,
+                commentsPerHour: data.Reddit?.comments_per_hour || 0,
+                commentsPerDay: data.Reddit?.comments_per_day || 0
             },
             twitter: {
                 followers: data.Twitter?.followers || 0,

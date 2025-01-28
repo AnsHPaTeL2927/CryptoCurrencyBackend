@@ -157,12 +157,12 @@ export class CryptoCompareController {
         const { symbol } = req.params;
         if (!symbol) throw new ApiError('Symbol is required', 400);
 
-        const cacheKey = `cryptocompare:social:${symbol}`;
-        const cachedData = await RedisService.get(cacheKey);
-        if (cachedData) return res.json({ status: 'success', data: cachedData });
+        // const cacheKey = `cryptocompare:social:${symbol}`;
+        // const cachedData = await RedisService.get(cacheKey);
+        // if (cachedData) return res.json({ status: 'success', data: cachedData });
 
         const data = await CryptoCompareService.getSocialData(symbol);
-        await RedisService.set(cacheKey, data, 300);
+        // await RedisService.set(cacheKey, data, 300);
 
         res.json({
             status: 'success',
