@@ -140,8 +140,8 @@ export class CryptoCompareController {
     static getNewsCategories = catchAsync(async (req, res) => {
         const cacheKey = 'cryptocompare:news:categories';
 
-        // const cachedCategories = await RedisService.get(cacheKey);
-        // if (cachedCategories) return res.json({ status: 'success', data: cachedCategories });
+        const cachedCategories = await RedisService.get(cacheKey);
+        if (cachedCategories) return res.json({ status: 'success', data: cachedCategories });
 
         const categories = await CryptoCompareService.getNewsCategories();
         await RedisService.set(cacheKey, categories, 3600);
