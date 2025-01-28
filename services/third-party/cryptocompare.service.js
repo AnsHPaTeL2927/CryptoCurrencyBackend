@@ -105,7 +105,7 @@ export class CryptoCompareService {
             const response = await CryptoCompareHelper.makeRequest('/data/news/categories');
             return response.map(category => ({
                 categoryName: category.categoryName,
-                wordsAssociated: category.wordsAssociated
+                wordsAssociated: category.wordsAssociatedWithCategory
             }));
         } catch (error) {
             logger.error('CryptoCompare getNewsCategories error:', error);
