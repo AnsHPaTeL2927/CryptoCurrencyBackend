@@ -2186,3 +2186,23 @@
 {"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-28 10:04:19"}
 {"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-28 10:04:19"}
 {"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-28 10:04:19"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-28 10:04:34"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-28 10:04:37"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-28 10:04:37"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-28 10:04:37"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-28 10:04:37"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-28 10:04:37"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-28 10:04:37"}
+{"level":"error","message":"CryptoCompare getMarketAnalysis error: CryptoCompareHelper.getHistoricalData is not a function","service":"api","stack":"TypeError: CryptoCompareHelper.getHistoricalData is not a function\n    at CryptoCompareService.getMarketAnalysis (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:131:37)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:184:53\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2025-01-28 10:07:19"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch market analysis","service":"api","stack":"Error: Failed to fetch market analysis\n    at CryptoCompareService.getMarketAnalysis (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:145:19)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:184:53\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-28 10:07:19"}
+{"level":"error","message":"CryptoCompare getMarketAnalysis error: CryptoCompareHelper.getHistoricalData is not a function","service":"api","stack":"TypeError: CryptoCompareHelper.getHistoricalData is not a function\n    at CryptoCompareService.getMarketAnalysis (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:131:37)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:184:53\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2025-01-28 10:07:25"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch market analysis","service":"api","stack":"Error: Failed to fetch market analysis\n    at CryptoCompareService.getMarketAnalysis (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/cryptocompare.service.js:145:19)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/cryptoCompare.controller.js:184:53\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-28 10:07:25"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-28 10:08:02"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-28 10:08:05"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-28 10:08:08"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-28 10:08:10"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-28 10:08:10"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-28 10:08:10"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-28 10:08:10"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-28 10:08:10"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-28 10:08:10"}

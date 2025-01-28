@@ -128,9 +128,9 @@ export class CryptoCompareService {
     async getMarketAnalysis(symbol, period = '24h') {
         try {
             const [priceData, volumeData, socialData] = await Promise.all([
-                CryptoCompareHelper.getHistoricalData(symbol),
-                CryptoCompareHelper.getVolume(symbol),
-                CryptoCompareHelper.getSocialData(symbol)
+                this.getHistoricalData(symbol),
+                this.getVolume(symbol),
+                this.getSocialData(symbol)
             ]);
 
             return {

@@ -100,7 +100,6 @@ export class CryptoCompareHelper {
     }
 
     static formatSocialData(data) {
-        console.log(data.CodeRepository)
         return {
             reddit: {
                 points: data.Reddit?.Points || 0,
