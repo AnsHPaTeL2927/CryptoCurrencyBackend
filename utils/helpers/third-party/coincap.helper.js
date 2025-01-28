@@ -90,6 +90,7 @@ export class CoinCapHelper {
     static formatMarketDetails(markets) {
         return markets.map(market => ({
             exchangeId: market.exchangeId,
+            rank: market.rank,
             baseId: market.baseId,
             quoteId: market.quoteId,
             baseSymbol: market.baseSymbol,
