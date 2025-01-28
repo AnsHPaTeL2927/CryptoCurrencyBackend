@@ -29,7 +29,7 @@ router.get('/market/analysis/:symbol', RateLimiter, CryptoCompareController.getM
 router.get('/assets/list', RateLimiter, CoinCapController.getAllAssets);
 router.get('/assets/details/:id', RateLimiter, CoinCapController.getAssetDetails);
 router.get('/assets/history/:id', RateLimiter, CoinCapController.getAssetHistory);
-router.get('/rates/exchange', RateLimiter, CoinCapController.getExchangeRates);
+router.get('/rates/exchange', RateLimiter, CoinCapController.getExchangeRates); // curreny like inr, yuan, pound as compare to usd
 router.get('/exchanges/data', RateLimiter, CoinCapController.getExchangesData);
 router.get('/markets/details', RateLimiter, CoinCapController.getMarketsDetails);
 router.get('/candles/:exchange/:pair/:interval', RateLimiter, CoinCapController.getCandleData);

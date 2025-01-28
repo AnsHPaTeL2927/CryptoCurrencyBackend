@@ -44,10 +44,10 @@ export class CoinCapController {
 
     static getAssetHistory = catchAsync(async (req, res) => {
         const { id } = req.params;
-        const { interval = '1d' } = req.query;
+        const { interval = 'd1' } = req.query;
         if (!id) throw new ApiError('Asset ID is required', 400);
 
-        const validIntervals = ['1m', '5m', '15m', '30m', '1h', '2h', '6h', '12h', '1d'];
+        const validIntervals = ['m1', 'm5', 'm15', 'm30', 'h1', 'h2', 'h6', 'h12', 'd1'];
         if (!validIntervals.includes(interval)) {
             throw new ApiError(`Invalid interval. Valid intervals are: ${validIntervals.join(', ')}`, 400);
         }
