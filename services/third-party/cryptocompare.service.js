@@ -58,13 +58,13 @@ export class CryptoCompareService {
 
     async getOHLCV(symbol, limit = 100, aggregate = 1) {
         try {
-            const response = await this.makeRequest('/data/v2/histominute', {
+            const response = await CryptoCompareHelper.makeRequest('/data/v2/histominute', {
                 fsym: symbol.toUpperCase(),
                 tsym: 'USD',
                 limit,
                 aggregate
             });
-            return this.formatOHLCVData(response.Data.Data);
+            return CryptoCompareHelper.formatOHLCVData(response.Data.Data);
         } catch (error) {
             logger.error('CryptoCompare getOHLCV error:', error);
             throw new ApiError(500, 'Failed to fetch OHLCV data');
@@ -73,11 +73,11 @@ export class CryptoCompareService {
 
     async getVolume(symbol) {
         try {
-            const response = await this.makeRequest('/data/exchange/symbol/histoday', {
+            const response = await CryptoCompareHelper.makeRequest('/data/exchange/symbol/histoday', {
                 fsym: symbol.toUpperCase(),
                 tsym: 'USD'
             });
-            return this.formatVolumeData(response.Data);
+            return CryptoCompareHelper.formatVolumeData(response.Data);
         } catch (error) {
             logger.error('CryptoCompare getVolume error:', error);
             throw new ApiError(500, 'Failed to fetch volume data');
