@@ -2782,3 +2782,49 @@
 {"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 08:40:04"}
 {"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 08:40:04"}
 {"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 08:40:04"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 08:40:12"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-29 08:40:13"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-29 08:40:13"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-29 08:40:13"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 08:40:13"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 08:40:13"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 08:40:13"}
+{"isOperational":true,"level":"error","message":"Error 💥 400","service":"api","stack":"Error: 400\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:62:28\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/catchAsync.js:2:21\n    at Layer.handle [as handle_request] (A:\\WEB Course\\Crypto Curreny Project\\Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (A:\\WEB Course\\Crypto Curreny Project\\Backend\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/node_modules/express-rate-limit/dist/index.mjs:794:7\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/node_modules/express-rate-limit/dist/index.mjs:676:5","status":"error","statusCode":"Symbol is required","timestamp":"2025-01-29 08:55:21"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 08:56:38"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-29 08:56:40"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-29 08:56:40"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-29 08:56:40"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 08:56:40"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 08:56:40"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 08:56:40"}
+{"isOperational":true,"level":"error","message":"Error 💥 400","service":"api","stack":"Error: 400\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:62:28\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/catchAsync.js:2:21\n    at Layer.handle [as handle_request] (A:\\WEB Course\\Crypto Curreny Project\\Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (A:\\WEB Course\\Crypto Curreny Project\\Backend\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/node_modules/express-rate-limit/dist/index.mjs:794:7\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/node_modules/express-rate-limit/dist/index.mjs:676:5","status":"error","statusCode":"Symbol is required","timestamp":"2025-01-29 08:56:41"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 08:56:48"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-29 08:56:49"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-29 08:56:49"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-29 08:56:49"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 08:56:49"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 08:56:49"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 08:56:49"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 08:57:25"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-29 08:57:26"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-29 08:57:26"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-29 08:57:26"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 08:57:26"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 08:57:26"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 08:57:26"}
+{"isOperational":true,"level":"error","message":"Error 💥 400","service":"api","stack":"Error: 400\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:62:28\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/catchAsync.js:2:21\n    at Layer.handle [as handle_request] (A:\\WEB Course\\Crypto Curreny Project\\Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (A:\\WEB Course\\Crypto Curreny Project\\Backend\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/node_modules/express-rate-limit/dist/index.mjs:794:7\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/node_modules/express-rate-limit/dist/index.mjs:676:5","status":"error","statusCode":"Symbol is required","timestamp":"2025-01-29 08:57:36"}
+{"isOperational":true,"level":"error","message":"Error 💥 400","service":"api","stack":"Error: 400\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:62:28\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/catchAsync.js:2:21\n    at Layer.handle [as handle_request] (A:\\WEB Course\\Crypto Curreny Project\\Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (A:\\WEB Course\\Crypto Curreny Project\\Backend\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/node_modules/express-rate-limit/dist/index.mjs:794:7\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/node_modules/express-rate-limit/dist/index.mjs:676:5","status":"error","statusCode":"Symbol is required","timestamp":"2025-01-29 08:57:38"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 08:57:52"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-29 08:57:52"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-29 08:57:52"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-29 08:57:52"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 08:57:52"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 08:57:52"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 08:57:52"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 08:57:56"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-29 08:57:58"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-29 08:57:58"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-29 08:57:58"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 08:57:58"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 08:57:58"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 08:57:58"}

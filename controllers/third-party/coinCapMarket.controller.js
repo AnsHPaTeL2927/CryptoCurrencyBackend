@@ -58,7 +58,7 @@ export class CoinCapMarketController {
     });
 
     static getCryptoMetadata = catchAsync(async (req, res) => {
-        const { symbol } = req.query;
+        const { symbol } = req.params;
         if (!symbol) throw new ApiError('Symbol is required', 400);
 
         const cacheKey = `cmc:metadata:${symbol}`;

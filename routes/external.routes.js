@@ -36,7 +36,7 @@ router.get('/candles/:exchange/:pair/:interval', RateLimiter, CoinCapController.
 
 // CoinMarketCap Routes
 router.get('/cryptocurrency/listings', RateLimiter, CoinCapMarketController.getLatestListings);
-router.get('/cryptocurrency/metadata', RateLimiter, CoinCapMarketController.getCryptoMetadata);
+router.get('/cryptocurrency/metadata/:symbol', RateLimiter, CoinCapMarketController.getCryptoMetadata);
 router.get('/cryptocurrency/quotes/:symbol', RateLimiter, CoinCapMarketController.getCryptoQuotes);
 router.get('/cryptocurrency/trending', RateLimiter, CoinCapMarketController.getTrendingCrypto);
 router.get('/global-metrics', RateLimiter, CoinCapMarketController.getGlobalMetrics);
