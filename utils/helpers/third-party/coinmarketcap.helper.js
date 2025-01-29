@@ -3,10 +3,10 @@ import { ApiError } from "../../ApiError.js";
 import { environment } from "../../../config/environment.js";
 
 export class CoinMarketCapHelper {
-    constructor() {
-        this.baseUrl = environment.coincap.baseUrl;
-        this.apiKey = environment.coincap.apiKey;
-    }
+    // constructor() {
+        static baseUrl = environment.apis.coinmarketcap.baseUrl;
+        static apiKey = environment.apis.coinmarketcap.apiKey;
+    // }
 
     static async makeRequest(endpoint, params = {}) {
         try {

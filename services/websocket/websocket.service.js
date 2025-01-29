@@ -364,10 +364,16 @@ class WebSocketService {
     }
 
     async emitListingsUpdate(listings) {
-        this.io.emit('listings_update', {
-            data: listings,
-            timestamp: Date.now()
-        });
+        const io = SocketServer.getIO();
+        try {
+            io.emit('listings_update', {
+                data: listings,
+                timestamp: Date.now()
+            });
+        } catch (error) {
+            logger.error('Asset update emission error:', error);
+            throw error;
+        }
     }
 
     // CoinMarketCap WebSocket Methods 
