@@ -2828,3 +2828,152 @@
 {"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 08:57:58"}
 {"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 08:57:58"}
 {"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 08:57:58"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 08:58:32"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-29 08:58:32"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-29 08:58:32"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-29 08:58:32"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 08:58:32"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 08:58:32"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 08:58:32"}
+{"isOperational":true,"level":"error","message":"CoinMarketCap getTrendingCrypto error: Request failed with status code 403","service":"api","stack":"Error: Request failed with status code 403\n    at CoinMarketCapHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/coinmarketcap.helper.js:21:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CoinMarketCapService.getTrendingCrypto (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:47:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:83:26","status":"fail","statusCode":403,"timestamp":"2025-01-29 09:00:19"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch trending cryptocurrencies","service":"api","stack":"Error: Failed to fetch trending cryptocurrencies\n    at CoinMarketCapService.getTrendingCrypto (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:51:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:83:26","status":"error","statusCode":500,"timestamp":"2025-01-29 09:00:19"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 09:00:44"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-29 09:00:45"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-29 09:00:45"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-29 09:00:45"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 09:00:45"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 09:00:45"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 09:00:45"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 09:00:46"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-29 09:00:47"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-29 09:00:47"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-29 09:00:47"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 09:00:47"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 09:00:47"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 09:00:47"}
+{"isOperational":true,"level":"error","message":"CoinMarketCap getTrendingCrypto error: Request failed with status code 403","service":"api","stack":"Error: Request failed with status code 403\n    at CoinMarketCapHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/coinmarketcap.helper.js:21:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CoinMarketCapService.getTrendingCrypto (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:47:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:83:26","status":"fail","statusCode":403,"timestamp":"2025-01-29 09:00:50"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch trending cryptocurrencies","service":"api","stack":"Error: Failed to fetch trending cryptocurrencies\n    at CoinMarketCapService.getTrendingCrypto (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:52:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:83:26","status":"error","statusCode":500,"timestamp":"2025-01-29 09:00:50"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 09:01:24"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-29 09:01:25"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-29 09:01:25"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-29 09:01:25"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 09:01:25"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 09:01:25"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 09:01:25"}
+{"isOperational":true,"level":"error","message":"CoinMarketCap getTrendingCrypto error: Request failed with status code 403","service":"api","stack":"Error: Request failed with status code 403\n    at CoinMarketCapHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/coinmarketcap.helper.js:21:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CoinMarketCapService.getTrendingCrypto (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:48:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:83:26","status":"fail","statusCode":403,"timestamp":"2025-01-29 09:01:29"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch trending cryptocurrencies","service":"api","stack":"Error: Failed to fetch trending cryptocurrencies\n    at CoinMarketCapService.getTrendingCrypto (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:53:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:83:26","status":"error","statusCode":500,"timestamp":"2025-01-29 09:01:29"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 09:01:39"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-29 09:01:40"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-29 09:01:40"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-29 09:01:40"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 09:01:40"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 09:01:40"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 09:01:40"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 09:01:44"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 09:01:46"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 09:01:47"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-29 09:01:48"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-29 09:01:48"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-29 09:01:48"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 09:01:48"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 09:01:48"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 09:01:48"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 09:01:49"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-29 09:01:50"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-29 09:01:50"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-29 09:01:50"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 09:01:50"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 09:01:50"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 09:01:50"}
+{"isOperational":true,"level":"error","message":"CoinMarketCap getTrendingCrypto error: Request failed with status code 403","service":"api","stack":"Error: Request failed with status code 403\n    at CoinMarketCapHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/coinmarketcap.helper.js:22:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CoinMarketCapService.getTrendingCrypto (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:47:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:83:26","status":"fail","statusCode":403,"timestamp":"2025-01-29 09:01:53"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch trending cryptocurrencies","service":"api","stack":"Error: Failed to fetch trending cryptocurrencies\n    at CoinMarketCapService.getTrendingCrypto (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:52:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:83:26","status":"error","statusCode":500,"timestamp":"2025-01-29 09:01:53"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 09:02:09"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 09:02:11"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-29 09:02:12"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-29 09:02:12"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-29 09:02:12"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 09:02:12"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 09:02:12"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 09:02:12"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 09:02:17"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 09:02:20"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-29 09:02:21"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-29 09:02:21"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-29 09:02:21"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 09:02:21"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 09:02:21"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 09:02:21"}
+{"isOperational":true,"level":"error","message":"CoinMarketCap getTrendingCrypto error: Request failed with status code 403","service":"api","stack":"Error: Request failed with status code 403\n    at CoinMarketCapHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/coinmarketcap.helper.js:22:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CoinMarketCapService.getTrendingCrypto (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:47:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:83:26","status":"fail","statusCode":403,"timestamp":"2025-01-29 09:02:25"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch trending cryptocurrencies","service":"api","stack":"Error: Failed to fetch trending cryptocurrencies\n    at CoinMarketCapService.getTrendingCrypto (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:52:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:83:26","status":"error","statusCode":500,"timestamp":"2025-01-29 09:02:25"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 09:06:12"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-29 09:06:14"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-29 09:06:14"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-29 09:06:14"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 09:06:14"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 09:06:14"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 09:06:14"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 09:06:35"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-29 09:06:36"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-29 09:06:36"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-29 09:06:36"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 09:06:36"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 09:06:36"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 09:06:36"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 09:06:54"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-29 09:06:55"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-29 09:06:55"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-29 09:06:55"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 09:06:55"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 09:06:55"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 09:06:55"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 09:06:59"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-29 09:07:00"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-29 09:07:00"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-29 09:07:00"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 09:07:00"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 09:07:00"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 09:07:00"}
+{"level":"error","message":"CoinMarketCap getGlobalMetrics error: this.makeRequest is not a function","service":"api","stack":"TypeError: this.makeRequest is not a function\n    at CoinMarketCapService.getGlobalMetrics (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:57:41)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:50:52\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2025-01-29 09:07:34"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch global metrics","service":"api","stack":"Error: Failed to fetch global metrics\n    at CoinMarketCapService.getGlobalMetrics (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:61:19)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:50:52\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-29 09:07:34"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 09:07:58"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 09:08:00"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-29 09:08:01"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-29 09:08:01"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-29 09:08:01"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 09:08:01"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 09:08:01"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 09:08:01"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 09:08:03"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-29 09:08:04"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-29 09:08:04"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-29 09:08:04"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 09:08:04"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 09:08:04"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 09:08:04"}
+{"level":"info","message":"Starting graceful shutdown","service":"api","timestamp":"2025-01-29 09:49:35"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-29 09:54:39"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-29 09:54:54"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-29 09:54:54"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-29 09:54:54"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-29 09:54:54"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-29 09:54:54"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-29 09:54:54"}
+{"level":"info","message":"Starting graceful shutdown","service":"api","timestamp":"2025-01-30 09:50:48"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 09:52:06"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 09:52:09"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 09:52:09"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 09:52:09"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 09:52:09"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 09:52:09"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 09:52:09"}
+{"isOperational":true,"level":"error","message":"CoinMarketCap getExchangeListings error: Request failed with status code 403","service":"api","stack":"Error: Request failed with status code 403\n    at CoinMarketCapHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/coinmarketcap.helper.js:21:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CoinMarketCapService.getExchangeListings (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:77:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:115:27","status":"fail","statusCode":403,"timestamp":"2025-01-30 09:57:23"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch exchange listings","service":"api","stack":"Error: Failed to fetch exchange listings\n    at CoinMarketCapService.getExchangeListings (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:84:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:115:27","status":"error","statusCode":500,"timestamp":"2025-01-30 09:57:23"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 09:58:02"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 09:58:03"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 09:58:06"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 09:58:06"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 09:58:06"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 09:58:06"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 09:58:06"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 09:58:06"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 09:58:14"}

@@ -38,10 +38,10 @@ router.get('/candles/:exchange/:pair/:interval', RateLimiter, CoinCapController.
 router.get('/cryptocurrency/listings', RateLimiter, CoinCapMarketController.getLatestListings);
 router.get('/cryptocurrency/metadata/:symbol', RateLimiter, CoinCapMarketController.getCryptoMetadata);
 router.get('/cryptocurrency/quotes/:symbol', RateLimiter, CoinCapMarketController.getCryptoQuotes);
-router.get('/cryptocurrency/trending', RateLimiter, CoinCapMarketController.getTrendingCrypto);
+router.get('/cryptocurrency/trending', RateLimiter, CoinCapMarketController.getTrendingCrypto); // not for use // pro version api - 403
 router.get('/global-metrics', RateLimiter, CoinCapMarketController.getGlobalMetrics);
 router.get('/cryptocurrency/categories', RateLimiter, CoinCapMarketController.getCryptoCategories);
-router.get('/exchange/listings', RateLimiter, CoinCapMarketController.getExchangeListings);
+router.get('/exchange/listings', RateLimiter, CoinCapMarketController.getExchangeListings); // not for use // pro version api - 403
 router.get('/tools/price-conversion', RateLimiter, CoinCapMarketController.getPriceConversion);
 
 // Etherscan Routes

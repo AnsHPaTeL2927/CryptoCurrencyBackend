@@ -54,8 +54,8 @@ export class CoinMarketCapService {
 
     async getGlobalMetrics() {
         try {
-            const response = await this.makeRequest('/global-metrics/quotes/latest');
-            return this.formatGlobalMetrics(response.data);
+            const response = await CoinMarketCapHelper.makeRequest('/global-metrics/quotes/latest');
+            return CoinMarketCapHelper.formatGlobalMetrics(response.data);
         } catch (error) {
             logger.error('CoinMarketCap getGlobalMetrics error:', error);
             throw new ApiError(500, 'Failed to fetch global metrics');
