@@ -58,7 +58,7 @@ router.get('/bsc/balance/:address', RateLimiter, BscScanController.getBscBalance
 router.get('/bsc/transactions/:address', RateLimiter, BscScanController.getBscTransactions);
 router.get('/bsc/internal-transactions/:address', RateLimiter, BscScanController.getBscInternalTxs);
 router.get('/bsc/bep20-transfers/:address', RateLimiter, BscScanController.getBEP20Transfers);
-router.get('/bsc/token/:contractAddress', RateLimiter, BscScanController.getBEP20TokenInfo);
+router.get('/bsc/token/:contractAddress', RateLimiter, BscScanController.getBEP20TokenInfo); // not for use // pro version api - 403
 router.get('/bsc/abi/:contractAddress', RateLimiter, BscScanController.getContractABI);
 
 // WebSocket Subscriptions

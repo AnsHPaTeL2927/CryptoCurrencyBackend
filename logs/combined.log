@@ -3447,3 +3447,51 @@
 {"isOperational":true,"level":"error","message":"BSCScan getBalance error: BSCScan API request failed","service":"api","stack":"Error: BSCScan API request failed\n    at BscScanHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/bscscan.helper.js:25:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async BscscanService.getBalance (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/bscscan.service.js:10:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/bscscan.controller.js:16:25","status":"error","statusCode":500,"timestamp":"2025-01-30 14:51:21"}
 {"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch BSC balance","service":"api","stack":"Error: Failed to fetch BSC balance\n    at BscscanService.getBalance (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/bscscan.service.js:24:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/bscscan.controller.js:16:25","status":"error","statusCode":500,"timestamp":"2025-01-30 14:51:21"}
 {"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:51:54"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:51:56"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:51:59"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:51:59"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:51:59"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:51:59"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:51:59"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:51:59"}
+{"isOperational":true,"level":"error","message":"BSCScan getBEP20TokenInfo error: NOTOK","service":"api","stack":"Error: NOTOK\n    at BscScanHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/bscscan.helper.js:19:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async BscscanService.getBEP20TokenInfo (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/bscscan.service.js:100:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/bscscan.controller.js:128:22","status":"fail","statusCode":400,"timestamp":"2025-01-30 14:57:04"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch token info","service":"api","stack":"Error: Failed to fetch token info\n    at BscscanService.getBEP20TokenInfo (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/bscscan.service.js:109:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/bscscan.controller.js:128:22","status":"error","statusCode":500,"timestamp":"2025-01-30 14:57:04"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:57:36"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:57:39"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:57:39"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:57:39"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:57:39"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:57:39"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:57:39"}
+{"isOperational":true,"level":"error","message":"BSCScan getBEP20TokenInfo error: NOTOK","service":"api","stack":"Error: NOTOK\n    at BscScanHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/bscscan.helper.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async BscscanService.getBEP20TokenInfo (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/bscscan.service.js:100:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/bscscan.controller.js:128:22","status":"fail","statusCode":400,"timestamp":"2025-01-30 14:57:50"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch token info","service":"api","stack":"Error: Failed to fetch token info\n    at BscscanService.getBEP20TokenInfo (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/bscscan.service.js:109:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/bscscan.controller.js:128:22","status":"error","statusCode":500,"timestamp":"2025-01-30 14:57:50"}
+{"isOperational":true,"level":"error","message":"BSCScan getBEP20TokenInfo error: NOTOK","service":"api","stack":"Error: NOTOK\n    at BscScanHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/bscscan.helper.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async BscscanService.getBEP20TokenInfo (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/bscscan.service.js:100:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/bscscan.controller.js:128:22","status":"fail","statusCode":400,"timestamp":"2025-01-30 14:59:04"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch token info","service":"api","stack":"Error: Failed to fetch token info\n    at BscscanService.getBEP20TokenInfo (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/bscscan.service.js:109:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/bscscan.controller.js:128:22","status":"error","statusCode":500,"timestamp":"2025-01-30 14:59:04"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 15:00:17"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 15:00:20"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 15:00:20"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 15:00:20"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 15:00:20"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 15:00:20"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 15:00:20"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 15:00:28"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 15:00:31"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 15:00:31"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 15:00:31"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 15:00:31"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 15:00:31"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 15:00:31"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 15:00:47"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 15:00:50"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 15:00:50"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 15:00:50"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 15:00:50"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 15:00:50"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 15:00:50"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 15:02:28"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 15:02:31"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 15:02:31"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 15:02:31"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 15:02:31"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 15:02:31"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 15:02:31"}
