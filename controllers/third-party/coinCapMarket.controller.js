@@ -124,7 +124,7 @@ export class CoinCapMarketController {
     });
 
     static getPriceConversion = catchAsync(async (req, res) => {
-        const { amount, symbol, convert = 'USD' } = req.query;
+        const { amount, symbol, convert = 'USD' } = req.params;
         if (!amount || !symbol) throw new ApiError('Amount and symbol are required', 400);
 
         const cacheKey = `cmc:convert:${amount}:${symbol}:${convert}`;

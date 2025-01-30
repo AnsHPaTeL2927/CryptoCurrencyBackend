@@ -123,15 +123,15 @@ export class CoinMarketCapHelper {
         }));
     }
 
-    static formatPriceConversion(data) {
+    static formatPriceConversion(data, convert) {
         return {
             symbol: data.symbol,
             name: data.name,
             amount: parseFloat(data.amount),
             quote: {
-                price: parseFloat(data.quote.USD.price),
-                converted_amount: parseFloat(data.quote.USD.amount),
-                last_updated: new Date(data.quote.USD.last_updated)
+                price: parseFloat(data.quote[convert].price),
+                converted_amount: parseFloat(data.quote[convert].amount),
+                last_updated: new Date(data.quote[convert].last_updated)
             }
         };
     }

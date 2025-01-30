@@ -2,10 +2,10 @@ import axios from 'axios';
 import { ApiError } from "../../ApiError.js";
 import { environment } from "../../../config/environment.js";
 export class EtherScanHelper {
-    constructor() {
-        this.baseUrl = environment.etherscan.baseUrl;
-        this.apiKey = environment.etherscan.apiKey;
-    }
+    // constructor() {
+        static baseUrl = environment.apis.etherscan.baseUrl;
+        static apiKey = environment.apis.etherscan.apiKey;
+    // }
 
     static async makeRequest(params) {
         try {

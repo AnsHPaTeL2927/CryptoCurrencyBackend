@@ -92,7 +92,7 @@ export class CoinMarketCapService {
                 symbol: symbol.toUpperCase(),
                 convert
             });
-            return CoinMarketCapHelper.formatPriceConversion(response.data);
+            return CoinMarketCapHelper.formatPriceConversion(response.data, convert.toUpperCase());
         } catch (error) {
             logger.error('CoinMarketCap getPriceConversion error:', error);
             throw new ApiError(500, 'Failed to convert price');

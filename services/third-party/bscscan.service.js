@@ -1,18 +1,13 @@
-import axios from 'axios';
-import { environment } from '../../config/environment.js';
 import { ApiError } from '../../utils/ApiError.js';
 import logger from '../../utils/logger.js';
+import { BscScanHelper } from '../../utils/helpers/third-party/bscscan.helper.js';
 
 export class BscscanService {
-    constructor() {
-        this.apiKey = environment.apis.bscscan.apiKey;
-        this.baseUrl = environment.apis.bscscan.baseUrl;
-    }
 
     // Account Methods 
     async getBalance(address) {
         try {
-            const response = await this.makeRequest({
+            const response = await BscScanHelper.makeRequest({
                 module: 'account',
                 action: 'balance',
                 address,
@@ -45,8 +40,8 @@ export class BscscanService {
                 sort: 'desc'
             };
 
-            const response = await this.makeRequest(params);
-            return this.formatTransactions(response.result);
+            const response = await BscScanHelper.makeRequest(params);
+            return BscScanHelper.formatTransactions(response.result);
         } catch (error) {
             logger.error('BSCScan getTransactions error:', error);
             throw new ApiError(500, 'Failed to fetch BSC transactions');
@@ -68,8 +63,8 @@ export class BscscanService {
                 sort: 'desc'
             };
 
-            const response = await this.makeRequest(params);
-            return this.formatTransactions(response.result);
+            const response = await BscScanHelper.makeRequest(params);
+            return BscScanHelper.formatTransactions(response.result);
         } catch (error) {
             logger.error('BSCScan getInternalTransactions error:', error);
             throw new ApiError(500, 'Failed to fetch internal transactions');
@@ -91,8 +86,8 @@ export class BscscanService {
                 params.contractaddress = contractAddress;
             }
 
-            const response = await this.makeRequest(params);
-            return this.formatTokenTransfers(response.result);
+            const response = await BscScanHelper.makeRequest(params);
+            return BscScanHelper.formatTokenTransfers(response.result);
         } catch (error) {
             logger.error('BSCScan getBEP20Transfers error:', error);
             throw new ApiError(500, 'Failed to fetch BEP20 transfers');
@@ -102,13 +97,13 @@ export class BscscanService {
     // Token Methods
     async getBEP20TokenInfo(contractAddress) {
         try {
-            const response = await this.makeRequest({
+            const response = await BscScanHelper.makeRequest({
                 module: 'token',
                 action: 'tokeninfo',
                 contractaddress: contractAddress
             });
 
-            return this.formatTokenInfo(response.result[0]);
+            return BscScanHelper.formatTokenInfo(response.result[0]);
         } catch (error) {
             logger.error('BSCScan getBEP20TokenInfo error:', error);
             throw new ApiError(500, 'Failed to fetch token info');
@@ -117,7 +112,7 @@ export class BscscanService {
 
     async getContractABI(contractAddress) {
         try {
-            const response = await this.makeRequest({
+            const response = await BscScanHelper.makeRequest({
                 module: 'contract',
                 action: 'getabi',
                 address: contractAddress
@@ -132,77 +127,6 @@ export class BscscanService {
             logger.error('BSCScan getContractABI error:', error);
             throw new ApiError(500, 'Failed to fetch contract ABI');
         }
-    }
-
-    // Helper Methods
-    static async makeRequest(params) {
-        try {
-            const response = await axios.get(this.baseUrl, {
-                params: {
-                    ...params,
-                    apikey: this.apiKey
-                }
-            });
-
-            if (response.data.status === '0') {
-                throw new ApiError(400, response.data.message || 'BSCScan API Error');
-            }
-
-            return response.data;
-        } catch (error) {
-            if (error instanceof ApiError) throw error;
-            throw new ApiError(500, 'BSCScan API request failed');
-        }
-    }
-
-    static formatTransactions(transactions) {
-        return transactions.map(tx => ({
-            hash: tx.hash,
-            blockNumber: parseInt(tx.blockNumber),
-            timestamp: new Date(parseInt(tx.timeStamp) * 1000),
-            from: tx.from,
-            to: tx.to,
-            value: tx.value,
-            gasUsed: tx.gasUsed,
-            gasPrice: tx.gasPrice,
-            isError: tx.isError === '1',
-            txreceipt_status: tx.txreceipt_status,
-            input: tx.input,
-            confirmations: tx.confirmations
-        }));
-    }
-
-    static formatTokenTransfers(transfers) {
-        return transfers.map(transfer => ({
-            hash: transfer.hash,
-            blockNumber: parseInt(transfer.blockNumber),
-            timestamp: new Date(parseInt(transfer.timeStamp) * 1000),
-            from: transfer.from,
-            to: transfer.to,
-            contractAddress: transfer.contractAddress,
-            tokenName: transfer.tokenName,
-            tokenSymbol: transfer.tokenSymbol,
-            tokenDecimal: parseInt(transfer.tokenDecimal),
-            value: transfer.value,
-            gasUsed: transfer.gasUsed,
-            gasPrice: transfer.gasPrice,
-            confirmations: transfer.confirmations
-        }));
-    }
-
-    static formatTokenInfo(tokenInfo) {
-        return {
-            contractAddress: tokenInfo.contractAddress,
-            tokenName: tokenInfo.tokenName,
-            symbol: tokenInfo.symbol,
-            totalSupply: tokenInfo.totalSupply,
-            decimals: parseInt(tokenInfo.decimals),
-            website: tokenInfo.website,
-            email: tokenInfo.email,
-            description: tokenInfo.description,
-            sourceCode: tokenInfo.sourceCode,
-            createdTimestamp: new Date(parseInt(tokenInfo.createdTimestamp) * 1000)
-        };
     }
 }
 

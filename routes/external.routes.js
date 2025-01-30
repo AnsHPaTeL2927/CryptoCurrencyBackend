@@ -42,7 +42,7 @@ router.get('/cryptocurrency/trending', RateLimiter, CoinCapMarketController.getT
 router.get('/global-metrics', RateLimiter, CoinCapMarketController.getGlobalMetrics);
 router.get('/cryptocurrency/categories', RateLimiter, CoinCapMarketController.getCryptoCategories);
 router.get('/exchange/listings', RateLimiter, CoinCapMarketController.getExchangeListings); // not for use // pro version api - 403
-router.get('/tools/price-conversion', RateLimiter, CoinCapMarketController.getPriceConversion);
+router.get('/tools/price-conversion/:amount/:symbol/:convert', RateLimiter, CoinCapMarketController.getPriceConversion);
 
 // Etherscan Routes
 router.get('/eth/balance/:address', RateLimiter, EtherScanController.getEthBalance);
@@ -51,7 +51,7 @@ router.get('/eth/internal-transactions/:address', RateLimiter, EtherScanControll
 router.get('/eth/token-transfers/:address', RateLimiter, EtherScanController.getTokenTransfers);
 router.get('/eth/gas-oracle', RateLimiter, EtherScanController.getGasOracle);
 router.get('/eth/block/:blockNumber', RateLimiter, EtherScanController.getBlockInfo);
-router.get('/eth/token/:contractAddress', RateLimiter, EtherScanController.getTokenInfo);
+router.get('/eth/token/:contractAddress', RateLimiter, EtherScanController.getTokenInfo);  // not for use // pro version api - 403
 
 // BSCScan Routes
 router.get('/bsc/balance/:address', RateLimiter, BscScanController.getBscBalance);

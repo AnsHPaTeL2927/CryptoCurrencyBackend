@@ -333,18 +333,21 @@ class WebSocketService {
         });
     }
 
-    // websocket.service.js
-
-    // Add these methods to WebSocketService class
-
     // BSCScan WebSocket Methods
     async emitBalanceUpdate(chain, address, balance) {
-        this.io.to(`${chain}:${address}`).emit('balance_update', {
-            chain,
-            address,
-            balance,
-            timestamp: Date.now()
-        });
+        const io = SocketServer.getIO();
+        try {
+            io.to(`${chain}:${address}`).emit('balance_update', {
+                chain,
+                address,
+                balance,
+                timestamp: Date.now()
+            });
+        }
+        catch (error) {
+            logger.error('Balance update emission error:', error);
+            throw error;
+        }
     }
 
     // CoinCap WebSocket Methods
@@ -394,10 +397,16 @@ class WebSocketService {
 
     // Etherscan WebSocket Methods
     async emitGasUpdate(gasPrice) {
-        this.io.emit('gas_update', {
-            data: gasPrice,
-            timestamp: Date.now()
-        });
+        const io = SocketServer.getIO();
+        try {
+            io.emit('gas_update', {
+                data: gasPrice,
+                timestamp: Date.now()
+            });
+        } catch (error) {
+            logger.error('Gas update emission error:', error);
+            throw error;
+        }
     }
 
     async emitTransactionUpdate(address, transaction) {

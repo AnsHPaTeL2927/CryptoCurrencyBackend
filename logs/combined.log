@@ -2977,3 +2977,473 @@
 {"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 09:58:06"}
 {"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 09:58:06"}
 {"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 09:58:14"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 09:58:15"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 09:58:18"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 09:58:18"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 09:58:18"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 09:58:18"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 09:58:18"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 09:58:18"}
+{"isOperational":true,"level":"error","message":"Etherscan getBalance error: Etherscan API request failed","service":"api","stack":"Error: Etherscan API request failed\n    at EtherScanHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/etherscan.helper.js:26:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async EtherscanService.getBalance (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/etherscan.service.js:8:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/etherscan.controller.js:16:25","status":"error","statusCode":500,"timestamp":"2025-01-30 10:01:47"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch ETH balance","service":"api","stack":"Error: Failed to fetch ETH balance\n    at EtherscanService.getBalance (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/etherscan.service.js:26:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/etherscan.controller.js:16:25","status":"error","statusCode":500,"timestamp":"2025-01-30 10:01:47"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 10:09:04"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 10:09:07"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 10:09:07"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 10:09:07"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 10:09:07"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 10:09:07"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 10:09:07"}
+{"level":"error","message":"Error 💥 Cannot read properties of undefined (reading 'to')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'to')\n    at WebSocketService.emitBalanceUpdate (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/websocket/websocket.service.js:342:17)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/etherscan.controller.js:18:32\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-30 10:27:38"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 10:28:01"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 10:28:04"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 10:28:04"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 10:28:04"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 10:28:04"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 10:28:04"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 10:28:04"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 10:28:19"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 10:28:21"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 10:28:21"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 10:28:21"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 10:28:21"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 10:28:21"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 10:28:21"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 10:28:49"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 10:28:51"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 10:28:51"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 10:28:51"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 10:28:51"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 10:28:51"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 10:28:51"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 10:29:00"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 10:29:03"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 10:29:03"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 10:29:03"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 10:29:03"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 10:29:03"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 10:29:03"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 10:31:12"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 10:31:14"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 10:31:14"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 10:31:14"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 10:31:14"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 10:31:14"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 10:31:14"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 10:49:11"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 10:49:15"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 10:49:18"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 10:49:18"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 10:49:18"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 10:49:18"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 10:49:18"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 10:49:18"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 10:49:53"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 10:49:56"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 10:49:56"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 10:49:56"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 10:49:56"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 10:49:56"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 10:49:56"}
+{"level":"error","message":"Error 💥 Cannot read properties of undefined (reading 'emit')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'emit')\n    at WebSocketService.emitGasUpdate (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/websocket/websocket.service.js:400:17)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/etherscan.controller.js:50:32\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-30 10:55:48"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 10:56:09"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 10:56:10"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 10:56:11"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 10:56:13"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 10:56:16"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 10:56:16"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 10:56:16"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 10:56:16"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 10:56:16"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 10:56:16"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 10:56:31"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 10:56:32"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 10:56:35"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 10:56:35"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 10:56:35"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 10:56:35"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 10:56:35"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 10:56:35"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 10:56:38"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 10:56:41"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 10:56:41"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 10:56:41"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 10:56:41"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 10:56:41"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 10:56:41"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:08:34"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:08:37"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:08:37"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:08:37"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:08:37"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:08:37"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:08:37"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:09:30"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:09:32"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:09:34"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:09:34"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:09:34"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:09:34"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:09:34"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:09:34"}
+{"isOperational":true,"level":"error","message":"CoinMarketCap getExchangeListings error: Request failed with status code 403","service":"api","stack":"Error: Request failed with status code 403\n    at CoinMarketCapHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/coinmarketcap.helper.js:21:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async CoinMarketCapService.getExchangeListings (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:77:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:115:27","status":"fail","statusCode":403,"timestamp":"2025-01-30 11:10:02"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch exchange listings","service":"api","stack":"Error: Failed to fetch exchange listings\n    at CoinMarketCapService.getExchangeListings (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:84:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:115:27","status":"error","statusCode":500,"timestamp":"2025-01-30 11:10:02"}
+{"isOperational":true,"level":"error","message":"Error 💥 400","service":"api","stack":"Error: 400\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:128:39\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/catchAsync.js:2:21\n    at Layer.handle [as handle_request] (A:\\WEB Course\\Crypto Curreny Project\\Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (A:\\WEB Course\\Crypto Curreny Project\\Backend\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/node_modules/express-rate-limit/dist/index.mjs:794:7\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/node_modules/express-rate-limit/dist/index.mjs:676:5","status":"error","statusCode":"Amount and symbol are required","timestamp":"2025-01-30 11:11:10"}
+{"isOperational":true,"level":"error","message":"Error 💥 400","service":"api","stack":"Error: 400\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:128:39\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/catchAsync.js:2:21\n    at Layer.handle [as handle_request] (A:\\WEB Course\\Crypto Curreny Project\\Backend\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (A:\\WEB Course\\Crypto Curreny Project\\Backend\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/node_modules/express-rate-limit/dist/index.mjs:794:7\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/node_modules/express-rate-limit/dist/index.mjs:676:5","status":"error","statusCode":"Amount and symbol are required","timestamp":"2025-01-30 11:11:13"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:12:30"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:12:33"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:12:33"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:12:33"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:12:33"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:12:33"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:12:33"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:12:37"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:12:40"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:12:43"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:12:43"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:12:43"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:12:43"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:12:43"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:12:43"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:12:47"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:12:50"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:12:50"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:12:50"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:12:50"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:12:50"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:12:50"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:12:53"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:12:56"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:12:56"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:12:56"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:12:56"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:12:56"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:12:56"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:13:04"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:13:07"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:13:07"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:13:07"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:13:07"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:13:07"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:13:07"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:13:46"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:13:49"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:13:49"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:13:49"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:13:49"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:13:49"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:13:49"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:13:53"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:13:56"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:13:56"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:13:56"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:13:56"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:13:56"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:13:56"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:14:25"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:14:27"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:14:27"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:14:27"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:14:27"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:14:27"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:14:27"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:14:31"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:14:34"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:14:34"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:14:34"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:14:34"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:14:34"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:14:34"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:14:49"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:14:51"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:14:55"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:14:55"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:14:55"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:14:55"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:14:55"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:14:55"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:14:59"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:15:02"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:15:02"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:15:02"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:15:02"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:15:02"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:15:02"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:15:08"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:15:11"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:15:11"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:15:11"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:15:11"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:15:11"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:15:11"}
+{"level":"error","message":"CoinMarketCap getPriceConversion error: Cannot read properties of undefined (reading 'price')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'price')\n    at CoinMarketCapHelper.formatPriceConversion (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/coinmarketcap.helper.js:133:50)\n    at CoinMarketCapService.getPriceConversion (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:95:40)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:134:28","timestamp":"2025-01-30 11:15:41"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to convert price","service":"api","stack":"Error: Failed to convert price\n    at CoinMarketCapService.getPriceConversion (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:98:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:134:28","status":"error","statusCode":500,"timestamp":"2025-01-30 11:15:41"}
+{"level":"error","message":"CoinMarketCap getPriceConversion error: Cannot read properties of undefined (reading 'price')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'price')\n    at CoinMarketCapHelper.formatPriceConversion (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/coinmarketcap.helper.js:133:50)\n    at CoinMarketCapService.getPriceConversion (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:95:40)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:134:28","timestamp":"2025-01-30 11:16:09"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to convert price","service":"api","stack":"Error: Failed to convert price\n    at CoinMarketCapService.getPriceConversion (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:98:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:134:28","status":"error","statusCode":500,"timestamp":"2025-01-30 11:16:09"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:18:01"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:18:03"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:18:03"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:18:03"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:18:03"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:18:03"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:18:03"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:18:06"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:18:08"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:18:10"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:18:10"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:18:10"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:18:10"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:18:10"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:18:10"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:18:24"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:18:26"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:18:26"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:18:26"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:18:26"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:18:26"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:18:26"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:18:30"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:18:32"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:18:32"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:18:32"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:18:32"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:18:32"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:18:32"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:18:34"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:18:36"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:18:39"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:18:39"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:18:39"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:18:39"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:18:39"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:18:39"}
+{"level":"error","message":"CoinMarketCap getPriceConversion error: Cannot read properties of undefined (reading 'price')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'price')\n    at CoinMarketCapHelper.formatPriceConversion (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/coinmarketcap.helper.js:133:53)\n    at CoinMarketCapService.getPriceConversion (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:95:40)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:134:28","timestamp":"2025-01-30 11:18:43"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to convert price","service":"api","stack":"Error: Failed to convert price\n    at CoinMarketCapService.getPriceConversion (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:98:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:134:28","status":"error","statusCode":500,"timestamp":"2025-01-30 11:18:43"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:19:30"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:19:33"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:19:33"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:19:33"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:19:33"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:19:33"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:19:33"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:19:42"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:19:45"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:19:45"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:19:45"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:19:45"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:19:45"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:19:45"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:19:47"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:19:49"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:19:49"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:19:49"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:19:49"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:19:49"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:19:49"}
+{"level":"error","message":"CoinMarketCap getPriceConversion error: Cannot read properties of undefined (reading 'price')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'price')\n    at CoinMarketCapHelper.formatPriceConversion (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/coinmarketcap.helper.js:134:53)\n    at CoinMarketCapService.getPriceConversion (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:95:40)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:134:28","timestamp":"2025-01-30 11:19:51"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to convert price","service":"api","stack":"Error: Failed to convert price\n    at CoinMarketCapService.getPriceConversion (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:98:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:134:28","status":"error","statusCode":500,"timestamp":"2025-01-30 11:19:51"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:20:00"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:20:11"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:20:14"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:20:14"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:20:14"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:20:14"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:20:14"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:20:14"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 11:20:15"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 11:20:18"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 11:20:18"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 11:20:18"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 11:20:18"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 11:20:18"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 11:20:18"}
+{"level":"error","message":"CoinMarketCap getPriceConversion error: Cannot read properties of undefined (reading 'price')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'price')\n    at CoinMarketCapHelper.formatPriceConversion (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/coinmarketcap.helper.js:133:54)\n    at CoinMarketCapService.getPriceConversion (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:95:40)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:134:28","timestamp":"2025-01-30 11:20:19"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to convert price","service":"api","stack":"Error: Failed to convert price\n    at CoinMarketCapService.getPriceConversion (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:98:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:134:28","status":"error","statusCode":500,"timestamp":"2025-01-30 11:20:19"}
+{"level":"error","message":"CoinMarketCap getPriceConversion error: Cannot read properties of undefined (reading 'price')","service":"api","stack":"TypeError: Cannot read properties of undefined (reading 'price')\n    at CoinMarketCapHelper.formatPriceConversion (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/coinmarketcap.helper.js:133:54)\n    at CoinMarketCapService.getPriceConversion (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:95:40)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:134:28","timestamp":"2025-01-30 14:26:23"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to convert price","service":"api","stack":"Error: Failed to convert price\n    at CoinMarketCapService.getPriceConversion (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/coinmarketcap.service.js:98:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/coinCapMarket.controller.js:134:28","status":"error","statusCode":500,"timestamp":"2025-01-30 14:26:23"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:28:20"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:28:24"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:28:27"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:28:27"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:28:27"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:28:27"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:28:27"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:28:27"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:28:37"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:28:39"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:28:39"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:28:39"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:28:39"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:28:39"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:28:39"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:30:06"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:30:08"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:30:10"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:30:11"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:30:12"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:30:15"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:30:15"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:30:15"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:30:15"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:30:15"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:30:15"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:30:20"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:30:23"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:30:23"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:30:23"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:30:23"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:30:23"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:30:23"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:30:25"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:30:28"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:30:28"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:30:28"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:30:28"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:30:28"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:30:28"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:31:30"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:31:32"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:31:35"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:31:35"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:31:35"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:31:35"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:31:35"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:31:35"}
+{"isOperational":true,"level":"error","message":"Etherscan getTokenInfo error: Sorry, it looks like you are trying to access an API Pro endpoint. Contact us to upgrade to API Pro.","service":"api","stack":"Error: Sorry, it looks like you are trying to access an API Pro endpoint. Contact us to upgrade to API Pro.\n    at EtherScanHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/etherscan.helper.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Promise.all (index 0)\n    at async EtherscanService.getTokenInfo (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/etherscan.service.js:129:46)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/etherscan.controller.js:117:22","status":"fail","statusCode":400,"timestamp":"2025-01-30 14:33:27"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch token info","service":"api","stack":"Error: Failed to fetch token info\n    at EtherscanService.getTokenInfo (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/etherscan.service.js:145:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/etherscan.controller.js:117:22","status":"error","statusCode":500,"timestamp":"2025-01-30 14:33:27"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:35:03"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:35:06"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:35:06"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:35:06"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:35:06"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:35:06"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:35:06"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:35:14"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:35:17"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:35:17"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:35:17"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:35:17"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:35:17"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:35:17"}
+{"isOperational":true,"level":"error","message":"Etherscan getTokenInfo error: Sorry, it looks like you are trying to access an API Pro endpoint. Contact us to upgrade to API Pro.","service":"api","stack":"Error: Sorry, it looks like you are trying to access an API Pro endpoint. Contact us to upgrade to API Pro.\n    at EtherScanHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/etherscan.helper.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Promise.all (index 0)\n    at async EtherscanService.getTokenInfo (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/etherscan.service.js:129:46)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/etherscan.controller.js:117:22","status":"fail","statusCode":400,"timestamp":"2025-01-30 14:35:24"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch token info","service":"api","stack":"Error: Failed to fetch token info\n    at EtherscanService.getTokenInfo (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/etherscan.service.js:146:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/etherscan.controller.js:117:22","status":"error","statusCode":500,"timestamp":"2025-01-30 14:35:24"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:40:11"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:40:14"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:40:14"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:40:14"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:40:14"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:40:14"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:40:14"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:40:29"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:40:31"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:40:31"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:40:31"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:40:31"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:40:31"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:40:31"}
+{"level":"error","message":"Error 💥 BscscanService.getBalance is not a function","service":"api","stack":"TypeError: BscscanService.getBalance is not a function\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/bscscan.controller.js:16:46\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-30 14:45:32"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:46:00"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:46:03"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:46:03"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:46:03"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:46:03"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:46:03"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:46:03"}
+{"level":"error","message":"BSCScan getBalance error: this.makeRequest is not a function","service":"api","stack":"TypeError: this.makeRequest is not a function\n    at BscscanService.getBalance (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/bscscan.service.js:15:41)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/bscscan.controller.js:16:46\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2025-01-30 14:46:06"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch BSC balance","service":"api","stack":"Error: Failed to fetch BSC balance\n    at BscscanService.getBalance (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/bscscan.service.js:29:19)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/bscscan.controller.js:16:46\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-30 14:46:06"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:47:20"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:47:35"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:47:38"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:47:38"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:47:38"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:47:38"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:47:38"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:47:38"}
+{"level":"error","message":"BSCScan getBalance error: this.makeRequest is not a function","service":"api","stack":"TypeError: this.makeRequest is not a function\n    at BscscanService.getBalance (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/bscscan.service.js:15:41)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/bscscan.controller.js:16:46\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2025-01-30 14:48:12"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch BSC balance","service":"api","stack":"Error: Failed to fetch BSC balance\n    at BscscanService.getBalance (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/bscscan.service.js:29:19)\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/bscscan.controller.js:16:46\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-01-30 14:48:12"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:48:40"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:48:43"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:48:43"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:48:43"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:48:43"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:48:43"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:48:43"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:48:53"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:48:55"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:48:58"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:48:58"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:48:58"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:48:58"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:48:58"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:48:58"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:49:01"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:49:06"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:49:10"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:49:13"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:49:13"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:49:13"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:49:13"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:49:13"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:49:13"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:49:16"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:49:19"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:49:19"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:49:19"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:49:19"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:49:19"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:49:19"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:49:36"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:49:41"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:49:47"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:49:49"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:49:49"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:49:49"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:49:49"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:49:49"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:49:49"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:49:56"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:49:59"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:50:01"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:50:04"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:50:04"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:50:04"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:50:04"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:50:04"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:50:04"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:50:09"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:50:11"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:50:11"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:50:11"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:50:11"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:50:11"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:50:11"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:50:32"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:50:34"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:50:34"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:50:34"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:50:34"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:50:34"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:50:34"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:50:53"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:50:56"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:50:56"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:50:56"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:50:56"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:50:56"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:50:56"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:50:58"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:51:01"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:51:01"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:51:01"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:51:01"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:51:01"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:51:01"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:51:04"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-01-30 14:51:06"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-01-30 14:51:06"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-01-30 14:51:06"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-01-30 14:51:06"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-01-30 14:51:06"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-01-30 14:51:06"}
+{"isOperational":true,"level":"error","message":"BSCScan getBalance error: BSCScan API request failed","service":"api","stack":"Error: BSCScan API request failed\n    at BscScanHelper.makeRequest (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/utils/helpers/third-party/bscscan.helper.js:25:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async BscscanService.getBalance (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/bscscan.service.js:10:30)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/bscscan.controller.js:16:25","status":"error","statusCode":500,"timestamp":"2025-01-30 14:51:21"}
+{"isOperational":true,"level":"error","message":"Error 💥 Failed to fetch BSC balance","service":"api","stack":"Error: Failed to fetch BSC balance\n    at BscscanService.getBalance (file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/services/third-party/bscscan.service.js:24:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/third-party/bscscan.controller.js:16:25","status":"error","statusCode":500,"timestamp":"2025-01-30 14:51:21"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-01-30 14:51:54"}
