@@ -5,17 +5,31 @@ import { ApiError } from '../../utils/ApiError.js';
 
 export class WebSocketController {
     // Crypto Stream Subscriptions
-    static subscribeCryptoStream = catchAsync(async (req, res) => {
-        const { symbols, options = {} } = req.body;
-        const userId = req.user._id;
+    static subscribeCryptoStream(socket, data) {
+        try {
+            const { symbols, options = {} } = data;
+            const userId = socket.user.id;
 
-        if (!symbols || !Array.isArray(symbols)) {
-            throw new ApiError(400, 'Valid symbols array is required');
+            if (!symbols || !Array.isArray(symbols)) {
+                socket.emit('error', { message: 'Valid symbols array is required' });
+                return;
+            }
+
+            // Subscribe to crypto updates
+            WebSocketService.subscribeToCrypto(userId, symbols, options);
+
+            // Send acknowledgment
+            socket.emit('subscription_success', {
+                event: 'subscribe_crypto',
+                data: { symbols, options }
+            });
+
+        } catch (error) {
+            socket.emit('error', { 
+                message: error.message || 'Subscription failed' 
+            });
         }
-
-        await WebSocketService.subscribeToCrypto(userId, symbols, options);
-        res.json({ status: 'success', message: 'Subscribed to crypto stream' });
-    });
+    }
 
     // Trade Stream Subscriptions
     static subscribeTradesStream = catchAsync(async (req, res) => {

@@ -147,6 +147,7 @@ class WebSocketService {
 
     async subscribeToCrypto(userId, symbols, subscription) {
         const socketId = await WebSocketHelpers.getUserSocket(userId);
+        console.log("SocketId", socketId)
         if (!socketId) return;
 
         const subKey = `crypto:${userId}:${symbols.join(',')}`;

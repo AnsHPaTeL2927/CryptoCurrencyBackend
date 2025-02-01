@@ -11,7 +11,7 @@ export const socketAuthMiddleware = async (socket, next) => {
       throw new SocketError('Authentication token missing', 'AUTH_ERROR');
     }
 
-    const decoded = jwt.verify(token.replace('Bearer ', ''), environment.security.jwtSecret);
+    const decoded = jwt.verify(token.replace('Bearer ', ''), environment.jwt.secret);
     socket.user = decoded;
     next();
   } catch (error) {
