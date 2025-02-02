@@ -6,6 +6,7 @@ import { ConnectionService } from '../../services/websocket/connection.service.j
 import { SOCKET_EVENTS } from './events.js';
 import logger from '../../utils/logger.js';
 import WebSocketController from '../../controllers/websocket/websocket.controller.js';
+import websocketService from '../../services/websocket/websocket.service.js';
 
 class SocketServer {
     constructor() {
@@ -86,6 +87,7 @@ class SocketServer {
                 });
 
                 socket.on(SOCKET_EVENTS.DISCONNECT, async () => {
+                    websocketService.cleanup(socket.id);
                     await this.connectionService.handleDisconnect(socket);
                     logger.info(`Client disconnected: ${socket.id}`);
                 });

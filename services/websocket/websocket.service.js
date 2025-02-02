@@ -8,6 +8,7 @@ class WebSocketService {
     constructor() {
         // this.io = SocketServer.getIO();
         this.subscriptions = new Map();
+        this.intervals = new Map();
     }
 
     /**
@@ -146,23 +147,54 @@ class WebSocketService {
         }
     }
 
-    async subscribeToCrypto(userId, symbols, subscription) {
-        const socketId = await WebSocketHelpers.getUserSocket(userId);
-        if (!socketId) return;
+    async subscribeToCrypto(socketId, userId, symbols, options = {}) {
+        try {
+            // Validate socket connection
+            const io = SocketServer.getIO();
+            const socket = io.sockets.sockets.get(socketId);
+            
+            if (!socket) {
+                throw new Error('Socket connection not found');
+            }
 
-        const subKey = `crypto:${userId}:${symbols.join(',')}`;
-        this.subscriptions.set(subKey, { userId, symbols, type: 'crypto', subscription });
+            // Create subscription record
+            const subscriptionId = `crypto:${userId}:${Date.now()}`;
+            const subscription = {
+                id: subscriptionId,
+                userId,
+                symbols,
+                socketId,
+                type: options.type || 'price',
+                createdAt: new Date().toISOString()
+            };
 
-        const io = SocketServer.getIO(); // Get IO instance when needed
-        symbols.forEach(symbol => {
-            io.to(socketId).join(`crypto:${symbol}`);
-        });
+            // Store in Redis without interval object
+            await RedisService.hset('subscriptions', subscriptionId, subscription);
 
-        WebSocketHelpers.startDataStream(
-            socketId,
-            'crypto_update',
-            () => CryptoCompareService.getSymbolPrice(symbols)
-        );
+            // Setup price updates
+            const interval = setInterval(async () => {
+                try {
+                    const prices = await CryptoCompareService.getCurrentPrice(symbols);
+                    socket.emit('crypto_update', {
+                        type: 'price',
+                        data: prices,
+                        timestamp: new Date().toISOString()
+                    });
+                } catch (error) {
+                    logger.error('Price update error:', error);
+                }
+            }, options.interval || 5000);
+
+            // Store interval reference in memory
+            this.intervals.set(subscriptionId, interval);
+
+            return subscriptionId;
+
+        } catch (error) {
+            this.cleanup(socketId);
+            logger.error('Subscription error:', error);
+            throw error;
+        }
     }
 
     async subscribeToTrades(userId, pairs) {
@@ -486,6 +518,36 @@ class WebSocketService {
         } catch (error) {
             logger.error('Risk alert emission error:', error);
             throw error;
+        }
+    }
+
+    cleanup(socketId) {
+        try {
+            // Clear all intervals for this socket
+            for (const [subKey, interval] of this.intervals.entries()) {
+                if (subKey.includes(socketId)) {
+                    clearInterval(interval);
+                    this.intervals.delete(subKey);
+                    logger.info(`Cleared interval for subscription ${subKey}`);
+                }
+            }
+
+            // Clean up subscriptions
+            for (const [subKey, sub] of this.subscriptions.entries()) {
+                if (sub.socketId === socketId) {
+                    this.subscriptions.delete(subKey);
+                    logger.info(`Removed subscription ${subKey}`);
+                }
+            }
+
+            // Clean up Redis
+            RedisService.del(`socket:${socketId}`).catch(err => {
+                logger.error(`Redis cleanup error for socket ${socketId}:`, err);
+            });
+
+            logger.info(`Cleanup completed for socket ${socketId}`);
+        } catch (error) {
+            logger.error(`Cleanup error for socket ${socketId}:`, error);
         }
     }
 }

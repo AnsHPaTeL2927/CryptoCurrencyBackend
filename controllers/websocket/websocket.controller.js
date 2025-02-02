@@ -2,31 +2,44 @@ import  WebSocketService  from '../../services/websocket/websocket.service.js';
 // import { RedisService } from '../../services/redis/redis.service.js';
 import { catchAsync } from '../../utils/catchAsync.js';
 import { ApiError } from '../../utils/ApiError.js';
+import logger from '../../utils/logger.js';
 
 export class WebSocketController {
     // Crypto Stream Subscriptions
-    static subscribeCryptoStream(socket, data) {
+    static async subscribeCryptoStream(socket, data) {
         try {
-            const { symbols, options = {} } = data;
-            const userId = socket.user.id;
-
-            if (!symbols || !Array.isArray(symbols)) {
-                socket.emit('error', { message: 'Valid symbols array is required' });
-                return;
+            logger.info('Subscribe request received:', { socketId: socket.id, data });
+            
+            // Validate user
+            if (!socket.user?.id) {
+                throw new Error('Authentication required');
             }
 
-            // Subscribe to crypto updates
-            WebSocketService.subscribeToCrypto(userId, symbols, options);
+            // Validate data
+            if (!data?.symbols || !Array.isArray(data.symbols)) {
+                throw new Error('Valid symbols array is required');
+            }
 
-            // Send acknowledgment
+            const { symbols, type = 'price', options = {} } = data;
+            const userId = socket.user.id;
+
+            // Call service with await
+            await WebSocketService.subscribeToCrypto(socket.id, userId, symbols, {
+                type,
+                ...options
+            });
+
+            // Success response
             socket.emit('subscription_success', {
                 event: 'subscribe_crypto',
-                data: { symbols, options }
+                data: { symbols, type, options }
             });
 
         } catch (error) {
-            socket.emit('error', { 
-                message: error.message || 'Subscription failed' 
+            logger.error('Subscribe error:', error);
+            socket.emit('error', {
+                event: 'subscribe_crypto',
+                error: error.message || 'Subscription failed'
             });
         }
     }
