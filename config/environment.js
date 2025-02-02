@@ -41,7 +41,13 @@ export const environment = {
     corsOrigin: process.env.SOCKET_CORS_ORIGIN || 'http://localhost:5173',
     maxBufferSize: parseInt(process.env.SOCKET_MAX_BUFFER_SIZE) || 1e8,
     pingTimeout: parseInt(process.env.SOCKET_PING_TIMEOUT) || 60000,
-    pingInterval: parseInt(process.env.SOCKET_PING_INTERVAL) || 25000
+    pingInterval: parseInt(process.env.SOCKET_PING_INTERVAL) || 25000,
+    allowEIO3: process.env.SOCKET_ALLOWEIO3,
+    connectTimeOut: process.env.SOCKET_CONNECT_TIME_OUT,
+    reconnection: process.env.SOCKET_RECONNECTION,
+    reconnectionAttempts: process.env.SOCKET_RECONNECTION_ATTEMPTS,
+    reconnectionDelay: process.env.SOCKET_RECONNECTION_DELAY,
+    reconnectionDelayMax: process.env.SOCKET_RECONNECTION_DELAY_MAX
   },
 
   encryptionKey: {

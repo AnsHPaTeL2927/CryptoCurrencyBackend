@@ -26,15 +26,17 @@ class SocketServer {
                 methods: ["GET", "POST"],
                 credentials: true
             },
-            maxHttpBufferSize: 1e8,
+            maxHttpBufferSize: environment.socket.maxBufferSize,
             pingTimeout: environment.socket.pingTimeout,
             pingInterval: environment.socket.pingInterval,
-            transports: ['websocket', 'polling'],
-            allowEIO3: true,
-            path: '/socket.io/',
-            allowRequest: (req, callback) => {
-                callback(null, true); // Allow all requests initially
-            }
+            transports: ['websocket'],
+            allowEIO3: environment.socket.allowEIO3,
+            path: environment.socket.path,
+            connectTimeout: environment.socket.connectTimeOut,
+            reconnection: environment.socket.reconnection,
+            reconnectionAttempts: environment.socket.reconnectionAttempts,
+            reconnectionDelay: environment.socket.reconnectionDelay,
+            reconnectionDelayMax: environment.socket.reconnectionDelayMax,
         });
 
         this.setupMiddleware();
@@ -45,11 +47,16 @@ class SocketServer {
     }
 
     setupMiddleware() {
-        if (!this.io) {
+        try {
+            if (!this.io) {
             throw new Error('Cannot setup middleware: Socket.IO not initialized');
         }
         this.io.use(socketAuthMiddleware);
-        // this.io.use(socketErrorMiddleware);
+        } catch (error) {
+        this.io.use(socketErrorMiddleware);
+            
+        }
+        
     }
 
     setupEventHandlers() {

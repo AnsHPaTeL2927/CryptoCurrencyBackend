@@ -541,7 +541,7 @@ class WebSocketService {
             }
 
             // Clean up Redis
-            RedisService.del(`socket:${socketId}`).catch(err => {
+            RedisService.delete(`socket:${socketId}`).catch(err => {
                 logger.error(`Redis cleanup error for socket ${socketId}:`, err);
             });
 
