@@ -2,6 +2,7 @@ import SocketServer from '../../config/websocket/socket.js';
 import RedisService from '../redis/redis.service.js';
 import logger from '../../utils/logger.js';
 import WebSocketHelpers from '../../utils/helpers/websocket.helper.js';
+import CryptoCompareService from '../../services/third-party/cryptocompare.service.js';
 
 class WebSocketService {
     constructor() {
@@ -147,7 +148,6 @@ class WebSocketService {
 
     async subscribeToCrypto(userId, symbols, subscription) {
         const socketId = await WebSocketHelpers.getUserSocket(userId);
-        console.log("SocketId", socketId)
         if (!socketId) return;
 
         const subKey = `crypto:${userId}:${symbols.join(',')}`;
@@ -161,7 +161,7 @@ class WebSocketService {
         WebSocketHelpers.startDataStream(
             socketId,
             'crypto_update',
-            () => CryptoCompareService.getCurrentPrice(symbols)
+            () => CryptoCompareService.getSymbolPrice(symbols)
         );
     }
 

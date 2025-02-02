@@ -3,7 +3,7 @@ import logger from '../../utils/logger.js';
 
 export class WebSocketHelpers {
     static async getUserSocket(userId) {
-        const socketId = await RedisService.get(`user:${userId}:socket`);
+        const socketId = await RedisService.hget(`socket:connections`, userId);
         if (!socketId) {
             logger.warn(`No socket found for user ${userId}`);
             return null;

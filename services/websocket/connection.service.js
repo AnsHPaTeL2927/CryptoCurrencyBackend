@@ -4,7 +4,6 @@ import logger from '../../utils/logger.js';
 export class ConnectionService {
   async handleConnection(socket) {
     try {
-      console.log(socket)
       // Store socket connection in Redis
       await RedisService.hset(
         'socket:connections',
