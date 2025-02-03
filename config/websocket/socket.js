@@ -49,14 +49,12 @@ class SocketServer {
     setupMiddleware() {
         try {
             if (!this.io) {
-            throw new Error('Cannot setup middleware: Socket.IO not initialized');
-        }
-        this.io.use(socketAuthMiddleware);
+                throw new Error('Cannot setup middleware: Socket.IO not initialized');
+            }
+            this.io.use(socketAuthMiddleware);
         } catch (error) {
-        this.io.use(socketErrorMiddleware);
-            
+            this.io.use(socketErrorMiddleware);
         }
-        
     }
 
     setupEventHandlers() {
@@ -67,11 +65,11 @@ class SocketServer {
                 logger.info(`Client connected: ${socket.id}`);
 
                 // Crypto subscription handler
-                socket.on(SOCKET_EVENTS.SUBSCRIBE_CRYPTO, (data) => {
+                socket.on(SOCKET_EVENTS.SUBSCRIBE_CRYPTO, async (data) => {
                     logger.info(`Crypto subscription request from ${socket.id}:`, data);
                     const { symbols, type } = data;
 
-                    WebSocketController.subscribeCryptoStream(socket, data);
+                    await WebSocketController.subscribeCryptoStream(socket, data);
                     symbols.forEach(symbol => {
                         socket.join(`crypto:${symbol}`);
                         logger.info(`Socket ${socket.id} subscribed to ${symbol}`);
