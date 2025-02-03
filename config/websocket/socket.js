@@ -26,17 +26,17 @@ class SocketServer {
                 methods: ["GET", "POST"],
                 credentials: true
             },
-            maxHttpBufferSize: environment.socket.maxBufferSize,
-            pingTimeout: environment.socket.pingTimeout,
-            pingInterval: environment.socket.pingInterval,
-            transports: ['websocket'],
-            allowEIO3: environment.socket.allowEIO3,
-            path: environment.socket.path,
-            connectTimeout: environment.socket.connectTimeOut,
-            reconnection: environment.socket.reconnection,
-            reconnectionAttempts: environment.socket.reconnectionAttempts,
-            reconnectionDelay: environment.socket.reconnectionDelay,
-            reconnectionDelayMax: environment.socket.reconnectionDelayMax,
+            maxHttpBufferSize: 1e8,
+            pingTimeout: 60000,
+            pingInterval: 25000,
+            transports: ['websocket', 'polling'],
+            allowEIO3: true,
+            path: '/socket.io',
+            connectTimeout: 45000,
+            reconnection: true,
+            reconnectionAttempts: 5,
+            reconnectionDelay: 1000,
+            reconnectionDelayMax: 5000,
         });
 
         this.setupMiddleware();
