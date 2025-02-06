@@ -273,6 +273,19 @@ class RedisService {
             throw error;
         }
     }
+
+    async hgetall(hash) {
+        try {
+            const data = await this.client.hgetall(hash);
+            return Object.entries(data).reduce((acc, [key, value]) => {
+                acc[key] = RedisHelpers.deserializeValue(value);
+                return acc;
+            }, {});
+        } catch (error) {
+            logger.error('Redis HGETALL Error:', error);
+            throw error;
+        }
+    }
 }
 
 export default new RedisService();
