@@ -3,6 +3,7 @@ import WebSocketService from '../../services/websocket/websocket.service.js';
 import RedisService from '../../services/redis/redis.service.js';
 import { catchAsync } from '../../utils/catchAsync.js';
 import { ApiError } from '../../utils/ApiError.js';
+import { EmitterService } from '../../services/websocket/emitter.service.js';
 
 export class EtherScanController {
     static getEthBalance = catchAsync(async (req, res) => {
@@ -15,7 +16,7 @@ export class EtherScanController {
 
         const balance = await EtherscanService.getBalance(address);
         await RedisService.set(cacheKey, balance, 60);
-        await WebSocketService.emitBalanceUpdate('eth', address, balance);
+        await EmitterService.emitBalanceUpdate('eth', address, balance);
 
         res.json({ status: 'success', data: balance, timestamp: new Date() });
     });
@@ -47,7 +48,7 @@ export class EtherScanController {
 
         const gasPrice = await EtherscanService.getGasOracle();
         await RedisService.set(cacheKey, gasPrice, 30);
-        await WebSocketService.emitGasUpdate(gasPrice);
+        await EmitterService.emitGasUpdate(gasPrice);
 
         res.json({ status: 'success', data: gasPrice, timestamp: new Date() });
     });

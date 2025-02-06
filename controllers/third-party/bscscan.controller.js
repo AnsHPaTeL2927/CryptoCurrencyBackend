@@ -3,6 +3,7 @@ import WebSocketService from '../../services/websocket/websocket.service.js';
 import RedisService from '../../services/redis/redis.service.js';
 import { catchAsync } from '../../utils/catchAsync.js';
 import { ApiError } from '../../utils/ApiError.js';
+import { EmitterService } from '../../services/websocket/emitter.service.js';
 
 export class BscScanController {
     static getBscBalance = catchAsync(async (req, res) => {
@@ -15,7 +16,7 @@ export class BscScanController {
 
         const balance = await BscscanService.getBalance(address);
         await RedisService.set(cacheKey, balance, 60);
-        await WebSocketService.emitBalanceUpdate('bsc', address, balance);
+        await EmitterService.emitBalanceUpdate('bsc', address, balance);
 
         res.json({
             status: 'success',

@@ -3,6 +3,7 @@ import WebSocketService from '../../services/websocket/websocket.service.js';
 import RedisService from '../../services/redis/redis.service.js';
 import { catchAsync } from '../../utils/catchAsync.js';
 import { ApiError } from '../../utils/ApiError.js';
+import { EmitterService } from '../../services/websocket/emitter.service.js';
 
 export class CoinCapMarketController {
     static getLatestListings = catchAsync(async (req, res) => {
@@ -14,7 +15,7 @@ export class CoinCapMarketController {
 
         const listings = await CoinMarketCapService.getLatestListings(start, limit, convert);
         await RedisService.set(cacheKey, listings, 60);
-        await WebSocketService.emitListingsUpdate(listings);
+        await EmitterService.emitListingsUpdate(listings);
 
         res.json({
             status: 'success',

@@ -3,7 +3,7 @@ import RedisService from '../../services/redis/redis.service.js';
 import { catchAsync } from '../../utils/catchAsync.js';
 import { ApiError } from '../../utils/ApiError.js';
 import WebSocketService from '../../services/websocket/websocket.service.js';
-
+import { EmitterService } from '../../services/websocket/emitter.service.js';
 export class CryptoCompareController {
     static getCurrentPrice = catchAsync(async (req, res) => {
         const cacheKey = 'cryptocompare:prices:current';
@@ -13,7 +13,7 @@ export class CryptoCompareController {
         const prices = await CryptoCompareService.getCurrentPrice();
         await RedisService.set(cacheKey, prices, 30);
         Object.entries(prices).forEach(([symbol, data]) => {
-            WebSocketService.emitPriceUpdate(symbol, data);
+            EmitterService.emitPriceUpdate(symbol, data);
         });
 
         res.json({
