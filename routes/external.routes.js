@@ -61,12 +61,12 @@ router.get('/bsc/bep20-transfers/:address', RateLimiter, BscScanController.getBE
 router.get('/bsc/token/:contractAddress', RateLimiter, BscScanController.getBEP20TokenInfo); // not for use // pro version api - 403
 router.get('/bsc/abi/:contractAddress', RateLimiter, BscScanController.getContractABI);
 
-// WebSocket Subscriptions
-router.post('/ws/crypto/subscribe', authenticate, WebSocketController.subscribeCryptoStream);
-router.post('/ws/trades/subscribe', authenticate, WebSocketController.subscribeTradesStream);
-router.post('/ws/price/subscribe', authenticate, WebSocketController.subscribePriceStream);
-router.post('/ws/unsubscribe/:streamId', authenticate, WebSocketController.unsubscribeStream);
-router.get('/ws/subscriptions', authenticate, WebSocketController.getActiveSubscriptions);
+// // WebSocket Subscriptions
+// router.post('/ws/crypto/subscribe', authenticate, WebSocketController.subscribeCryptoStream);
+// router.post('/ws/trades/subscribe', authenticate, WebSocketController.subscribeTradesStream);
+// router.post('/ws/price/subscribe', authenticate, WebSocketController.subscribePriceStream);
+// router.post('/ws/unsubscribe/:streamId', authenticate, WebSocketController.unsubscribeStream);
+// router.get('/ws/subscriptions', authenticate, WebSocketController.getActiveSubscriptions);
 
 // Combined Data Routes
 router.get('/price/aggregated/:symbol', RateLimiter, CombinedController.getAggregatedPrice);

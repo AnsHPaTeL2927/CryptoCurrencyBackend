@@ -1,36 +1,57 @@
-import { CryptoCompareService } from '../services/third-party/cryptocompare.service.js';
-import { CoinCapService } from '../services/third-party/coincap.service.js';
-import { CoinMarketCapService } from '../services/third-party/coinmarketcap.service.js';
+import CryptoCompareService from '../services/third-party/cryptocompare.service.js';
+import CoinCapService from '../services/third-party/coincap.service.js';
+import CoinMarketCapService from '../services/third-party/coinmarketcap.service.js';
 import RedisService from '../services/redis/redis.service.js';
 import { catchAsync } from '../utils/catchAsync.js';
 import { ApiError } from '../utils/ApiError.js';
 
 export class CombinedController {
     static getAggregatedPrice = catchAsync(async (req, res) => {
-        const { symbol } = req.params;
+        try {
+            const { symbol } = req.params;
+            const symbolMap = {
+                'BTC': 'bitcoin',
+                'ETH': 'ethereum',
+                'BNB': 'binancecoin'
+                // Add more mappings as needed
+            };
 
-        if (!symbol) {
-            throw new ApiError(400, 'Symbol is required');
+            const coinCapId = symbolMap[symbol.toUpperCase()];
+            if (!coinCapId) {
+                throw new ApiError(400, 'Unsupported symbol');
+            }
+
+            const [cryptoComparePrice, coinCapPrice, cmcPrice] = await Promise.all([
+                CryptoCompareService.getSymbolPrice(symbol),
+                CoinCapService.getAssetDetails(coinCapId),
+                CoinMarketCapService.getCryptoQuotes(symbol)
+            ]);
+
+            const aggregatedPrice = this.calculateWeightedAverage([
+                { price: cryptoComparePrice, weight: 0.4 },
+                { price: coinCapPrice.priceUsd, weight: 0.3 },
+                { price: cmcPrice[0].price, weight: 0.3 }
+            ]);
+
+            return res.json({
+                status: 'success',
+                data: {
+                    symbol: symbol.toUpperCase(),
+                    price: aggregatedPrice,
+                    marketCap: coinCapPrice.marketCapUsd,
+                    volume24h: coinCapPrice.volumeUsd24Hr,
+                    change24h: coinCapPrice.changePercent24Hr,
+                    lastUpdated: new Date().toISOString(),
+                    sources: {
+                        cryptoCompare: cryptoComparePrice,
+                        coinCap: coinCapPrice.priceUsd,
+                        coinMarketCap: cmcPrice
+                    }
+                }
+            });
+        } catch (error) {
+            throw new ApiError(500, error.message);
         }
-
-        const cacheKey = `aggregated:price:${symbol}`;
-        const cachedPrice = await RedisService.get(cacheKey);
-        if (cachedPrice) return res.json({ status: 'success', data: cachedPrice });
-
-        const [cryptoComparePrice, coinCapPrice, cmcPrice] = await Promise.all([
-            CryptoCompareService.getSymbolPrice(symbol),
-            CoinCapService.getAssetPrice(symbol),
-            CoinMarketCapService.getQuote(symbol)
-        ]);
-
-        const aggregatedPrice = this.calculateWeightedAverage([
-            { price: cryptoComparePrice, weight: 0.4 },
-            { price: coinCapPrice, weight: 0.3 },
-            { price: cmcPrice, weight: 0.3 }
-        ]);
-
-        await RedisService.set(cacheKey, aggregatedPrice, 60);
-        res.json({ status: 'success', data: aggregatedPrice });
     });
 
     static getMarketSummary = catchAsync(async (req, res) => {
