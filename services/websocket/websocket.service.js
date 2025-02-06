@@ -1,554 +1,140 @@
-import SocketServer from '../../config/websocket/socket.js';
-import RedisService from '../redis/redis.service.js';
-import logger from '../../utils/logger.js';
-import WebSocketHelpers from '../../utils/helpers/websocket.helper.js';
-import CryptoCompareService from '../../services/third-party/cryptocompare.service.js';
+import SubscriptionService from './subscription.service.js';
+import { EmitterService } from './emitter.service.js';
+import { RoomService } from './room.service.js';
+import StreamService from './stream.service.js';
+import { ConnectionService } from './connection.service.js';
 
 class WebSocketService {
-    constructor() {
-        // this.io = SocketServer.getIO();
-        this.subscriptions = new Map();
-        this.intervals = new Map();
+    // Connection Management
+    async handleConnection(socket) {
+        await ConnectionService.handleConnection(socket);
     }
 
-    /**
-     * Subscribe user to portfolio updates
-     */
-    async subscribeToPortfolioUpdates(userId) {
-        try {
-            const socketId = await RedisService.get(`user:${userId}:socket`);
-            if (socketId) {
-                const socket = this.io.sockets.sockets.get(socketId);
-                if (socket) {
-                    socket.join(`portfolio:${userId}`);
-                    logger.info(`User ${userId} subscribed to portfolio updates`);
-                }
-            }
-        } catch (error) {
-            logger.error('Portfolio subscription error:', error);
-            throw error;
-        }
+    async handleDisconnect(socket) {
+        await ConnectionService.handleDisconnect(socket);
     }
 
-    /**
-     * Emit portfolio value update
-     */
-    async emitPortfolioValue(userId, value) {
-        try {
-            this.io.to(`portfolio:${userId}`).emit('portfolio_value_update', {
-                timestamp: Date.now(),
-                value
-            });
-        } catch (error) {
-            logger.error('Portfolio value emit error:', error);
-            throw error;
-        }
-    }
-
-    /**
-     * Emit trade update
-     */
-    async emitTradeUpdate(userId, data) {
-        try {
-            this.io.to(`portfolio:${userId}`).emit('trade_update', {
-                timestamp: Date.now(),
-                ...data
-            });
-        } catch (error) {
-            logger.error('Trade update emit error:', error);
-            throw error;
-        }
-    }
-
-    /**
-     * Emit portfolio update
-     */
-    async emitPortfolioUpdate(userId, data) {
-        try {
-            this.io.to(`portfolio:${userId}`).emit('portfolio_update', {
-                timestamp: Date.now(),
-                ...data
-            });
-        } catch (error) {
-            logger.error('Portfolio update emit error:', error);
-            throw error;
-        }
-    }
-
-    /**
-     * Emit price alert
-     */
-    async emitPriceAlert(userId, alert) {
-        try {
-            this.io.to(`portfolio:${userId}`).emit('price_alert', {
-                timestamp: Date.now(),
-                ...alert
-            });
-        } catch (error) {
-            logger.error('Price alert emit error:', error);
-            throw error;
-        }
-    }
-
-    /**
-     * Subscribe to market data
-     */
-    async subscribeToMarket(userId, symbols) {
-        try {
-            const socketId = await RedisService.get(`user:${userId}:socket`);
-            if (socketId) {
-                const socket = this.io.sockets.sockets.get(socketId);
-                if (socket) {
-                    symbols.forEach(symbol => {
-                        socket.join(`market:${symbol}`);
-                    });
-                    logger.info(`User ${userId} subscribed to market data: ${symbols.join(', ')}`);
-                }
-            }
-        } catch (error) {
-            logger.error('Market subscription error:', error);
-            throw error;
-        }
-    }
-
-    /**
-     * Broadcast market price update
-     */
-    async broadcastMarketPrice(symbol, priceData) {
-        try {
-            this.io.to(`market:${symbol}`).emit('market_price_update', {
-                symbol,
-                timestamp: Date.now(),
-                ...priceData
-            });
-        } catch (error) {
-            logger.error('Market price broadcast error:', error);
-            throw error;
-        }
-    }
-
-    /**
-     * Disconnect user
-     */
     async disconnectUser(userId) {
-        try {
-            const socketId = await RedisService.get(`user:${userId}:socket`);
-            if (socketId) {
-                const socket = this.io.sockets.sockets.get(socketId);
-                if (socket) {
-                    socket.disconnect(true);
-                    await RedisService.delete(`user:${userId}:socket`);
-                    logger.info(`User ${userId} disconnected`);
-                }
-            }
-        } catch (error) {
-            logger.error('User disconnect error:', error);
-            throw error;
-        }
+        await ConnectionService.disconnectUser(userId);
     }
 
-    async subscribeToCrypto(socketId, userId, symbols, options = {}) {
-        try {
-            // Validate socket connection
-            const io = SocketServer.getIO();
-            const socket = io.sockets.sockets.get(socketId);
-            
-            if (!socket) {
-                throw new Error('Socket connection not found');
-            }
-
-            // Create subscription record
-            const subscriptionId = `crypto:${userId}:${Date.now()}`;
-            const subscription = {
-                id: subscriptionId,
-                userId,
-                symbols,
-                socketId,
-                type: options.type || 'price',
-                createdAt: new Date().toISOString()
-            };
-
-            // Store in Redis without interval object
-            await RedisService.hset('subscriptions', subscriptionId, subscription);
-
-            // Setup price updates
-            const interval = setInterval(async () => {
-                try {
-                    const prices = await CryptoCompareService.getCurrentPrice(symbols);
-                    socket.emit('crypto_update', {
-                        type: 'price',
-                        data: prices,
-                        timestamp: new Date().toISOString()
-                    });
-                } catch (error) {
-                    logger.error('Price update error:', error);
-                }
-            }, options.interval || 5000);
-
-            // Store interval reference in memory
-            this.intervals.set(subscriptionId, interval);
-
-            return subscriptionId;
-
-        } catch (error) {
-            this.cleanup(socketId);
-            logger.error('Subscription error:', error);
-            throw error;
-        }
+    // Subscription Methods
+    async subscribeToCrypto(socket, userId, symbols, options) {
+        return await SubscriptionService.subscribeToCrypto(socket, userId, symbols, options);
     }
 
     async subscribeToTrades(userId, pairs) {
-        const socketId = await WebSocketHelpers.getUserSocket(userId);
-        if (!socketId) return;
-
-        const subKey = `trades:${userId}:${pairs.join(',')}`;
-        this.subscriptions.set(subKey, { userId, pairs, type: 'trades' });
-
-        pairs.forEach(pair => {
-            this.io.to(socketId).join(`trades:${pair}`);
-        });
-
-        WebSocketHelpers.startDataStream(
-            socketId,
-            'trade_update',
-            () => CoinCapService.getLatestTrades(pairs),
-            2000
-        );
+        return await SubscriptionService.subscribeToTrades(userId, pairs);
     }
 
     async subscribeToPrices(userId, symbols) {
-        const socketId = await WebSocketHelpers.getUserSocket(userId);
-        if (!socketId) return;
-
-        const subKey = `prices:${userId}:${symbols.join(',')}`;
-        this.subscriptions.set(subKey, { userId, symbols, type: 'prices' });
-
-        symbols.forEach(symbol => {
-            this.io.to(socketId).join(`prices:${symbol}`);
-        });
-
-        WebSocketHelpers.startDataStream(
-            socketId,
-            'price_update',
-            () => CryptoCompareService.getSymbolPrices(symbols),
-            1000
-        );
+        return await SubscriptionService.subscribeToPrices(userId, symbols);
     }
 
     async subscribeToOrderBook(userId, symbol, depth) {
-        const socketId = await WebSocketHelpers.getUserSocket(userId);
-        if (!socketId) return;
-
-        const subKey = `orderbook:${userId}:${symbol}`;
-        this.subscriptions.set(subKey, { userId, symbol, depth, type: 'orderbook' });
-
-        this.io.to(socketId).join(`orderbook:${symbol}`);
-
-        WebSocketHelpers.startDataStream(
-            socketId,
-            'orderbook_update',
-            () => CryptoCompareService.getOrderBook(symbol, depth),
-            1000
-        );
+        return await SubscriptionService.subscribeToOrderBook(userId, symbol, depth);
     }
 
-    async emitPriceUpdate(symbol, data) {
-        try {
-            const io = SocketServer.getIO();
-            io.to(`prices:${symbol}`).emit('price_update', {
-                symbol,
-                data,
-                timestamp: new Date()
-            });
-        } catch (error) {
-            logger.error('Price update emission error:', error);
-            throw error;
-        }
+    async subscribeToMarket(userId, symbols) {
+        await RoomService.subscribeToMarket(userId, symbols);
+        return await StreamService.startMarketStream(symbols);
     }
 
-    async emitOrderBookUpdate(symbol, orderBook) {
-        this.io.to(`orderbook:${symbol}`).emit('orderbook_update', {
-            symbol,
-            data: orderBook,
-            timestamp: new Date()
-        });
-    }
-
-    async emitMarketUpdate(market, data) {
-        this.io.to(`market:${market}`).emit('market_update', {
-            market,
-            data,
-            timestamp: new Date()
-        });
-    }
-
-    async unsubscribe(userId, streamId) {
-        const subscription = this.subscriptions.get(streamId);
-        if (!subscription) return;
-
-        const socketId = await WebSocketHelpers.getUserSocket(userId);
-        if (!socketId) return;
-
-        switch (subscription.type) {
-            case 'crypto':
-                subscription.symbols.forEach(symbol => {
-                    this.io.to(socketId).leave(`crypto:${symbol}`);
-                });
-                break;
-            case 'trades':
-                subscription.pairs.forEach(pair => {
-                    this.io.to(socketId).leave(`trades:${pair}`);
-                });
-                break;
-            case 'prices':
-                subscription.symbols.forEach(symbol => {
-                    this.io.to(socketId).leave(`prices:${symbol}`);
-                });
-                break;
-            case 'orderbook':
-                this.io.to(socketId).leave(`orderbook:${subscription.symbol}`);
-                break;
-            case 'portfolio':
-                this.io.to(socketId).leave(`portfolio:${userId}`);
-                break;
-            case 'market':
-                subscription.markets.forEach(market => {
-                    this.io.to(socketId).leave(`market:${market}`);
-                });
-                break;
-        }
-
-        await WebSocketHelpers.clearIntervals(socketId);
-        this.subscriptions.delete(streamId);
-        logger.info(`User ${userId} unsubscribed from ${streamId}`);
-    }
-
-
-    async getActiveSubscriptions(userId) {
-        return Array.from(this.subscriptions.values())
-            .filter(sub => sub.userId === userId);
-    }
-
-    async unsubscribe(userId, streamId) {
-        const subscription = this.subscriptions.get(streamId);
-        if (!subscription) return;
-
-        const socketId = await WebSocketHelpers.getUserSocket(userId);
-        if (!socketId) return;
-
-        // Unsubscribe logic...
-        await WebSocketHelpers.clearIntervals(socketId);
-        this.subscriptions.delete(streamId);
-    }
-
-    async broadcastCacheUpdate(type, action) {
-        this.io.emit('cache_update', {
-            type,
-            action,
-            timestamp: new Date()
-        });
-    }
-
-    async sendCacheStatus(userId, status) {
-        const socketId = await WebSocketHelpers.getUserSocket(userId);
-        if (socketId) {
-            this.io.to(socketId).emit('cache_status', {
-                status,
-                timestamp: new Date()
-            });
-        }
-    }
-
-    async notifyCacheRefresh(type) {
-        this.io.emit('cache_refresh', {
-            type,
-            timestamp: new Date()
-        });
-    }
-
-    // BSCScan WebSocket Methods
-    async emitBalanceUpdate(chain, address, balance) {
-        const io = SocketServer.getIO();
-        try {
-            io.to(`${chain}:${address}`).emit('balance_update', {
-                chain,
-                address,
-                balance,
-                timestamp: Date.now()
-            });
-        }
-        catch (error) {
-            logger.error('Balance update emission error:', error);
-            throw error;
-        }
-    }
-
-    // CoinCap WebSocket Methods
-    async emitAssetUpdate(id, asset) {
-        const io = SocketServer.getIO();
-        try {
-            io.to(`asset:${id}`).emit('asset_update', {
-                id,
-                data: asset,
-                timestamp: Date.now()
-            });
-        }
-        catch (error) {
-            logger.error('Asset update emission error:', error);
-            throw error;
-        }
-    }
-
-    async emitListingsUpdate(listings) {
-        const io = SocketServer.getIO();
-        try {
-            io.emit('listings_update', {
-                data: listings,
-                timestamp: Date.now()
-            });
-        } catch (error) {
-            logger.error('Asset update emission error:', error);
-            throw error;
-        }
-    }
-
-    // CoinMarketCap WebSocket Methods 
-    async emitPriceFeed(symbol, data) {
-        this.io.to(`price:${symbol}`).emit('price_feed', {
-            symbol,
-            data,
-            timestamp: Date.now()
-        });
-    }
-
-    async broadcastMarketMetrics(metrics) {
-        this.io.emit('market_metrics', {
-            data: metrics,
-            timestamp: Date.now()
-        });
-    }
-
-    // Etherscan WebSocket Methods
-    async emitGasUpdate(gasPrice) {
-        const io = SocketServer.getIO();
-        try {
-            io.emit('gas_update', {
-                data: gasPrice,
-                timestamp: Date.now()
-            });
-        } catch (error) {
-            logger.error('Gas update emission error:', error);
-            throw error;
-        }
-    }
-
-    async emitTransactionUpdate(address, transaction) {
-        this.io.to(`address:${address}`).emit('transaction_update', {
-            address,
-            transaction,
-            timestamp: Date.now()
-        });
+    async subscribeToPortfolio(userId) {
+        await RoomService.subscribeToPortfolioUpdates(userId);
+        return await StreamService.startPortfolioStream(userId);
     }
 
     // Room Management
     async subscribeToAddress(userId, address, chain) {
-        const socketId = await WebSocketHelpers.getUserSocket(userId);
-        if (socketId) {
-            const socket = this.io.sockets.sockets.get(socketId);
-            if (socket) {
-                socket.join(`${chain}:${address}`);
-                socket.join(`address:${address}`);
-            }
-        }
-    }
-
-    async unsubscribeFromAddress(userId, address, chain) {
-        const socketId = await WebSocketHelpers.getUserSocket(userId);
-        if (socketId) {
-            const socket = this.io.sockets.sockets.get(socketId);
-            if (socket) {
-                socket.leave(`${chain}:${address}`);
-                socket.leave(`address:${address}`);
-            }
-        }
+        await RoomService.subscribeToAddress(userId, address, chain);
     }
 
     async subscribeToAsset(userId, assetId) {
-        const socketId = await WebSocketHelpers.getUserSocket(userId);
-        if (socketId) {
-            const socket = this.io.sockets.sockets.get(socketId);
-            if (socket) {
-                socket.join(`asset:${assetId}`);
-            }
-        }
+        await RoomService.subscribeToAsset(userId, assetId);
     }
 
     async subscribeToPriceFeed(userId, symbol) {
-        const socketId = await WebSocketHelpers.getUserSocket(userId);
-        if (socketId) {
-            const socket = this.io.sockets.sockets.get(socketId);
-            if (socket) {
-                socket.join(`price:${symbol}`);
-            }
+        await RoomService.subscribeToPriceFeed(userId, symbol);
+        return await StreamService.startPriceStream([symbol]);
+    }
+
+    // Stream Management
+    async startStream(streamType, params) {
+        switch (streamType) {
+            case 'price':
+                return await StreamService.startPriceStream(params.symbols, params.interval);
+            case 'orderbook':
+                return await StreamService.startOrderBookStream(params.symbol, params.depth, params.interval);
+            case 'trades':
+                return await StreamService.startTradeStream(params.pairs, params.interval);
+            case 'market':
+                return await StreamService.startMarketStream(params.markets, params.interval);
+            case 'portfolio':
+                return await StreamService.startPortfolioStream(params.userId, params.interval);
+            case 'alerts':
+                return await StreamService.startAlertStream(params.userId, params.alerts, params.interval);
+            default:
+                throw new Error(`Unknown stream type: ${streamType}`);
         }
     }
 
-    // Connection Management
+    async stopStream(streamId) {
+        await StreamService.stopStream(streamId);
+    }
+
+    // Unsubscribe Methods
+    async unsubscribe(userId, streamId) {
+        await SubscriptionService.unsubscribe(userId, streamId);
+    }
+
+    async unsubscribeFromAddress(userId, address, chain) {
+        await RoomService.unsubscribeFromAddress(userId, address, chain);
+    }
+
+    async unsubscribeFromMarket(userId, symbols) {
+        await RoomService.unsubscribeFromMarket(userId, symbols);
+    }
+
+    // Status Methods
+    async getActiveSubscriptions(userId) {
+        return await SubscriptionService.getActiveSubscriptions(userId);
+    }
+
+    async getActiveStreams() {
+        return await StreamService.getActiveStreams();
+    }
+
+    async getUserRooms(userId) {
+        return await RoomService.getUserRooms(userId);
+    }
+
+    // Cache Related Methods
+    async broadcastCacheUpdate(type, action) {
+        await EmitterService.broadcastCacheUpdate(type, action);
+    }
+
+    async sendCacheStatus(userId, status) {
+        await EmitterService.sendCacheStatus(userId, status);
+    }
+
+    async notifyCacheRefresh(type) {
+        await EmitterService.notifyCacheRefresh(type);
+    }
+
+    // Chain Connection Methods
     async handleChainConnection(userId, chain) {
-        const connectionKey = `${chain}:connections:${userId}`;
-        await RedisService.set(connectionKey, {
-            connected: true,
-            timestamp: Date.now()
-        });
+        await RoomService.handleChainConnection(userId, chain);
     }
 
     async handleChainDisconnection(userId, chain) {
-        const connectionKey = `${chain}:connections:${userId}`;
-        await RedisService.delete(connectionKey);
+        await RoomService.handleChainDisconnection(userId, chain);
     }
 
-    async emitRiskAlert(userId, alerts) {
-        try {
-            this.io.to(`portfolio:${userId}`).emit('risk_alert', {
-                data: alerts,
-                timestamp: Date.now(),
-                priority: this.calculateRiskPriority(alerts),
-                source: 'real-time'
-            });
-        } catch (error) {
-            logger.error('Risk alert emission error:', error);
-            throw error;
-        }
-    }
-
-    cleanup(socketId) {
-        try {
-            // Clear all intervals for this socket
-            for (const [subKey, interval] of this.intervals.entries()) {
-                if (subKey.includes(socketId)) {
-                    clearInterval(interval);
-                    this.intervals.delete(subKey);
-                    logger.info(`Cleared interval for subscription ${subKey}`);
-                }
-            }
-
-            // Clean up subscriptions
-            for (const [subKey, sub] of this.subscriptions.entries()) {
-                if (sub.socketId === socketId) {
-                    this.subscriptions.delete(subKey);
-                    logger.info(`Removed subscription ${subKey}`);
-                }
-            }
-
-            // Clean up Redis
-            RedisService.delete(`socket:${socketId}`).catch(err => {
-                logger.error(`Redis cleanup error for socket ${socketId}:`, err);
-            });
-
-            logger.info(`Cleanup completed for socket ${socketId}`);
-        } catch (error) {
-            logger.error(`Cleanup error for socket ${socketId}:`, error);
-        }
+    // Cleanup Method
+    async cleanup(socketId) {
+        await SubscriptionService.cleanup(socketId);
+        await StreamService.stopAllStreams();
     }
 }
 
