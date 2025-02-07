@@ -95,6 +95,18 @@ export class CoinCapService {
             throw new ApiError(500, 'Failed to fetch candle data');
         }
     }
+
+    async getAssetVolume(id) {
+        try {
+            const response = await CoinCapHelper.makeRequest(`/assets/${id}`);
+            return {
+                volume24h: response.data.volumeUsd24Hr,
+                rank: response.data.rank
+            };
+        } catch (error) {
+            throw new Error(`CoinCap volume error: ${error.message}`);
+        }
+    }
 }
 
 export default new CoinCapService();

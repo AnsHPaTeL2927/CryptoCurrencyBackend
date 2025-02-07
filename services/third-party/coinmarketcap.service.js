@@ -98,6 +98,23 @@ export class CoinMarketCapService {
             throw new ApiError(500, 'Failed to convert price');
         }
     }
+
+    async getMarketCap(symbol) {
+        try {
+            const response = await CoinMarketCapHelper.makeRequest(`/cryptocurrency/quotes/latest`, {
+                symbol: symbol
+            });
+            const data = response.data[symbol];
+            return {
+                marketCap: data.quote.USD.market_cap,
+                dominance: data.quote.USD.dominance,
+                circulatingSupply: data.circulating_supply,
+                totalSupply: data.total_supply
+            };
+        } catch (error) {
+            throw new Error(`CoinMarketCap data error: ${error.message}`);
+        }
+    }
 }
 
 export default new CoinMarketCapService();

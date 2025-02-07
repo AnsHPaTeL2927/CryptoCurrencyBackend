@@ -55,36 +55,44 @@ export class CombinedController {
     });
 
     static getMarketSummary = catchAsync(async (req, res) => {
-        const { symbol } = req.params;
-        const { timeframe = '24h' } = req.query;
+        try {
+            const { symbol } = req.params;
+            const symbolMap = { 'BTC': 'bitcoin', 'ETH': 'ethereum', 'BNB': 'binancecoin' };
+            const coinCapId = symbolMap[symbol.toUpperCase()];
 
-        if (!symbol) {
-            throw new ApiError(400, 'Symbol is required');
+            // Get data from all services in parallel
+            const [price, volume, marketCap] = await Promise.all([
+                CryptoCompareService.getSymbolPrice(symbol),
+                CoinCapService.getAssetVolume(coinCapId),
+                CoinMarketCapService.getMarketCap(symbol)
+            ]);
+
+            // Build market summary
+            return res.json({
+                status: 'success',
+                data: {
+                    symbol: symbol.toUpperCase(),
+                    currentStats: {
+                        price: price,
+                        volume24h: volume,
+                        marketCap: marketCap,
+                        priceChange24h: price.change24h || 0
+                    },
+                    market: {
+                        rank: volume.rank,
+                        dominance: marketCap.dominance,
+                        supply: {
+                            circulating: marketCap.circulatingSupply,
+                            total: marketCap.totalSupply
+                        }
+                    },
+                    lastUpdated: new Date().toISOString()
+                }
+            });
+        } catch (error) {
+            throw new ApiError(500, `Market summary error: ${error.message}`);
         }
-
-        const cacheKey = `market:summary:${symbol}:${timeframe}`;
-        const cachedData = await RedisService.get(cacheKey);
-        if (cachedData) return res.json({ status: 'success', data: cachedData });
-
-        const [price, volume, socialData, marketCap] = await Promise.all([
-            this.getAggregatedPrice(symbol),
-            CoinCapService.getAssetVolume(symbol),
-            CryptoCompareService.getSocialData(symbol),
-            CoinMarketCapService.getMarketCap(symbol)
-        ]);
-
-        const summary = {
-            price,
-            volume,
-            socialData,
-            marketCap,
-            timeframe,
-            timestamp: new Date()
-        };
-
-        await RedisService.set(cacheKey, summary, 300);
-        res.json({ status: 'success', data: summary });
-    });
+    })
 
     static getComprehensiveAnalysis = catchAsync(async (req, res) => {
         const { symbol } = req.params;
