@@ -152,10 +152,35 @@ export class CryptoCompareService {
                 fsyms: symbol,
                 tsyms: 'USD'
             });
-            
+
             return response.RAW[symbol].USD;
         } catch (error) {
             throw new Error(`CryptoCompare market data error: ${error.message}`);
+        }
+    }
+
+    // cryptocompare.service.js
+    async getMultiExchangePrices(symbol, exchanges) {
+        try {
+            const response = await CryptoCompareHelper.makeRequest('/data/pricemulti', {
+                fsyms: symbol,
+                tsyms: 'USD',
+                e: exchanges.join(',')
+            });
+
+            // Transform the response to be more readable
+            const exchangeData = {};
+            exchanges.forEach(exchange => {
+                exchangeData[exchange] = {
+                    price: response[symbol]?.USD || null,
+                    exchange: exchange,
+                    available: response[symbol]?.USD !== undefined
+                };
+            });
+
+            return exchangeData;
+        } catch (error) {
+            throw new Error(`CryptoCompare multi exchange price error: ${error.message}`);
         }
     }
 }

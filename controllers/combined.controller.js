@@ -232,34 +232,42 @@ export class CombinedController {
     });
 
     static getCrossExchangeData = catchAsync(async (req, res) => {
-        const { symbol } = req.params;
-        const { exchanges = ['binance', 'coinbase', 'kraken'] } = req.query;
-
-        if (!symbol) {
-            throw new ApiError(400, 'Symbol is required');
+        try {
+            const { symbol } = req.params;
+            const { exchanges = ['binance', 'coinbase', 'kraken'] } = req.query;
+    
+            // Cache check
+            // const cacheKey = `exchange:cross:${symbol}:${exchanges.join(',')}`;
+            // const cachedData = await RedisService.get(cacheKey);
+            // if (cachedData) {
+            //     return res.json({
+            //         status: 'success',
+            //         data: cachedData,
+            //         source: 'cache'
+            //     });
+            // }
+    
+            // Get price data from CryptoCompare for multiple exchanges
+            const prices = await CryptoCompareService.getMultiExchangePrices(symbol, exchanges);
+    
+            const result = {
+                symbol,
+                exchanges: prices,
+                timestamp: new Date().toISOString()
+            };
+    
+            // Cache for 1 minute as exchange prices change frequently
+            // await RedisService.set(cacheKey, result, 60);
+    
+            return res.json({
+                status: 'success',
+                data: result,
+                source: 'api'
+            });
+    
+        } catch (error) {
+            throw new ApiError(500, `Cross exchange data error: ${error.message}`);
         }
-
-        if (!Array.isArray(exchanges)) {
-            throw new ApiError(400, 'Exchanges must be an array');
-        }
-
-        const cacheKey = `exchange:cross:${symbol}:${exchanges.join(',')}`;
-        const cachedData = await RedisService.get(cacheKey);
-        if (cachedData) return res.json({ status: 'success', data: cachedData });
-
-        const data = await Promise.all(
-            exchanges.map(exchange =>
-                CryptoCompareService.getExchangePrice(symbol, exchange)
-            )
-        );
-
-        const result = data.reduce((acc, curr, idx) => {
-            acc[exchanges[idx]] = curr;
-            return acc;
-        }, {});
-
-        await RedisService.set(cacheKey, result, 60);
-        res.json({ status: 'success', data: result });
     });
 
     static calculateWeightedAverage(prices) {

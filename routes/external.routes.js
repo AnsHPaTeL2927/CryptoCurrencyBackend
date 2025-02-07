@@ -73,7 +73,7 @@ router.get('/price/aggregated/:symbol', RateLimiter, CombinedController.getAggre
 router.get('/market/summary/:symbol', RateLimiter, CombinedController.getMarketSummary);
 router.get('/analysis/comprehensive/:symbol', authenticate, CombinedController.getComprehensiveAnalysis);
 router.get('/metrics/blockchain/:symbol', authenticate, CombinedController.getBlockchainMetrics);
-router.get('/data/cross-exchange', authenticate, CombinedController.getCrossExchangeData);
+router.get('/data/cross-exchange/:symbol', authenticate, CombinedController.getCrossExchangeData);
 
 // Cache Management
 router.post('/cache/clear/:type', authenticate, CacheController.clearCache);
