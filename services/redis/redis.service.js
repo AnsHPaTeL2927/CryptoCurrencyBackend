@@ -242,9 +242,16 @@ class RedisService {
     async getUptime() {
         try {
             const info = await this.client.info();
+            const metrics = info.split('\r\n').reduce((acc, line) => {
+                const [key, value] = line.split(':');
+                if (key && value) {
+                    acc[key.trim()] = value.trim();
+                }
+                return acc;
+            }, {});
             return {
-                server_uptime: info.uptime_in_seconds,
-                connected_clients: info.connected_clients
+                server_uptime: metrics.uptime_in_seconds,
+                connected_clients: metrics.connected_clients
             };
         } catch (error) {
             logger.error('Get Uptime Error:', error);
@@ -255,7 +262,14 @@ class RedisService {
     async getMemoryUsage() {
         try {
             const info = await this.client.info();
-            return await RedisHelpers.getMemoryUsage(info);
+            const metrics = info.split('\r\n').reduce((acc, line) => {
+                const [key, value] = line.split(':');
+                if (key && value) {
+                    acc[key.trim()] = value.trim();
+                }
+                return acc;
+            }, {});
+            return await RedisHelpers.getMemoryUsage(metrics);
         } catch (error) {
             logger.error('Memory Usage Error:', error);
             throw error;
@@ -265,9 +279,23 @@ class RedisService {
     async getHitRate() {
         try {
             const info = await this.client.info();
-            const hits = parseInt(info.keyspace_hits);
-            const misses = parseInt(info.keyspace_misses);
-            return await RedisHelpers.calculateHitRate(hits, misses);
+            const metrics = info.split('\r\n').reduce((acc, line) => {
+                const [key, value] = line.split(':');
+                if (key && value) {
+                    acc[key.trim()] = value.trim();
+                }
+                return acc;
+            }, {});
+
+            const hits = parseInt(metrics.keyspace_hits);
+            const misses = parseInt(metrics.keyspace_misses);
+            const hitRate = await RedisHelpers.calculateHitRate(hits, misses);
+
+            return {
+                hits,
+                misses,
+                hitRate: hitRate
+            };
         } catch (error) {
             logger.error('Hit Rate Error:', error);
             throw error;

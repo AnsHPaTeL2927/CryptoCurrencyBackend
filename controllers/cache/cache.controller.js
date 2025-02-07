@@ -46,19 +46,23 @@ export class CacheController {
     });
 
     static getCacheStatus = catchAsync(async (req, res) => {
-        const { detailed } = req.query;
-        const status = await RedisService.getCacheStatus(detailed === 'true');
-
-        res.json({
-            status: 'success',
-            data: {
-                ...status,
-                uptime: await RedisService.getUptime(),
-                memoryUsage: await RedisService.getMemoryUsage(),
-                hitRate: await RedisService.getHitRate(),
-                timestamp: new Date()
-            }
-        });
+        try {
+            const { detailed } = req.query;
+            const status = await RedisService.getCacheStatus(detailed === 'true');
+    
+            return res.json({
+                status: 'success',
+                data: {
+                    ...status,
+                    uptime: await RedisService.getUptime(),
+                    memoryUsage: await RedisService.getMemoryUsage(),
+                    hitRate: await RedisService.getHitRate(),
+                    timestamp: new Date()
+                }
+            });
+        } catch (error) {
+            throw new ApiError(500, 'Failed to get cache status');
+        }
     });
 
     static getCacheMetrics = catchAsync(async (req, res) => {
