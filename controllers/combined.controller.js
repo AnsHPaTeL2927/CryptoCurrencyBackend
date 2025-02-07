@@ -4,7 +4,8 @@ import CoinMarketCapService from '../services/third-party/coinmarketcap.service.
 import RedisService from '../services/redis/redis.service.js';
 import { catchAsync } from '../utils/catchAsync.js';
 import { ApiError } from '../utils/ApiError.js';
-
+import EtherscanService from '../services/third-party/etherscan.service.js';
+import BscscanService from '../services/third-party/bscscan.service.js';
 export class CombinedController {
     static getAggregatedPrice = catchAsync(async (req, res) => {
         try {
@@ -171,29 +172,63 @@ export class CombinedController {
     });
 
     static getBlockchainMetrics = catchAsync(async (req, res) => {
-        const { symbol, network = 'all' } = req.params;
+        try {
+            const { symbol, network = 'all' } = req.params;
+            
+            // Cache check
+            const cacheKey = `metrics:blockchain:${symbol}:${network}`;
+            const cachedMetrics = await RedisService.get(cacheKey);
+            if (cachedMetrics) {
+                return res.json({
+                    status: 'success',
+                    data: cachedMetrics,
+                    source: 'cache'
+                });
+            }
+    
+            // Get data from Etherscan and BSCScan using free endpoints
+            const [ethGasData, bscGasData] = await Promise.all([
+                EtherscanService.getGasOracle(),
+                BscscanService.getGasOracle()
+            ]);
 
-        if (!symbol) {
-            throw new ApiError(400, 'Symbol is required');
+            console.log(bscGasData)
+    
+            const metrics = {
+                symbol,
+                networkMetrics: {
+                    ethereum: {
+                        gas: {
+                            safeLow: ethGasData.SafeLow,
+                            standard: ethGasData.Standard,
+                            fast: ethGasData.Fast
+                        },
+                        timestamp: new Date().toISOString()
+                    },
+                    bsc: {
+                        gas: {
+                            safeLow: bscGasData.SafeGasPrice,
+                            standard: bscGasData.ProposeGasPrice,
+                            fast: bscGasData.FastGasPrice
+                        },
+                        timestamp: new Date().toISOString()
+                    }
+                },
+                lastUpdated: new Date().toISOString()
+            };
+    
+            // Cache for 5 minutes
+            await RedisService.set(cacheKey, metrics, 300);
+    
+            return res.json({
+                status: 'success',
+                data: metrics,
+                source: 'api'
+            });
+    
+        } catch (error) {
+            throw new ApiError(500, `Blockchain metrics error: ${error.message}`);
         }
-
-        const cacheKey = `metrics:blockchain:${symbol}:${network}`;
-        const cachedMetrics = await RedisService.get(cacheKey);
-        if (cachedMetrics) return res.json({ status: 'success', data: cachedMetrics });
-
-        const [ethMetrics, bscMetrics] = await Promise.all([
-            getEthereumMetrics(symbol),
-            getBSCMetrics(symbol)
-        ]);
-
-        const metrics = {
-            ethereum: ethMetrics,
-            bsc: bscMetrics,
-            timestamp: new Date()
-        };
-
-        await RedisService.set(cacheKey, metrics, 300);
-        res.json({ status: 'success', data: metrics });
     });
 
     static getCrossExchangeData = catchAsync(async (req, res) => {

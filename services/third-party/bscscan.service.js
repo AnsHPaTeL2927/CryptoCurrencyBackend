@@ -128,6 +128,25 @@ export class BscscanService {
             throw new ApiError(500, 'Failed to fetch contract ABI');
         }
     }
+
+    async getGasOracle() {
+        try {
+            const response = await BscScanHelper.makeRequest({
+                module: 'gastracker',
+                action: 'gasoracle',
+                apikey: this.apiKey
+            });
+    
+            return {
+                SafeGasPrice: response.result.SafeGasPrice,
+                ProposeGasPrice: response.result.ProposeGasPrice,
+                FastGasPrice: response.result.FastGasPrice
+            };
+        } catch (error) {
+            throw new Error(`BSCScan gas oracle error: ${error.message}`);
+        }
+    }
+    
 }
 
 export default new BscscanService();
