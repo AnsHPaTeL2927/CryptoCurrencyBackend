@@ -95,40 +95,79 @@ export class CombinedController {
     })
 
     static getComprehensiveAnalysis = catchAsync(async (req, res) => {
-        const { symbol } = req.params;
-        const { period = '24h', indicators = [] } = req.query;
+        try {
+            const { symbol } = req.params;
 
-        if (!symbol) {
-            throw new ApiError(400, 'Symbol is required');
+            const cacheKey = `analysis:comprehensive:${symbol}`;
+
+            // Try to get from cache first
+            const cachedData = await RedisService.get(cacheKey);
+            if (cachedData) {
+                return res.json({
+                    status: 'success',
+                    data: cachedData,
+                    source: 'cache'
+                });
+            }
+
+            const symbolMap = { 'BTC': 'bitcoin', 'ETH': 'ethereum', 'BNB': 'binancecoin' };
+            const coinCapId = symbolMap[symbol.toUpperCase()];
+
+            // Get data from all services in parallel
+            const [cryptoCompareData, coinCapData, cmcData] = await Promise.all([
+                CryptoCompareService.getMarketData(symbol),
+                CoinCapService.getAssetDetails(coinCapId),
+                CoinMarketCapService.getQuote(symbol)
+            ]);
+
+            const analysisData = {
+                symbol: symbol.toUpperCase(),
+                price: {
+                    current: cryptoCompareData.PRICE,
+                    high24h: cryptoCompareData.HIGH24HOUR,
+                    low24h: cryptoCompareData.LOW24HOUR,
+                    open24h: cryptoCompareData.OPEN24HOUR
+                },
+                change: {
+                    absolute24h: cryptoCompareData.CHANGE24HOUR,
+                    percentage24h: cryptoCompareData.CHANGEPCT24HOUR
+                },
+                volume: {
+                    volume24h: cryptoCompareData.VOLUME24HOUR,
+                    volumeUSD: cryptoCompareData.VOLUME24HOURTO
+                },
+                market: {
+                    cap: coinCapData.marketCapUsd,
+                    rank: coinCapData.rank,
+                    supply: {
+                        circulating: coinCapData.circulatingSupply,
+                        total: coinCapData.supply,
+                        max: coinCapData.maxSupply
+                    }
+                },
+                additionalMetrics: {
+                    dominance: cmcData.quote.USD.market_cap_dominance,
+                    volumeChange24h: cmcData.quote.USD.volume_change_24h,
+                    percentChange: {
+                        '1h': cmcData.quote.USD.percent_change_1h,
+                        '24h': cmcData.quote.USD.percent_change_24h,
+                        '7d': cmcData.quote.USD.percent_change_7d
+                    }
+                },
+                lastUpdated: new Date().toISOString()
+            };
+
+            // Cache the data for 5 minutes (300 seconds)
+            await RedisService.set(cacheKey, analysisData, 300);
+
+            return res.json({
+                status: 'success',
+                data: analysisData,
+                source: 'api'
+            });
+        } catch (error) {
+            throw new ApiError(500, `Analysis error: ${error.message}`);
         }
-
-        const cacheKey = `analysis:comprehensive:${symbol}:${period}`;
-        const cachedAnalysis = await RedisService.get(cacheKey);
-        if (cachedAnalysis) return res.json({ status: 'success', data: cachedAnalysis });
-
-        const [
-            marketData,
-            technicalIndicators,
-            socialSentiment,
-            onChainMetrics
-        ] = await Promise.all([
-            this.getMarketSummary(symbol),
-            CryptoCompareService.getTechnicalIndicators(symbol, indicators),
-            CryptoCompareService.getSocialData(symbol),
-            this.getBlockchainMetrics(symbol)
-        ]);
-
-        const analysis = {
-            marketData,
-            technicalIndicators,
-            socialSentiment,
-            onChainMetrics,
-            period,
-            timestamp: new Date()
-        };
-
-        await RedisService.set(cacheKey, analysis, 600);
-        res.json({ status: 'success', data: analysis });
     });
 
     static getBlockchainMetrics = catchAsync(async (req, res) => {

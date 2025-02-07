@@ -145,6 +145,19 @@ export class CryptoCompareService {
             throw new ApiError(500, 'Failed to fetch market analysis');
         }
     }
+
+    async getMarketData(symbol) {
+        try {
+            const response = await CryptoCompareHelper.makeRequest('/data/pricemultifull', {
+                fsyms: symbol,
+                tsyms: 'USD'
+            });
+            
+            return response.RAW[symbol].USD;
+        } catch (error) {
+            throw new Error(`CryptoCompare market data error: ${error.message}`);
+        }
+    }
 }
 
 export default new CryptoCompareService();

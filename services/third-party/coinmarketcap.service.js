@@ -115,6 +115,19 @@ export class CoinMarketCapService {
             throw new Error(`CoinMarketCap data error: ${error.message}`);
         }
     }
+
+    async getQuote(symbol) {
+        try {
+            const response = await CoinMarketCapHelper.makeRequest('/cryptocurrency/quotes/latest', {
+                symbol: symbol,
+                convert: 'USD'
+            });
+            console.log(response)
+            return response.data[symbol];
+        } catch (error) {
+            throw new Error(`CoinMarketCap quote error: ${error.message}`);
+        }
+    }
 }
 
 export default new CoinMarketCapService();

@@ -11163,3 +11163,78 @@
 {"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-02-07 10:32:01"}
 {"isOperational":true,"level":"error","message":"Error 💥 Market summary error: CoinMarketCap data error: this.makeRequest is not a function","service":"api","stack":"Error: Market summary error: CoinMarketCap data error: this.makeRequest is not a function\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/combined.controller.js:93:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-02-07 10:32:02"}
 {"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-02-07 10:32:20"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-02-07 11:00:10"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-02-07 11:00:12"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-02-07 11:00:12"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-02-07 11:00:12"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-02-07 11:00:12"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-02-07 11:00:12"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-02-07 11:00:12"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-02-07 11:00:25"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-02-07 11:00:28"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-02-07 11:00:28"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-02-07 11:00:28"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-02-07 11:00:28"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-02-07 11:00:28"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-02-07 11:00:28"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-02-07 11:00:41"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-02-07 11:00:42"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-02-07 11:00:45"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-02-07 11:00:45"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-02-07 11:00:45"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-02-07 11:00:45"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-02-07 11:00:45"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-02-07 11:00:45"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-02-07 11:01:05"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-02-07 11:01:08"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-02-07 11:01:08"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-02-07 11:01:08"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-02-07 11:01:08"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-02-07 11:01:08"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-02-07 11:01:08"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-02-07 11:01:41"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-02-07 11:01:44"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-02-07 11:01:44"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-02-07 11:01:44"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-02-07 11:01:44"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-02-07 11:01:44"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-02-07 11:01:44"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-02-07 11:02:07"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-02-07 11:02:10"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-02-07 11:02:10"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-02-07 11:02:10"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-02-07 11:02:10"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-02-07 11:02:10"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-02-07 11:02:10"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-02-07 11:02:14"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-02.ms7amfn.mongodb.net","service":"api","timestamp":"2025-02-07 11:02:17"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-02-07 11:02:17"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-02-07 11:02:17"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-02-07 11:02:17"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-02-07 11:02:17"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-02-07 11:02:17"}
+{"isOperational":true,"level":"error","message":"Error 💥 Analysis error: CoinMarketCap quote error: Request failed with status code 404","service":"api","stack":"Error: Analysis error: CoinMarketCap quote error: Request failed with status code 404\n    at file:///A:/WEB%20Course/Crypto%20Curreny%20Project/Backend/controllers/combined.controller.js:150:19\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","status":"error","statusCode":500,"timestamp":"2025-02-07 11:02:20"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-02-07 11:02:40"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-00.ms7amfn.mongodb.net","service":"api","timestamp":"2025-02-07 11:02:43"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-02-07 11:02:43"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-02-07 11:02:43"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-02-07 11:02:43"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-02-07 11:02:43"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-02-07 11:02:43"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-02-07 11:02:54"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-02-07 11:02:57"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-02-07 11:02:57"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-02-07 11:02:57"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-02-07 11:02:57"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-02-07 11:02:57"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-02-07 11:02:57"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-02-07 11:04:46"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-02-07 11:04:48"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-02-07 11:04:52"}
+{"level":"info","message":"MongoDB Connected: ac-rybzc0j-shard-00-01.ms7amfn.mongodb.net","service":"api","timestamp":"2025-02-07 11:04:55"}
+{"level":"info","message":"MongoDB Connected","service":"api","timestamp":"2025-02-07 11:04:55"}
+{"level":"info","message":"Redis Connected","service":"api","timestamp":"2025-02-07 11:04:55"}
+{"level":"info","message":"WebSocket server initialized","service":"api","timestamp":"2025-02-07 11:04:55"}
+{"level":"info","message":"WebSocket Server Initialized","service":"api","timestamp":"2025-02-07 11:04:55"}
+{"level":"info","message":"Server running in development mode on port 5000","service":"api","timestamp":"2025-02-07 11:04:55"}
+{"level":"info","message":"Redis client connected","service":"api","timestamp":"2025-02-07 11:06:27"}
