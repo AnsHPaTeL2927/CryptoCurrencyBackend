@@ -2,6 +2,7 @@ import WebSocketService from '../../services/websocket/websocket.service.js';
 import RedisService from '../../services/redis/redis.service.js';
 import { catchAsync } from '../../utils/catchAsync.js';
 import { ApiError } from '../../utils/ApiError.js';
+import logger from '../../utils/logger.js';
 
 export class CacheController {
     static clearCache = catchAsync(async (req, res) => {
@@ -25,23 +26,64 @@ export class CacheController {
 
     static refreshCache = catchAsync(async (req, res) => {
         const { type } = req.params;
-        const { force } = req.query;
+        const { force = false, detailed = false } = req.query;
 
-        if (!type) throw new ApiError('Cache type is required', 400);
-
-        const validTypes = ['market', 'user', 'trades', 'all'];
-        if (!validTypes.includes(type)) {
-            throw new ApiError('Invalid cache type. Valid types are: market, user, trades, all', 400);
+        if (!type) {
+            throw new ApiError(400, 'Cache type is required');
         }
 
-        const refreshedData = await RedisService.refreshCache(type, force === 'true');
-        await WebSocketService.broadcastCacheUpdate(type, 'refresh');
+        const validTypes = ['market', 'user', 'trades', 'technical', 'all'];
+        if (!validTypes.includes(type)) {
+            throw new ApiError(400, `Invalid cache type. Valid types are: ${validTypes.join(', ')}`);
+        }
+
+        // Get cache statistics before refresh
+        const beforeStats = await RedisService.getCacheStats(type);
+
+        // Perform cache refresh
+        const refreshResult = await RedisService.refreshCache(type, force === 'true');
+
+        // Get cache statistics after refresh
+        const afterStats = await RedisService.getCacheStats(type);
+
+        // Notify connected clients via WebSocket
+        await WebSocketService.broadcastCacheUpdate(type, {
+            action: 'refresh',
+            type,
+            force: force === 'true',
+            timestamp: new Date(),
+            stats: {
+                before: beforeStats,
+                after: afterStats
+            }
+        });
+
+        // Prepare response data
+        const responseData = {
+            type,
+            force: force === 'true',
+            refreshedAt: new Date(),
+            keysAffected: refreshResult.keysAffected,
+            stats: {
+                beforeRefresh: beforeStats,
+                afterRefresh: afterStats
+            }
+        };
+
+        if (detailed === 'true') {
+            responseData.details = refreshResult.details;
+        }
+
+        logger.info(`Cache refresh completed for type: ${type}`, {
+            type,
+            force,
+            keysAffected: refreshResult.keysAffected
+        });
 
         res.json({
             status: 'success',
             message: `Cache ${type} refreshed successfully`,
-            data: refreshedData,
-            timestamp: new Date()
+            data: responseData
         });
     });
 

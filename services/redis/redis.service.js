@@ -1,6 +1,7 @@
 import RedisClient from '../../config/redis/client.js';
 import RedisHelpers from '../../utils/helpers/redis.helper.js';
 import logger from '../../utils/logger.js';
+import CryptoCompareService from '../../services/third-party/cryptocompare.service.js'
 
 class RedisService {
     constructor() {
@@ -198,19 +199,44 @@ class RedisService {
 
     async refreshCache(type, force = false) {
         try {
+            const startTime = Date.now();
+            let keysAffected = 0;
+            const details = {};
+
             if (!await RedisHelpers.validateCacheType(type)) {
-                throw new Error('Invalid cache type');
+                throw new ApiError(400, 'Invalid cache type');
             }
+
+            // Get initial cache state
+            const initialKeys = await this.client.keys(RedisHelpers.buildKeyPattern(type));
 
             if (force) {
+                // Clear existing cache if force refresh
                 await this.clearCache(type);
+                keysAffected += initialKeys.length;
             }
 
-            const data = await RedisHelpers.rebuildCache(type);
-            return data;
+            // Rebuild cache based on type
+            const rebuildResult = await this.rebuildCacheByType(type);
+            keysAffected += rebuildResult.keysAffected;
+
+            // Calculate performance metrics
+            const endTime = Date.now();
+            const refreshDuration = endTime - startTime;
+
+            // Prepare detailed information
+            details.refreshDuration = refreshDuration;
+            details.initialKeyCount = initialKeys.length;
+            details.finalKeyCount = await this.client.keys(RedisHelpers.buildKeyPattern(type)).length;
+            details.rebuildStats = rebuildResult.stats;
+
+            return {
+                keysAffected,
+                details
+            };
         } catch (error) {
-            logger.error('Cache Refresh Error:', error);
-            throw error;
+            logger.error('Cache refresh error:', error);
+            throw new ApiError(500, `Failed to refresh cache: ${error.message}`);
         }
     }
 
@@ -311,6 +337,240 @@ class RedisService {
             }, {});
         } catch (error) {
             logger.error('Redis HGETALL Error:', error);
+            throw error;
+        }
+    }
+
+    async getCacheStats(type) {
+        try {
+            const pattern = RedisHelpers.buildKeyPattern(type);
+            const keys = await this.client.keys(pattern);
+
+            const stats = {
+                keyCount: keys.length,
+                memoryUsage: await this.getMemoryUsage(),
+                hitRate: await this.getHitRate(),
+                lastUpdated: new Date()
+            };
+
+            if (type !== 'all') {
+                stats.typeSpecific = await this.getTypeSpecificStats(type);
+            }
+
+            return stats;
+        } catch (error) {
+            logger.error('Error getting cache stats:', error);
+            throw new ApiError(500, 'Failed to get cache statistics');
+        }
+    }
+
+    async rebuildCacheByType(type) {
+        const rebuildStrategies = {
+            market: async () => this.rebuildMarketCache(),
+            // user: async () => this.rebuildUserCache(),
+            trades: async () => this.rebuildTradesCache(),
+            technical: async () => this.rebuildTechnicalCache(),
+            all: async () => this.rebuildAllCache()
+        };
+
+        if (!rebuildStrategies[type]) {
+            throw new ApiError(400, `No rebuild strategy for cache type: ${type}`);
+        }
+
+        return await rebuildStrategies[type]();
+    }
+
+    async getTypeSpecificStats(type) {
+        try {
+            const stats = {
+                keyCount: 0,
+                dataTypes: {},
+                expiryStats: {
+                    withTTL: 0,
+                    withoutTTL: 0,
+                    averageTTL: 0
+                }
+            };
+
+            const pattern = await RedisHelpers.buildKeyPattern(type);
+            const keys = await this.client.keys(pattern);
+            stats.keyCount = keys.length;
+
+            let totalTTL = 0;
+
+            for (const key of keys) {
+                // Get key type
+                const keyType = await this.client.type(key);
+                stats.dataTypes[keyType] = (stats.dataTypes[keyType] || 0) + 1;
+
+                // Get TTL
+                const ttl = await this.client.ttl(key);
+                if (ttl > 0) {
+                    stats.expiryStats.withTTL++;
+                    totalTTL += ttl;
+                } else {
+                    stats.expiryStats.withoutTTL++;
+                }
+            }
+
+            // Calculate average TTL
+            if (stats.expiryStats.withTTL > 0) {
+                stats.expiryStats.averageTTL = totalTTL / stats.expiryStats.withTTL;
+            }
+
+            return stats;
+        } catch (error) {
+            logger.error('Error getting type specific stats:', error);
+            throw error;
+        }
+    }
+
+    async rebuildMarketCache() {
+        try {
+            const stats = {
+                startTime: new Date(),
+                processed: 0,
+                updated: 0,
+                failed: 0
+            };
+
+            // Get current prices for default symbols
+            const defaultSymbols = ['BTC', 'ETH', 'BNB', 'XRP', 'ADA'];
+            
+            for (const symbol of defaultSymbols) {
+                try {
+                    // Using existing CryptoCompare service
+                    const price = await CryptoCompareService.getSymbolPrice(symbol);
+                    
+                    // Cache the price data
+                    const key = RedisHelpers.formatCacheKey('market', symbol);
+                    await this.set(key, {
+                        price,
+                        lastUpdated: new Date()
+                    }, RedisHelpers.generateExpiryTime('market'));
+                    
+                    stats.updated++;
+                } catch (error) {
+                    logger.error(`Failed to rebuild market cache for symbol ${symbol}:`, error);
+                    stats.failed++;
+                }
+                stats.processed++;
+            }
+
+            stats.endTime = new Date();
+            stats.duration = stats.endTime - stats.startTime;
+
+            return {
+                keysAffected: stats.updated,
+                stats
+            };
+        } catch (error) {
+            logger.error('Market cache rebuild error:', error);
+            throw error;
+        }
+    }
+
+    async rebuildTradesCache() {
+        try {
+            const stats = {
+                startTime: new Date(),
+                processed: 0,
+                updated: 0,
+                failed: 0
+            };
+
+            // Cache recent market prices for quick access
+            const priceKey = RedisHelpers.formatCacheKey('market', 'prices');
+            const currentPrices = await CryptoCompareService.getCurrentPrice();
+            await this.set(priceKey, currentPrices, RedisHelpers.generateExpiryTime('trades'));
+
+            stats.updated++;
+            stats.processed++;
+
+            stats.endTime = new Date();
+            stats.duration = stats.endTime - stats.startTime;
+
+            return {
+                keysAffected: stats.updated,
+                stats
+            };
+        } catch (error) {
+            logger.error('Trades cache rebuild error:', error);
+            throw error;
+        }
+    }
+
+    async rebuildTechnicalCache() {
+        try {
+            const stats = {
+                startTime: new Date(),
+                processed: 0,
+                updated: 0,
+                failed: 0
+            };
+
+            const defaultSymbols = ['BTC', 'ETH'];
+
+            for (const symbol of defaultSymbols) {
+                try {
+                    // Using existing CryptoCompare service
+                    const technicalData = await CryptoCompareService.getMarketAnalysis(symbol);
+                    
+                    const key = RedisHelpers.formatCacheKey('technical', symbol);
+                    await this.set(key, technicalData, RedisHelpers.generateExpiryTime('technical'));
+                    
+                    stats.updated++;
+                } catch (error) {
+                    logger.error(`Failed to rebuild technical cache for symbol ${symbol}:`, error);
+                    stats.failed++;
+                }
+                stats.processed++;
+            }
+
+            stats.endTime = new Date();
+            stats.duration = stats.endTime - stats.startTime;
+
+            return {
+                keysAffected: stats.updated,
+                stats
+            };
+        } catch (error) {
+            logger.error('Technical cache rebuild error:', error);
+            throw error;
+        }
+    }
+
+    async rebuildAllCache() {
+        try {
+            const stats = {
+                startTime: new Date(),
+                marketStats: null,
+                tradeStats: null,
+                technicalStats: null
+            };
+
+            // Rebuild all cache types in parallel
+            const [marketResult, tradeResult, technicalResult] = await Promise.all([
+                this.rebuildMarketCache(),
+                this.rebuildTradesCache(),
+                this.rebuildTechnicalCache()
+            ]);
+
+            stats.marketStats = marketResult.stats;
+            stats.tradeStats = tradeResult.stats;
+            stats.technicalStats = technicalResult.stats;
+            stats.endTime = new Date();
+            stats.duration = stats.endTime - stats.startTime;
+
+            return {
+                keysAffected: 
+                    marketResult.keysAffected + 
+                    tradeResult.keysAffected + 
+                    technicalResult.keysAffected,
+                stats
+            };
+        } catch (error) {
+            logger.error('All cache rebuild error:', error);
             throw error;
         }
     }

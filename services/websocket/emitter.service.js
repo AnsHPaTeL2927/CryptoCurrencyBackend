@@ -49,7 +49,7 @@ export class EmitterService {
         }
     }
 
-     // Portfolio Related Emits
+    // Portfolio Related Emits
     static async emitPortfolioValue(userId, value) {
         try {
             const io = SocketServer.getIO();
@@ -263,16 +263,29 @@ export class EmitterService {
     }
 
     // Cache Related Emits
-    static async broadcastCacheUpdate(type, action) {
+    static async broadcastCacheUpdate(type, data) {
         try {
             const io = SocketServer.getIO();
+
+            // Broadcast to all connected clients
             io.emit('cache_update', {
                 type,
-                action,
+                ...data,
                 timestamp: new Date()
             });
+
+            // Broadcast to type-specific room if applicable
+            if (type !== 'all') {
+                io.to(`cache:${type}`).emit('cache_type_update', {
+                    type,
+                    ...data,
+                    timestamp: new Date()
+                });
+            }
+
+            logger.info(`Cache update broadcast sent for type: ${type}`);
         } catch (error) {
-            logger.error('Cache update broadcast error:', error);
+            logger.error('Error broadcasting cache update:', error);
             throw error;
         }
     }
