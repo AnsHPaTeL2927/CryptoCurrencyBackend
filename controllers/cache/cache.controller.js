@@ -7,20 +7,47 @@ import logger from '../../utils/logger.js';
 export class CacheController {
     static clearCache = catchAsync(async (req, res) => {
         const { type } = req.params;
-        if (!type) throw new ApiError('Cache type is required', 400);
-
-        const validTypes = ['market', 'user', 'trades', 'all'];
-        if (!validTypes.includes(type)) {
-            throw new ApiError('Invalid cache type. Valid types are: market, user, trades, all', 400);
+        if (!type) {
+            throw new ApiError(400, 'Cache type is required');
         }
 
-        await RedisService.clearCache(type);
-        await WebSocketService.broadcastCacheUpdate(type, 'clear');
+        // Validate cache type
+        const validTypes = ['market', 'user', 'trades', 'technical', 'all'];
+        if (!validTypes.includes(type)) {
+            throw new ApiError(400, `Invalid cache type. Valid types are: ${validTypes.join(', ')}`);
+        }
 
+        // Get stats before clearing
+        const beforeStats = await RedisService.getCacheStats(type);
+
+        // Clear cache
+        const clearResult = await RedisService.clearCache(type);
+
+        // Get stats after clearing
+        const afterStats = await RedisService.getCacheStats(type);
+
+        console.log(beforeStats, afterStats)
+
+        // Notify connected clients
+        await WebSocketService.broadcastCacheUpdate(type, {
+            action: 'clear',
+            keysCleared: clearResult.keysCleared,
+            timestamp: new Date()
+        });
+
+        // Send response
         res.json({
             status: 'success',
             message: `Cache ${type} cleared successfully`,
-            timestamp: new Date()
+            data: {
+                type,
+                keysCleared: clearResult.keysCleared,
+                timestamp: new Date(),
+                stats: {
+                    before: beforeStats,
+                    after: afterStats
+                }
+            }
         });
     });
 

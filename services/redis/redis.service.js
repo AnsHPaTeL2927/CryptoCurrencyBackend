@@ -80,16 +80,22 @@ class RedisService {
         try {
             const pattern = await RedisHelpers.buildKeyPattern(type);
             const keys = await this.client.keys(pattern);
-            if (keys.length) {
+
+            if (keys.length > 0) {
                 await RedisHelpers.processBatchOperation(
                     this.client,
                     'del',
                     keys.map(key => [key])
                 );
             }
+
+            return {
+                keysCleared: keys.length,
+                timestamp: new Date()
+            };
         } catch (error) {
             logger.error('Cache Clear Error:', error);
-            throw error;
+            throw new ApiError(500, 'Failed to clear cache: ' + error.message);
         }
     }
 
@@ -436,19 +442,19 @@ class RedisService {
 
             // Get current prices for default symbols
             const defaultSymbols = ['BTC', 'ETH', 'BNB', 'XRP', 'ADA'];
-            
+
             for (const symbol of defaultSymbols) {
                 try {
                     // Using existing CryptoCompare service
                     const price = await CryptoCompareService.getSymbolPrice(symbol);
-                    
+
                     // Cache the price data
                     const key = RedisHelpers.formatCacheKey('market', symbol);
                     await this.set(key, {
                         price,
                         lastUpdated: new Date()
                     }, RedisHelpers.generateExpiryTime('market'));
-                    
+
                     stats.updated++;
                 } catch (error) {
                     logger.error(`Failed to rebuild market cache for symbol ${symbol}:`, error);
@@ -515,10 +521,10 @@ class RedisService {
                 try {
                     // Using existing CryptoCompare service
                     const technicalData = await CryptoCompareService.getMarketAnalysis(symbol);
-                    
+
                     const key = RedisHelpers.formatCacheKey('technical', symbol);
                     await this.set(key, technicalData, RedisHelpers.generateExpiryTime('technical'));
-                    
+
                     stats.updated++;
                 } catch (error) {
                     logger.error(`Failed to rebuild technical cache for symbol ${symbol}:`, error);
@@ -563,9 +569,9 @@ class RedisService {
             stats.duration = stats.endTime - stats.startTime;
 
             return {
-                keysAffected: 
-                    marketResult.keysAffected + 
-                    tradeResult.keysAffected + 
+                keysAffected:
+                    marketResult.keysAffected +
+                    tradeResult.keysAffected +
                     technicalResult.keysAffected,
                 stats
             };
