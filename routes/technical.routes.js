@@ -1,11 +1,12 @@
 import express from 'express';
 import { authenticate } from '../middleware/auth.middleware.js';
 import { TechnicalController } from '../controllers/technical.controller.js';
+import { RateLimiter } from '../middleware/RateLimiter.middleware.js';
 
 const router = express.Router();
 
 // Original Technical Routes
-router.get('/indicators/:symbol', authenticate, TechnicalController.getTechnicalIndicators);
+router.get('/indicators/:symbol', authenticate, RateLimiter, TechnicalController.getTechnicalIndicators);
 router.get('/indicators/params', authenticate, TechnicalController.getIndicatorParameters);
 router.get('/arbitrage', authenticate, TechnicalController.getArbitrageOpportunities);
 router.get('/arbitrage/history', authenticate, TechnicalController.getArbitrageHistory);

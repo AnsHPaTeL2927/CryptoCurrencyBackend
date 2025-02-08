@@ -10,12 +10,22 @@ export class TechnicalController {
     // Technical Indicator Methods
     static getTechnicalIndicators = catchAsync(async (req, res) => {
         const { symbol } = req.params;
-        const { 
-            indicators = ['RSI', 'MACD', 'EMA', 'BB'], 
-            period = '1d', 
-            interval = '1h' 
+        const {
+            indicators = ['RSI', 'MACD', 'EMA', 'BB'],
+            period = '1d',
+            interval = '1h'
         } = req.query;
     
+        const validPeriods = ['1d', '7d', '30d', '90d', '1y'];
+        const validIntervals = ['5m', '15m', '30m', '1h', '4h', '1d'];
+
+        if (!validPeriods.includes(period)) {
+            throw new ApiError(400, `Invalid period. Valid values are: ${validPeriods.join(', ')}`);
+        }
+
+        if (!validIntervals.includes(interval)) {
+            throw new ApiError(400, `Invalid interval. Valid values are: ${validIntervals.join(', ')}`);
+        }
         // Validate inputs
         if (!symbol) {
             throw new ApiError(400, 'Symbol is required');
@@ -50,7 +60,10 @@ export class TechnicalController {
             const results = {
                 technicalIndicators: {},
                 signals: {},
-                trends: {}
+                trends: {},
+                performance: TechnicalHelper.calculatePerformanceMetrics(priceData),
+                volatility: TechnicalHelper.calculateVolatilityMetrics(priceData),
+                support_resistance: TechnicalHelper.calculateSupportResistance(priceData)
             };
     
             // Calculate requested indicators
