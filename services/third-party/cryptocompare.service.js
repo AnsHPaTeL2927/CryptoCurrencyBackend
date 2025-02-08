@@ -1,6 +1,7 @@
 import { ApiError } from '../../utils/ApiError.js';
 import logger from '../../utils/logger.js';
 import { CryptoCompareHelper } from '../../utils/helpers/third-party/cryptocompare.helper.js';
+import { TechnicalHelper } from '../../utils/helpers/technical.helper.js';
 export class CryptoCompareService {
     async getCurrentPrice() {
         try {
@@ -159,7 +160,6 @@ export class CryptoCompareService {
         }
     }
 
-    // cryptocompare.service.js
     async getMultiExchangePrices(symbol, exchanges) {
         try {
             const response = await CryptoCompareHelper.makeRequest('/data/pricemulti', {
@@ -181,6 +181,68 @@ export class CryptoCompareService {
             return exchangeData;
         } catch (error) {
             throw new Error(`CryptoCompare multi exchange price error: ${error.message}`);
+        }
+    }
+
+    async getTechnicalIndicators(symbol, indicators = ['RSI', 'MACD', 'EMA'], period = '1d', interval = '1h') {
+        try {
+            // First get OHLCV data to calculate indicators
+            const ohlcvData = await this.getOHLCV(symbol, 100, 1); // Get last 100 data points
+            
+            if (!ohlcvData || !Array.isArray(ohlcvData)) {
+                throw new ApiError(500, 'Failed to fetch OHLCV data');
+            }
+
+            const results = {};
+            const closePrices = ohlcvData.map(candle => candle.close);
+
+            for (const indicator of indicators) {
+                switch (indicator) {
+                    case 'RSI':
+                        const rsiValue = TechnicalHelper.calculateRSI(closePrices);
+                        results.RSI = {
+                            value: parseFloat(rsiValue.toFixed(2)),
+                            signal: TechnicalHelper.getRSISignal(rsiValue),
+                            timestamp: new Date()
+                        };
+                        break;
+
+                    case 'MACD':
+                        const macdResult = TechnicalHelper.calculateMACD(closePrices);
+                        results.MACD = {
+                            value: parseFloat(macdResult.macd.toFixed(2)),
+                            signal: parseFloat(macdResult.signal.toFixed(2)),
+                            histogram: parseFloat(macdResult.histogram.toFixed(2)),
+                            timestamp: new Date()
+                        };
+                        break;
+
+                    case 'EMA':
+                        const emaValue = TechnicalHelper.calculateEMA(closePrices, 14);
+                        results.EMA = {
+                            value: parseFloat(emaValue.toFixed(2)),
+                            period: 14,
+                            timestamp: new Date()
+                        };
+                        break;
+                }
+            }
+
+            return {
+                ...results,
+                metadata: {
+                    symbol: symbol.toUpperCase(),
+                    period,
+                    interval,
+                    indicators,
+                    calculatedAt: new Date(),
+                    nextUpdate: new Date(Date.now() + 300000) // 5 minutes cache
+                }
+            };
+
+        } catch (error) {
+            logger.error('CryptoCompare getTechnicalIndicators error:', error);
+            throw new ApiError(500, 'Failed to fetch technical indicators');
         }
     }
 }

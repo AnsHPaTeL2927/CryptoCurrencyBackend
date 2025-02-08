@@ -1,25 +1,146 @@
-import { CryptoCompareService } from '../services/third-party/cryptocompare.service.js';
+import CryptoCompareService from '../services/third-party/cryptocompare.service.js';
 import { CoinCapService } from '../services/third-party/coincap.service.js';
 import RedisService from '../services/redis/redis.service.js';
 import { catchAsync } from '../utils/catchAsync.js';
 import { ApiError } from '../utils/ApiError.js';
+import logger from '../utils/logger.js';
+import { TechnicalHelper } from '../utils/helpers/technical.helper.js';
 
 export class TechnicalController {
     // Technical Indicator Methods
     static getTechnicalIndicators = catchAsync(async (req, res) => {
         const { symbol } = req.params;
-        const { indicators = ['RSI', 'MACD', 'EMA'], period = '1d', interval = '1h' } = req.query;
-
-        if (!symbol) throw new ApiError(400, 'Symbol is required');
-
+        const { 
+            indicators = ['RSI', 'MACD', 'EMA', 'BB'], 
+            period = '1d', 
+            interval = '1h' 
+        } = req.query;
+    
+        // Validate inputs
+        if (!symbol) {
+            throw new ApiError(400, 'Symbol is required');
+        }
+    
+        // Validate indicators (now support BB - Bollinger Bands)
+        const validIndicators = ['RSI', 'MACD', 'EMA', 'BB'];
+        const requestedIndicators = Array.isArray(indicators) ? indicators : indicators.split(',');
+        
+        const invalidIndicators = requestedIndicators.filter(ind => !validIndicators.includes(ind.toUpperCase()));
+        if (invalidIndicators.length > 0) {
+            throw new ApiError(400, `Invalid indicators: ${invalidIndicators.join(', ')}`);
+        }
+    
+        // Try to get from cache
         const cacheKey = `technical:indicators:${symbol}:${period}:${interval}`;
         const cachedData = await RedisService.get(cacheKey);
-        if (cachedData) return res.json({ status: 'success', data: cachedData });
-
-        const data = await CryptoCompareService.getTechnicalIndicators(symbol, indicators, period, interval);
-        await RedisService.set(cacheKey, data, 300);
-
-        res.json({ status: 'success', data });
+    
+        if (cachedData) {
+            return res.json({
+                status: 'success',
+                source: 'cache',
+                data: cachedData
+            });
+        }
+    
+        try {
+            // Get price data from CryptoCompare
+            const priceData = await CryptoCompareService.getHistoricalData(symbol, 100);
+            const prices = priceData.map(d => d.close);
+    
+            const results = {
+                technicalIndicators: {},
+                signals: {},
+                trends: {}
+            };
+    
+            // Calculate requested indicators
+            for (const indicator of requestedIndicators) {
+                switch (indicator.toUpperCase()) {
+                    case 'RSI':
+                        const rsi = TechnicalHelper.calculateRSI(prices);
+                        results.technicalIndicators.RSI = {
+                            value: rsi.lastValue,
+                            values: rsi.values.slice(-5), // Last 5 values for trend
+                            timestamp: new Date()
+                        };
+                        results.signals.RSI = TechnicalHelper.getRSISignal(rsi.lastValue);
+                        break;
+    
+                    case 'MACD':
+                        const macd = TechnicalHelper.calculateMACD(prices);
+                        results.technicalIndicators.MACD = {
+                            macd: macd.macd,
+                            signal: macd.signal,
+                            histogram: macd.histogram,
+                            values: {
+                                macd: macd.values.macdLine.slice(-5),
+                                signal: macd.values.signalLine.slice(-5),
+                                histogram: macd.values.histogram.slice(-5)
+                            },
+                            timestamp: new Date()
+                        };
+                        results.signals.MACD = TechnicalHelper.getMACDSignal(
+                            macd.macd,
+                            macd.signal,
+                            macd.histogram
+                        );
+                        break;
+    
+                    case 'EMA':
+                        const ema = TechnicalHelper.calculateEMA(prices, 14);
+                        results.technicalIndicators.EMA = {
+                            value: ema.lastValue,
+                            values: ema.values.slice(-5),
+                            period: 14,
+                            timestamp: new Date()
+                        };
+                        break;
+    
+                    case 'BB':
+                        const bb = TechnicalHelper.calculateBollingerBands(prices);
+                        results.technicalIndicators.BB = {
+                            upper: bb.upper,
+                            middle: bb.middle,
+                            lower: bb.lower,
+                            values: {
+                                upper: bb.values.upper.slice(-5),
+                                middle: bb.values.middle.slice(-5),
+                                lower: bb.values.lower.slice(-5)
+                            },
+                            timestamp: new Date()
+                        };
+                        break;
+                }
+            }
+    
+            // Calculate overall trend
+            results.trends = TechnicalHelper.calculateOverallTrend(results);
+    
+            const response = {
+                ...results,
+                metadata: {
+                    symbol: symbol.toUpperCase(),
+                    period,
+                    interval,
+                    indicators: requestedIndicators,
+                    calculatedAt: new Date(),
+                    nextUpdate: new Date(Date.now() + 300000) // 5 minutes cache
+                }
+            };
+    
+            // Cache the response
+            await RedisService.set(cacheKey, response, 300);
+    
+            return res.json({
+                status: 'success',
+                source: 'api',
+                data: response
+            });
+    
+        } catch (error) {
+            logger.error('Error calculating technical indicators:', error);
+            throw new ApiError(500, `Failed to calculate technical indicators: ${error.message}`);
+        }
     });
 
     static getIndicatorParameters = catchAsync(async (req, res) => {
