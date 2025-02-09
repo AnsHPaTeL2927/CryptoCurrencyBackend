@@ -591,7 +591,7 @@ export class TechnicalHelper {
                     strength: null
                 };
             }
-    
+
             // Validate price range
             if (nearestResistance <= nearestSupport) {
                 return {
@@ -601,7 +601,7 @@ export class TechnicalHelper {
                     error: 'Invalid support/resistance levels'
                 };
             }
-    
+
             // Check if price is outside the range
             if (currentPrice < nearestSupport) {
                 return {
@@ -610,7 +610,7 @@ export class TechnicalHelper {
                     strength: 'breakdown'
                 };
             }
-    
+
             if (currentPrice > nearestResistance) {
                 return {
                     zone: 'above_resistance',
@@ -618,15 +618,15 @@ export class TechnicalHelper {
                     strength: 'breakout'
                 };
             }
-    
+
             // Calculate position within range
             const range = nearestResistance - nearestSupport;
             const distanceFromSupport = currentPrice - nearestSupport;
             const relativePosition = (distanceFromSupport / range) * 100;
-    
+
             // Determine zone and strength
             let zone, strength;
-    
+
             if (Math.abs(currentPrice - nearestSupport) < (range * 0.01)) {
                 return {
                     zone: 'at_support',
@@ -634,7 +634,7 @@ export class TechnicalHelper {
                     strength: 'exact'
                 };
             }
-    
+
             if (Math.abs(currentPrice - nearestResistance) < (range * 0.01)) {
                 return {
                     zone: 'at_resistance',
@@ -642,7 +642,7 @@ export class TechnicalHelper {
                     strength: 'exact'
                 };
             }
-    
+
             // Define zones with more precision
             if (relativePosition <= 20) {
                 zone = 'support';
@@ -660,7 +660,7 @@ export class TechnicalHelper {
                 zone = 'resistance';
                 strength = 'strong';
             }
-    
+
             return {
                 zone,
                 position: relativePosition.toFixed(2) + '%',
@@ -671,7 +671,7 @@ export class TechnicalHelper {
                     rangeSize: parseFloat(range.toFixed(2))
                 }
             };
-    
+
         } catch (error) {
             logger.error('Error in determineCurrentZone:', error);
             return {
@@ -680,6 +680,105 @@ export class TechnicalHelper {
                 strength: null,
                 error: error.message
             };
+        }
+    }
+
+    static calculateArbitrageHistory(data1, data2, exchange) {
+        return data1.map((item, index) => {
+            const spread = Math.abs((item.close - data2[index].close) / item.close) * 100;
+            return {
+                timestamp: new Date(item.time * 1000),
+                price1: item.close,
+                price2: data2[index].close,
+                spread: parseFloat(spread.toFixed(2)),
+                volume1: item.volumeTo,
+                volume2: data2[index].volumeTo,
+                exchange: exchange || 'all'
+            };
+        });
+    }
+
+    static analyzeArbitrageOpportunities(cryptoComparePrices, coinCapPrices, minSpread, exchanges = []) {
+        try {
+            const opportunities = [];
+            
+            // Get all available symbols from both sources
+            const symbols = new Set([
+                ...Object.keys(coinCapPrices || {}),
+                ...Object.keys(Object.values(cryptoComparePrices || {})[0] || {})
+            ]);
+    
+            // Get all available exchanges from CryptoCompare
+            const availableExchanges = new Set(Object.keys(cryptoComparePrices || {}));
+    
+            // Create a unified price map including all sources
+            const priceMap = new Map();
+            
+            // Add CryptoCompare prices
+            availableExchanges.forEach(exchange => {
+                symbols.forEach(symbol => {
+                    if (cryptoComparePrices[exchange]?.[symbol]) {
+                        priceMap.set(`${exchange}:${symbol}`, {
+                            exchange,
+                            symbol,
+                            price: cryptoComparePrices[exchange][symbol]
+                        });
+                    }
+                });
+            });
+    
+            // Add CoinCap prices
+            symbols.forEach(symbol => {
+                if (coinCapPrices[symbol]) {
+                    priceMap.set(`coincap:${symbol}`, {
+                        exchange: 'coincap',
+                        symbol,
+                        price: coinCapPrices[symbol]
+                    });
+                }
+            });
+    
+            // Convert priceMap to array for easier comparison
+            const priceEntries = Array.from(priceMap.values());
+    
+            // Compare each price entry with every other entry for the same symbol
+            for (let i = 0; i < priceEntries.length; i++) {
+                for (let j = i + 1; j < priceEntries.length; j++) {
+                    const entry1 = priceEntries[i];
+                    const entry2 = priceEntries[j];
+    
+                    // Only compare same symbols
+                    if (entry1.symbol === entry2.symbol) {
+                        const spread = Math.abs((entry1.price - entry2.price) / entry1.price) * 100;
+
+                        if (spread >= minSpread) {
+                            const buyEntry = entry1.price > entry2.price ? entry2 : entry1;
+                            const sellEntry = entry1.price > entry2.price ? entry1 : entry2;
+
+                            opportunities.push({
+                                symbol: entry1.symbol,
+                                buyExchange: buyEntry.exchange,
+                                sellExchange: sellEntry.exchange,
+                                buyPrice: buyEntry.price,
+                                sellPrice: sellEntry.price,
+                                spread: parseFloat(spread.toFixed(2)),
+                                potentialProfit: parseFloat(((sellEntry.price - buyEntry.price) / buyEntry.price * 100).toFixed(2)),
+                                timestamp: new Date(),
+                                details: {
+                                    absolutePriceDifference: parseFloat((sellEntry.price - buyEntry.price).toFixed(2)),
+                                    volumeRequired: null, // Could be added if volume data is available
+                                    estimatedFees: null  // Could be added if fee data is available
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+
+            return opportunities;
+        } catch (error) {
+            console.error('Error in analyzeArbitrageOpportunities:', error);
+            return [];
         }
     }
 }

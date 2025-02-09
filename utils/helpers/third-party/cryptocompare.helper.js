@@ -3,8 +3,8 @@ import { ApiError } from "../../ApiError.js";
 import { environment } from "../../../config/environment.js";
 export class CryptoCompareHelper {
     // constructor() {
-        static baseUrl = environment.apis.cryptocompare.baseUrl;
-        static apiKey = environment.apis.cryptocompare.apiKey;
+    static baseUrl = environment.apis.cryptocompare.baseUrl;
+    static apiKey = environment.apis.cryptocompare.apiKey;
     // }
 
     static async makeRequest(endpoint, params = {}) {
@@ -127,5 +127,35 @@ export class CryptoCompareHelper {
             },
             lastUpdate: new Date()
         };
+    }
+
+    static formatPrice(data) {
+        try {
+            if (!data || !data.USD) {
+                return null;
+            }
+            return parseFloat(data.USD);
+        } catch (error) {
+            logger.error('Error formatting price data:', error);
+            return null;
+        }
+    }
+    
+    static formatMultiPriceData(data, exchange) {
+        try {
+            const formattedData = {};
+            
+            Object.entries(data).forEach(([symbol, priceData]) => {
+                const price = this.formatPrice(priceData);
+                if (price !== null) {
+                    formattedData[symbol] = price;
+                }
+            });
+    
+            return formattedData;
+        } catch (error) {
+            logger.error('Error formatting multi price data:', error);
+            return {};
+        }
     }
 }

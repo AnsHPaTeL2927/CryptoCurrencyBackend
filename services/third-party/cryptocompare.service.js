@@ -188,7 +188,7 @@ export class CryptoCompareService {
         try {
             // First get OHLCV data to calculate indicators
             const ohlcvData = await this.getOHLCV(symbol, 100, 1); // Get last 100 data points
-            
+
             if (!ohlcvData || !Array.isArray(ohlcvData)) {
                 throw new ApiError(500, 'Failed to fetch OHLCV data');
             }
@@ -243,6 +243,67 @@ export class CryptoCompareService {
         } catch (error) {
             logger.error('CryptoCompare getTechnicalIndicators error:', error);
             throw new ApiError(500, 'Failed to fetch technical indicators');
+        }
+    }
+
+    async getPrices(symbols, exchanges) {
+        try {
+            const symbolList = Array.isArray(symbols) ? symbols : [symbols];
+            const exchangeList = exchanges || ['binance', 'coinbase', 'kraken', 'huobi'];
+
+            // Create a result object to store prices for each exchange
+            const result = {};
+            exchangeList.forEach(exchange => {
+                result[exchange] = {};
+            });
+
+            // Fetch prices for each symbol
+            await Promise.all(symbolList.map(async (symbol) => {
+                try {
+                    // Get price for each exchange for this symbol
+                    const response = await CryptoCompareHelper.makeRequest('/data/price', {
+                        fsym: symbol.toUpperCase(),
+                        tsyms: 'USD',
+                        e: exchangeList.join(',')
+                    });
+
+                    // Add price to each exchange's result
+                    exchangeList.forEach(exchange => {
+                        if (response && response.USD) {
+                            result[exchange][symbol] = parseFloat(response.USD);
+                        }
+                    });
+                } catch (error) {
+                    logger.error(`Error fetching price for ${symbol}:`, error);
+                }
+            }));
+
+            return result;
+        } catch (error) {
+            logger.error('CryptoCompare getPrices error:', error);
+            throw new ApiError(500, 'Failed to fetch prices');
+        }
+    }
+
+    async getHistoricalArbitrage(pair, timeframe = '24h', exchange) {
+        try {
+            // Convert timeframe to hours for API
+            const hours = timeframe === '24h' ? 24 :
+                timeframe === '7d' ? 168 :
+                    timeframe === '30d' ? 720 : 24;
+
+            const [symbol1, symbol2] = pair.split('/');
+
+            const responses = await Promise.all([
+                this.getHistoricalData(symbol1, hours),
+                this.getHistoricalData(symbol2, hours)
+            ]);
+
+            const history = TechnicalHelper.calculateArbitrageHistory(responses[0], responses[1], exchange);
+            return history;
+        } catch (error) {
+            logger.error('CryptoCompare getHistoricalArbitrage error:', error);
+            throw new ApiError(500, 'Failed to fetch historical arbitrage data');
         }
     }
 }

@@ -1,5 +1,5 @@
 import CryptoCompareService from '../services/third-party/cryptocompare.service.js';
-import { CoinCapService } from '../services/third-party/coincap.service.js';
+import CoinCapService from '../services/third-party/coincap.service.js';
 import RedisService from '../services/redis/redis.service.js';
 import { catchAsync } from '../utils/catchAsync.js';
 import { ApiError } from '../utils/ApiError.js';
@@ -273,27 +273,84 @@ export class TechnicalController {
 
     // Arbitrage Analysis Methods
     static getArbitrageOpportunities = catchAsync(async (req, res) => {
-        const { minSpread = 1, exchanges, symbols } = req.query;
+        const {
+            symbols = 'BTC,ETH',  // Default symbols
+            exchanges = 'binance,coinbase',  // Default exchanges
+            minSpread = 0.5,
+            limit = 10
+        } = req.query;
 
-        if (!symbols) throw new ApiError(400, 'Symbols are required');
+        // Parse inputs
+        const symbolList = symbols.split(',').map(s => s.trim().toUpperCase());
+        const exchangeList = exchanges.split(',').map(e => e.trim().toLowerCase());
+        const spreadThreshold = parseFloat(minSpread);
 
-        const cacheKey = `arbitrage:opportunities:${symbols}:${minSpread}:${exchanges || 'all'}`;
-        const cachedData = await RedisService.get(cacheKey);
-        if (cachedData) return res.json({ status: 'success', data: cachedData });
+        // Validate minSpread
+        if (isNaN(spreadThreshold) || spreadThreshold < 0) {
+            throw new ApiError(400, 'Invalid minSpread value');
+        }
 
-        const prices = await Promise.all([
-            CryptoCompareService.getPrices(symbols, exchanges),
-            CoinCapService.getPrices(symbols, exchanges)
-        ]);
+        const cacheKey = `arbitrage:opportunities:${symbolList.join('-')}:${exchangeList?.join('-')}:${spreadThreshold}`;
 
-        const opportunities = this.analyzeArbitrageOpportunities(
-            prices,
-            parseFloat(minSpread),
-            exchanges?.split(',')
-        );
+        try {
+            // Check cache
+            const cachedData = await RedisService.get(cacheKey);
+            if (cachedData) {
+                return res.json({
+                    status: 'success',
+                    source: 'cache',
+                    data: cachedData
+                });
+            }
+            // Fetch prices from different sources
+            const [cryptoComparePrices, coinCapPrices] = await Promise.all([
+                CryptoCompareService.getPrices(symbolList, exchangeList),
+                CoinCapService.getAssetPrices(symbolList)
+            ]);
 
-        await RedisService.set(cacheKey, opportunities, 60);
-        res.json({ status: 'success', data: opportunities });
+            // Find arbitrage opportunities
+            const opportunities = TechnicalHelper.analyzeArbitrageOpportunities(
+                cryptoComparePrices,
+                coinCapPrices,
+                spreadThreshold,
+                exchangeList
+            );
+
+            // Debug log opportunities found
+            logger.info('Found Opportunities:', JSON.stringify(opportunities, null, 2));
+
+            // Sort opportunities by spread
+            const sortedOpportunities = opportunities
+                .sort((a, b) => b.spread - a.spread)
+                .slice(0, limit);
+
+            const response = {
+                opportunities: sortedOpportunities,
+                metadata: {
+                    symbols: symbolList,
+                    exchanges: exchangeList,
+                    minSpread: spreadThreshold,
+                    timestamp: new Date(),
+                    total: opportunities.length,
+                    rawPrices: {
+                        cryptoCompare: cryptoComparePrices,
+                        coinCap: coinCapPrices
+                    }
+                }
+            };
+
+            await RedisService.set(cacheKey, response, 60);
+
+            res.json({
+                status: 'success',
+                source: 'api',
+                data: response
+            });
+
+        } catch (error) {
+            logger.error('Error in getArbitrageOpportunities:', error);
+            throw new ApiError(500, 'Failed to fetch arbitrage opportunities');
+        }
     });
 
     static getArbitrageHistory = catchAsync(async (req, res) => {
@@ -577,48 +634,6 @@ export class TechnicalController {
 
         res.json({ status: 'success', data: orderFlow });
     });
-
-    // Helper Methods
-    static analyzeArbitrageOpportunities(prices, minSpread, exchanges = []) {
-        const opportunities = [];
-        const exchangePairs = this.getExchangePairs(exchanges);
-
-        exchangePairs.forEach(([exchange1, exchange2]) => {
-            const price1 = prices[exchange1];
-            const price2 = prices[exchange2];
-
-            if (price1 && price2) {
-                const spread = Math.abs((price1 - price2) / price1) * 100;
-
-                if (spread >= minSpread) {
-                    opportunities.push({
-                        exchange1,
-                        exchange2,
-                        price1,
-                        price2,
-                        spread: Number(spread.toFixed(2)),
-                        direction: price1 > price2 ? 'buy2_sell1' : 'buy1_sell2',
-                        timestamp: new Date()
-                    });
-                }
-            }
-        });
-
-        return opportunities.sort((a, b) => b.spread - a.spread);
-    }
-
-    static getExchangePairs(exchanges) {
-        const pairs = [];
-        const exchangeList = exchanges.length > 0 ? exchanges : ['binance', 'coinbase', 'kraken', 'huobi'];
-
-        for (let i = 0; i < exchangeList.length; i++) {
-            for (let j = i + 1; j < exchangeList.length; j++) {
-                pairs.push([exchangeList[i], exchangeList[j]]);
-            }
-        }
-
-        return pairs;
-    }
 }
 
 export default TechnicalController;

@@ -1,6 +1,7 @@
 import { ApiError } from '../../utils/ApiError.js';
 import logger from '../../utils/logger.js';
 import { CoinCapHelper } from '../../utils/helpers/third-party/coincap.helper.js';
+import SymbolHelper from '../../utils/helpers/symbol.helper.js';
 
 export class CoinCapService {
     async getAllAssets(limit = 100, offset = 0) {
@@ -105,6 +106,34 @@ export class CoinCapService {
             };
         } catch (error) {
             throw new Error(`CoinCap volume error: ${error.message}`);
+        }
+    }
+
+    async getAssetPrices(symbols) {
+        try {
+            // Convert trading symbols to CoinCap IDs
+            const coinCapIds = SymbolHelper.convertToCoinCapIds(symbols);
+            
+            // Get prices for each asset
+            const prices = await Promise.all(
+                coinCapIds.map(async (id) => {
+                    const response = await CoinCapHelper.makeRequest(`/assets/${id}`);
+                    return {
+                        id,
+                        symbol: SymbolHelper.getTradingSymbol(id),
+                        price: parseFloat(response.data.priceUsd)
+                    };
+                })
+            );
+    
+            // Convert to object with trading symbols as keys
+            return prices.reduce((acc, { symbol, price }) => {
+                acc[symbol] = price;
+                return acc;
+            }, {});
+        } catch (error) {
+            logger.error('CoinCap getAssetPrices error:', error);
+            throw new ApiError(500, 'Failed to fetch asset prices');
         }
     }
 }
