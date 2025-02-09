@@ -81,8 +81,8 @@ router.post('/cache/refresh/:type', authenticate, CacheController.refreshCache);
 router.get('/cache/status', authenticate, CacheController.getCacheStatus);
 
 // Add under Technical Analysis Routes section
-router.get('/technical/indicators/:symbol', authenticate, TechnicalController.getTechnicalIndicators);
-router.get('/technical/indicators/params', authenticate, TechnicalController.getIndicatorParameters); // Optional route for getting indicator parameters
-router.get('/technical/arbitrage', authenticate, TechnicalController.getArbitrageOpportunities);
-router.get('/technical/arbitrage/history', authenticate, TechnicalController.getArbitrageHistory); // Optional route for historical arbitrage data
+// router.get('/technical/indicators/:symbol', authenticate, TechnicalController.getTechnicalIndicators);
+// router.get('/technical/indicators/params', authenticate, TechnicalController.getIndicatorParameters); // Optional route for getting indicator parameters
+// router.get('/technical/arbitrage', authenticate, TechnicalController.getArbitrageOpportunities);
+// router.get('/technical/arbitrage/history', authenticate, TechnicalController.getArbitrageHistory); // Optional route for historical arbitrage data
 export default router;

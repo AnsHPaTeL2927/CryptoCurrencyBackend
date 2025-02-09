@@ -15,7 +15,7 @@ export class TechnicalController {
             period = '1d',
             interval = '1h'
         } = req.query;
-    
+
         const validPeriods = ['1d', '7d', '30d', '90d', '1y'];
         const validIntervals = ['5m', '15m', '30m', '1h', '4h', '1d'];
 
@@ -30,20 +30,20 @@ export class TechnicalController {
         if (!symbol) {
             throw new ApiError(400, 'Symbol is required');
         }
-    
+
         // Validate indicators (now support BB - Bollinger Bands)
         const validIndicators = ['RSI', 'MACD', 'EMA', 'BB'];
         const requestedIndicators = Array.isArray(indicators) ? indicators : indicators.split(',');
-        
+
         const invalidIndicators = requestedIndicators.filter(ind => !validIndicators.includes(ind.toUpperCase()));
         if (invalidIndicators.length > 0) {
             throw new ApiError(400, `Invalid indicators: ${invalidIndicators.join(', ')}`);
         }
-    
+
         // Try to get from cache
         const cacheKey = `technical:indicators:${symbol}:${period}:${interval}`;
         const cachedData = await RedisService.get(cacheKey);
-    
+
         if (cachedData) {
             return res.json({
                 status: 'success',
@@ -51,12 +51,12 @@ export class TechnicalController {
                 data: cachedData
             });
         }
-    
+
         try {
             // Get price data from CryptoCompare
             const priceData = await CryptoCompareService.getHistoricalData(symbol, 100);
             const prices = priceData.map(d => d.close);
-    
+
             const results = {
                 technicalIndicators: {},
                 signals: {},
@@ -65,7 +65,7 @@ export class TechnicalController {
                 volatility: TechnicalHelper.calculateVolatilityMetrics(priceData),
                 support_resistance: TechnicalHelper.calculateSupportResistance(priceData)
             };
-    
+
             // Calculate requested indicators
             for (const indicator of requestedIndicators) {
                 switch (indicator.toUpperCase()) {
@@ -78,7 +78,7 @@ export class TechnicalController {
                         };
                         results.signals.RSI = TechnicalHelper.getRSISignal(rsi.lastValue);
                         break;
-    
+
                     case 'MACD':
                         const macd = TechnicalHelper.calculateMACD(prices);
                         results.technicalIndicators.MACD = {
@@ -98,7 +98,7 @@ export class TechnicalController {
                             macd.histogram
                         );
                         break;
-    
+
                     case 'EMA':
                         const ema = TechnicalHelper.calculateEMA(prices, 14);
                         results.technicalIndicators.EMA = {
@@ -108,7 +108,7 @@ export class TechnicalController {
                             timestamp: new Date()
                         };
                         break;
-    
+
                     case 'BB':
                         const bb = TechnicalHelper.calculateBollingerBands(prices);
                         results.technicalIndicators.BB = {
@@ -125,10 +125,10 @@ export class TechnicalController {
                         break;
                 }
             }
-    
+
             // Calculate overall trend
             results.trends = TechnicalHelper.calculateOverallTrend(results);
-    
+
             const response = {
                 ...results,
                 metadata: {
@@ -140,16 +140,16 @@ export class TechnicalController {
                     nextUpdate: new Date(Date.now() + 300000) // 5 minutes cache
                 }
             };
-    
+
             // Cache the response
             await RedisService.set(cacheKey, response, 300);
-    
+
             return res.json({
                 status: 'success',
                 source: 'api',
                 data: response
             });
-    
+
         } catch (error) {
             logger.error('Error calculating technical indicators:', error);
             throw new ApiError(500, `Failed to calculate technical indicators: ${error.message}`);
@@ -157,25 +157,118 @@ export class TechnicalController {
     });
 
     static getIndicatorParameters = catchAsync(async (req, res) => {
-        const { indicator } = req.query;
-        const validIndicators = ['RSI', 'MACD', 'EMA', 'Bollinger', 'StochRSI'];
+        try {
+            const { indicator } = req.query;
 
-        if (indicator && !validIndicators.includes(indicator)) {
-            throw new ApiError(400, 'Invalid indicator');
+            // List of supported indicators
+            const validIndicators = ['RSI', 'MACD', 'EMA', 'BB', 'StochRSI'];
+
+            // Validate indicator if provided
+            if (indicator && !validIndicators.includes(indicator.toUpperCase())) {
+                throw new ApiError(400, `Invalid indicator. Valid indicators are: ${validIndicators.join(', ')}`);
+            }
+
+            // Detailed parameters with descriptions and ranges
+            const parameters = {
+                RSI: {
+                    parameters: {
+                        period: 14,
+                        oversold: 30,
+                        overbought: 70
+                    },
+                    ranges: {
+                        period: { min: 2, max: 50, recommended: 14 },
+                        oversold: { min: 20, max: 40, recommended: 30 },
+                        overbought: { min: 60, max: 80, recommended: 70 }
+                    },
+                    description: "Relative Strength Index measures momentum of an asset's price changes",
+                    usage: "Values above overbought indicate potential sell signals, below oversold indicate potential buy signals"
+                },
+                MACD: {
+                    parameters: {
+                        fastPeriod: 12,
+                        slowPeriod: 26,
+                        signalPeriod: 9
+                    },
+                    ranges: {
+                        fastPeriod: { min: 8, max: 20, recommended: 12 },
+                        slowPeriod: { min: 20, max: 30, recommended: 26 },
+                        signalPeriod: { min: 5, max: 12, recommended: 9 }
+                    },
+                    description: "Moving Average Convergence Divergence shows trend direction and momentum",
+                    usage: "Signal line crossovers and histogram changes indicate potential trading signals"
+                },
+                EMA: {
+                    parameters: {
+                        periods: [9, 21, 50, 200]
+                    },
+                    ranges: {
+                        period: { min: 3, max: 200, recommended: [9, 21, 50, 200] }
+                    },
+                    description: "Exponential Moving Average gives more weight to recent prices",
+                    usage: "Crossovers between different period EMAs can indicate trend changes"
+                },
+                BB: {
+                    parameters: {
+                        period: 20,
+                        stdDev: 2
+                    },
+                    ranges: {
+                        period: { min: 10, max: 50, recommended: 20 },
+                        stdDev: { min: 1, max: 3, recommended: 2 }
+                    },
+                    description: "Bollinger Bands show volatility and potential price levels",
+                    usage: "Price touching bands indicates potential reversal points"
+                },
+                StochRSI: {
+                    parameters: {
+                        period: 14,
+                        kPeriod: 3,
+                        dPeriod: 3
+                    },
+                    ranges: {
+                        period: { min: 10, max: 30, recommended: 14 },
+                        kPeriod: { min: 1, max: 10, recommended: 3 },
+                        dPeriod: { min: 1, max: 10, recommended: 3 }
+                    },
+                    description: "Stochastic RSI combines RSI with Stochastic oscillator",
+                    usage: "Values above 80 indicate overbought, below 20 indicate oversold"
+                }
+            };
+
+            // Cache key based on indicator
+            const cacheKey = `indicator:parameters:${indicator || 'all'}`;
+            const cacheDuration = 86400; // 24 hours since these rarely change
+
+            // Get from cache
+            const cachedData = await RedisService.get(cacheKey);
+            if (cachedData) {
+                return res.json({
+                    status: 'success',
+                    source: 'cache',
+                    data: cachedData
+                });
+            }
+
+            const response = {
+                status: 'success',
+                source: 'direct',
+                data: indicator ? parameters[indicator.toUpperCase()] : parameters,
+                metadata: {
+                    timestamp: new Date(),
+                    supportedIndicators: validIndicators,
+                    version: '1.0'
+                }
+            };
+
+            // Cache the response
+            await RedisService.set(cacheKey, response, cacheDuration);
+
+            res.json(response);
+        } catch (error) {
+            logger.error('Error in getIndicatorParameters:', error);
+            throw new ApiError(500, 'Failed to fetch indicator parameters');
         }
-
-        const parameters = {
-            RSI: { period: 14, oversold: 30, overbought: 70 },
-            MACD: { fastPeriod: 12, slowPeriod: 26, signalPeriod: 9 },
-            EMA: { periods: [9, 21, 50, 200] },
-            Bollinger: { period: 20, stdDev: 2 },
-            StochRSI: { period: 14, kPeriod: 3, dPeriod: 3 }
-        };
-
-        res.json({
-            status: 'success',
-            data: indicator ? parameters[indicator] : parameters
-        });
     });
 
     // Arbitrage Analysis Methods
